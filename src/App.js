@@ -1,11 +1,26 @@
-import React from "react";
+import React, { Profiler, createContext, useState } from "react";
 import "./style.css";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
+import Profile from "./pages/Profile";
+import Navbar from "./Navbar";
+export const AppContext = createContext()
 
 export default function App() {
+  const [username, setUsername] = useState("Carlos")
+
   return (
-    <div>
-      <h1>Hello StackBlitz!</h1>
-      <p>Start editing to see some magic happen :)</p>
-    </div>
+    <Profiler id="App" >
+      <AppContext.Provider value={{ username, setUsername }}>
+        <Navbar />
+        <Routes>
+          <Route path="/" Component={Home} />
+          <Route path="/profile" Component={Profile} />
+          <Route path="/contact" Component={Contact} />
+          <Route path="*" Component={Home} />
+        </Routes>
+      </AppContext.Provider>
+    </Profiler>
   );
 }
