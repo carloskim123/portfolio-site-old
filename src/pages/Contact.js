@@ -1,6 +1,11 @@
 const Contact = () => {
     return (
-        <div>This is the Contact component</div>
+        <div>
+            <select>
+                <option value="someOption">Some option</option>
+                <option value="otherOption">Other option</option>
+            </select>
+        </div>
     )
 }
 
