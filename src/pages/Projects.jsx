@@ -21,7 +21,7 @@ const Projects = () => {
           classNames="fade"
         >
           {!isLoading ? (
-            <Box key={project.id} p={4} borderColor={"gray.600"} shadow={"md"} borderWidth="1px" borderRadius="md" transition={"300ms"} _hover={{ shadow: "2xl", skewX: "10deg" }} fontSize={"17px"}>
+            <Box key={project.id} p={4} borderColor={"#2b2d42"} shadow={"md"} borderWidth="1px" borderRadius="md" transition={"300ms"} _hover={{ shadow: "2xl", skewX: "10deg" }} fontSize={"17px"}>
               <Box position="relative" height="200px">
                 <Image
                   src={project.img}
@@ -31,7 +31,7 @@ const Projects = () => {
                   rounded="md"
                 />
               </Box>
-              <Text fontWeight="bold" fontSize="xl" mb={2}>
+              <Text fontWeight="bold" fontSize="2xl" mb={2}>
                 {project.name}
               </Text>
               <Text mb={2}>{project.description}</Text>
