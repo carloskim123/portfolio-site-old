@@ -24,9 +24,9 @@ export default function Home() {
               <Box pt={"5px"} fontSize={"20px"}>Check me out on: </Box>
               {links &&
                 links.map(link => (
-                  <Link target="_blank" href={link.url} fontSize={"15px"} shadow={"md"} px={"10px"} py={"10px"} rounded={"md"} transition={"300ms"} _hover={{ textDecoration: "underline", shadow: "lg" }}>
+                  <Link key={link.url} target="_blank" href={link.url} fontSize={"15px"} shadow={"md"} px={"10px"} py={"10px"} rounded={"md"} transition={"300ms"} _hover={{ textDecoration: "underline", shadow: "lg" }}>
                     <Box display={"flex"} flexDir={"row"} justifyContent={"center"} gap={"5px"}>
-                      <Image src={link.icon} h={"20px"} />
+                      <Image src={ link.icon } h={"20px"} />
                       <Text>{link.title}</Text>
                     </Box>
                   </Link>
