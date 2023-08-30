@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 
 
-import { images } from '../../data/db'
+import { profile_pic } from '../../data/db'
 
 export default function About() {
   return (
@@ -19,7 +19,7 @@ export default function About() {
       <Box h={"100vh"} >
         <Container textAlign={"center"} w={"900px"} mt={"2rem"} >
           <Box display={"flex"} justifyContent={"center"}>
-            <Image src={images} rounded={"full"} h={"130px"} />
+            <Image src={profile_pic} rounded={"sm"} h={"130px"} />
           </Box>
           <Box textAlign={"center"} pt={"1rem"}>
             <Text fontSize={"25px"}>Hey there, I'm Carlos, nice to meet you!</Text>
@@ -73,12 +73,13 @@ export default function About() {
               </h2>
                 <AccordionPanel pb={4} fontSize={"16px"}>
 
-                There are many challenges to being a programmer, but some of the most common ones include:
+                There are many challenges to being a programmer, but some of the most common ones include:<br/>
 
-                * The constant learning curve: The field of programming is constantly evolving, so programmers need to be constantly learning new things.
-                * The need for problem-solving skills: Programmers need to be able to identify and solve problems.
-                * The long hours: Programming can be a demanding career, and programmers often work long hours.
-                * The stress: Programming can be stressful, especially when deadlines are tight.
+                * The constant learning curve: The field of programming is constantly evolving, so programmers need to be constantly learning new things.<br />
+                * The need for problem-solving skills: Programmers need to be able to identify and solve problems.<br />
+                * The long hours: Programming can be a demanding career, and programmers often work long hours.<br />
+                * The stress: Programming can be stressful, especially when deadlines are tight.<br />
+                <br />
 
                 Despite the challenges, being a programmer can be a very rewarding career. Programmers have the opportunity to create new and innovative things, and they can make a real impact on the world.
               </AccordionPanel>
