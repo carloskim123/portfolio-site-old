@@ -20,7 +20,7 @@ export default function RootLayout() {
       <Box py={2} px={4} borderBottom={"solid"} borderBottomColor={"black"} borderBottomWidth={"2px"} h={"50px"}>
         <Flex gap={"2rem"} alignItems={"center"} fontSize={"18px"} >
           <Text mr={"60%"} ml={"10%"}>
-            <Link to={"/"} >Carlos Kirui</Link>
+            <Link to={"/"} >Carlos.K</Link>
           </Text>
           <Box display={{ base: "block", md: "none" }} onClick={() => setShowMenu(!showMenu)}>
             {showMenu ? (
