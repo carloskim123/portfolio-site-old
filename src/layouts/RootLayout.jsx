@@ -46,7 +46,7 @@ export default function RootLayout() {
           overflow="hidden"
           h={showMenu ? "100px" : "0"}
           py={2}
-          px={200}
+          px={4}
           borderBottom={"solid"}
           borderBottomColor={"black"}
           borderBottomWidth={"2px"}
