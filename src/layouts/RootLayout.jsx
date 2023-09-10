@@ -3,7 +3,7 @@ import { Box, Flex, Text } from "@chakra-ui/layout"
 import { Outlet } from "react-router-dom"
 import { Suspense, useEffect, useState } from "react"
 import Loader from '../components/Loader'
-
+import { Image } from '@chakra-ui/react'
 
 export default function RootLayout() {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,7 +20,9 @@ export default function RootLayout() {
       <Box py={2} px={4} borderBottom={"solid"} borderBottomColor={"black"} borderBottomWidth={"2px"} h={"50px"}>
         <Flex gap={"2rem"} alignItems={"center"} fontSize={"18px"} >
           <Text mr={"auto"} ml={"2%"}>
-            <Link to={"/"} >Carlos.K</Link>
+            <Link to={"/"} >
+              <Box mt={"10px"}>Carlos.K</Box>
+            </Link>
           </Text>
           <Box display={{ base: "block", md: "none" }} onClick={() => setShowMenu(!showMenu)}>
             {showMenu ? (
