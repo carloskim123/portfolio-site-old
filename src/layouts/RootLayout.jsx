@@ -19,21 +19,21 @@ export default function RootLayout() {
     <div>
       <Box py={2} px={4} borderBottom={"solid"} borderBottomColor={"black"} borderBottomWidth={"2px"} h={"50px"}>
         <Flex gap={"2rem"} alignItems={"center"} fontSize={"18px"} >
-          <Text mr={"60%"} ml={"10%"}>
+          <Text mr={"auto"} ml={"2%"}>
             <Link to={"/"} >Carlos.K</Link>
           </Text>
           <Box display={{ base: "block", md: "none" }} onClick={() => setShowMenu(!showMenu)}>
             {showMenu ? (
-              <svg fill="black" width="24px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <svg fill="black" width="35px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14 6H6v2h8V6zM6 11h8v-2H6v2zm8 3H6v2h8v-2z" />
               </svg>
             ) : (
-              <svg fill="black" width="24px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <svg fill="black" width="34px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3 6h14v2H3zm0 5h14v2H3zm0 5h14v2H3z" />
               </svg>
             )}
           </Box>
-          <Flex display={{ base: "none", md: "flex" }} alignItems={"center"} gap={"2rem"}>
+          <Flex display={{ base: "none", md: "flex" }} gap={"2rem"} >
             <Link to={"/projects"}>Projects</Link>
             <Link to={"/about"}>About</Link>
             <Link to={"/contact"}>Contact</Link>
