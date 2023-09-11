@@ -10,7 +10,7 @@ const Projects = () => {
   setTimeout(() => {
     setIsLoading(false)
   }, 500);
-  
+
   return (
     <Grid templateColumns="repeat(auto-fill, minmax(300px, 1fr))" gap={4} p={"20px"} >
       {projects.map((project) => (
@@ -36,11 +36,11 @@ const Projects = () => {
               </Text>
               <Text mb={2}>{project.description}</Text>
               <Text mb={2}>
-                <Link href={project.project_url} color="blue.500" mr={2}>
+                <Link target="_blank" href={project.project_url} color="blue.500" mr={2}>
                   Project Repo
                 </Link>
                 {project.view_live && (
-                  <Link href={project.view_live} color="blue.500">
+                  <Link target="_blank" href={project.view_live} color="blue.500">
                     View Live
                   </Link>
                 )}
