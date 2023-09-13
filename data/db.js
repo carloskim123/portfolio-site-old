@@ -8,9 +8,10 @@ export const waving_hand = waving_hand_url;
 
 export const links = [
     {
-        url: "https://github.com/maninthehood",
+        url: "https://github.com/carloskim123",
         title: "Github",
         icon: github
+        
     },
     {
         url: "https://twitter.com/KimKimkirui7",
