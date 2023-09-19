@@ -41,7 +41,7 @@ export const projects = [
         img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9f-HkJ8dmt9TlMZPNMrp6POHjXHai81S6-2EEJwTOP2do1vIQTwfQEb5rksBkGTtvkTQ&usqp=CAU',
         tech_stack: 'React, Framer Motion, Tailwindcss, EmailJS',
         project_url: 'https://github.com/carloskim123/My-Website/',
-        view_live: 'https://kim-site.netlify.app',
+        view_live: 'https://kimk.vercel.app',
         description: "A decent portfolio website built around some of the most popular javascript frameworks."
     },
     {
