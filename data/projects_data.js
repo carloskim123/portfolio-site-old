@@ -71,4 +71,13 @@ export const projects = [
         view_live: null,
         description: "Absolute Basic Machine Learning Models"
     },
+    {
+        name: 'Java Contact List Manager (Console Application)',
+        id: Math.random(),
+        img: 'https://3.bp.blogspot.com/-KIrCDuRSDdQ/WgSUMYqVWhI/AAAAAAAADxs/cbSerxnGbw05cLh1GnzQQ9ruozC9W1gJACLcBGAs/w1200-h630-p-k-no-nu/JAVA%2BContact%2BManagement%2BSystem%2BProject.png',
+        tech_stack: 'Java',
+        project_url: 'https://github.com/carloskim123/Java/blob/main/Projects/ContactListApp.java',
+        view_live: null,
+        description: "A Vanilla Java project using fundamental java features."
+    },
 ];

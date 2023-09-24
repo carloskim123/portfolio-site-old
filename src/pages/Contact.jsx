@@ -4,6 +4,7 @@ import {
   FormControl,
   FormLabel,
   Input,
+  Textarea,
   Button,
   Container,
   Text,
@@ -20,6 +21,7 @@ export default function Contact() {
     email: "",
     message: "",
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const validateForm = () => {
     const errors = {};
@@ -30,9 +32,7 @@ export default function Contact() {
 
     if (!form.current.user_email.value.trim()) {
       errors.email = "Email is required";
-    } else if (
-      !/^\S+@\S+\.\S+$/.test(form.current.user_email.value.trim())
-    ) {
+    } else if (!/^\S+@\S+\.\S+$/.test(form.current.user_email.value.trim())) {
       errors.email = "Invalid email format";
     }
 
@@ -44,27 +44,38 @@ export default function Contact() {
     return Object.keys(errors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const isFormValid = validateForm();
 
     if (isFormValid) {
-      emailjs
-        .sendForm(
+      setIsSubmitted(true);
+
+      // Disable form inputs and submit button
+      const formInputs = form.current.elements;
+      for (let i = 0; i < formInputs.length; i++) {
+        formInputs[i].disabled = true;
+      }
+      form.current.querySelector("button[type=submit]").disabled = true;
+
+      try {
+        await emailjs.sendForm(
           "service_cq60crt",
           "template_4vjr6va",
           form.current,
           "FgoXhK367G_Vghk5J"
-        )
-        .then(
-          (result) => {
-            console.log(result.text);
-            navigate("/");
-          },
-          (error) => {
-            console.log(error.text);
-          }
         );
+        navigate("/success");
+      } catch (error) {
+        console.log(error.text);
+        setIsSubmitted(false);
+
+        // Re-enable form inputs and submit button on error
+        for (let i = 0; i < formInputs.length; i++) {
+          formInputs[i].disabled = false;
+        }
+        form.current.querySelector("button[type=submit]").disabled = false;
+      }
     }
   };
 
@@ -83,8 +94,9 @@ export default function Contact() {
         mx="auto"
         p={4}
         borderWidth="1px"
-        borderColor="black"
+        // borderColor="black.300"
         rounded="md"
+        boxShadow="lg"
       >
         <form onSubmit={handleSubmit} ref={form}>
           <FormControl id="name" mb={4}>
@@ -92,9 +104,9 @@ export default function Contact() {
             <Input
               type="text"
               name="user_name"
-              borderWidth="1px"
-              borderColor="black"
-              outline={"none"}
+              borderColor="black.300"
+              focusBorderColor="blue.400"
+              isDisabled={isSubmitted}
             />
             <Text color="red.500">{formErrors.name}</Text>
           </FormControl>
@@ -103,23 +115,33 @@ export default function Contact() {
             <Input
               type="email"
               name="user_email"
-              borderWidth="1px"
-              borderColor="black"
+              borderColor="black.300"
+              focusBorderColor="blue.400"
+              isDisabled={isSubmitted}
             />
             <Text color="red.500">{formErrors.email}</Text>
           </FormControl>
           <FormControl id="message" mb={4}>
             <FormLabel>Message</FormLabel>
-            <Input
-              as="textarea"
+            <Textarea
               name="message"
               rows={4}
-              borderWidth="1px"
-              borderColor="black"
+              borderColor="black.300"
+              focusBorderColor="blue.400"
+              isDisabled={isSubmitted}
             />
             <Text color="red.500">{formErrors.message}</Text>
           </FormControl>
-          <Button bg={"green"}  type="submit">Submit</Button>
+          <Button
+            colorScheme="blue"
+            size="lg"
+            width="100%"
+            type="submit"
+            isLoading={isSubmitted}
+            loadingText="Submitting..."
+          >
+            Submit
+          </Button>
         </form>
       </Box>
     </Container>

@@ -27,4 +27,10 @@ export const links = [
         title: "Tiktok",
         icon: tiktok
     },
-]
+];
+export const routes = [
+    { path: "/", pathname: "Home" },
+    { path: "/contact", pathname: "Contact" },
+    { path: "/about", pathname: "About" },
+    { path: "/projects", pathname: "Projects" },
+] || []

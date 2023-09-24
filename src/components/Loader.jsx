@@ -1,16 +1,19 @@
 import { Container, Text } from "@chakra-ui/layout"
-import { Dna } from "react-loader-spinner"
+import { MutatingDots } from "react-loader-spinner"
 
 export default function Loader() {
     return (
-        <Container display={"flex"} justifyContent={"center"} mt={"10%"}>
-            <Dna
-                visible={true}
-                height="80"
-                width="80"
-                ariaLabel="dna-loading"
+        <Container display={"flex"} justifyContent={"center"} mt={"25%"}>
+            <MutatingDots
+                height="100"
+                width="100"
+                color="black"
+                secondaryColor='black'
+                radius='12.5'
+                ariaLabel="mutating-dots-loading"
                 wrapperStyle={{}}
-                wrapperClass="dna-wrapper"
+                wrapperClass=""
+                visible={true}
             />
         </Container>
     )

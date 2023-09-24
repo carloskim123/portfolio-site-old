@@ -1,4 +1,25 @@
-html,#root{
-    background-color: #f0ead2;
+:root {
+    --light-text-color: #333;
+    /* Default light mode text color */
+    --light-background-color: #f0ead2;
+    /* Default light mode background color */
+
+    --dark-text-color: #333;
+    /* Default dark mode text color */
+    --dark-background-color: #ccd5ae;
+    /* Default dark mode background color */
 }
 
+@media(prefers-color-scheme: dark) {
+    #root, html {
+        background-color: var(--dark-background-color);
+        color: var(--dark-text-color)
+    }
+}
+
+@media(prefers-color-scheme: light) {
+    #root, html {
+        background-color: var(--light-background-color);
+        color: var(--light-text-color)
+    }
+}

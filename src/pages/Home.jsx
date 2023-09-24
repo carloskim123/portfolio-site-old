@@ -4,7 +4,6 @@ import "../app.css"
 import { profile_pic, links, waving_hand } from "../../data/db"
 
 export default function Home() {
-
   return (
 
     <Box>
@@ -13,7 +12,7 @@ export default function Home() {
         rounded={"md"}
         p={"20px"}
         display={"flex"}
-        flexDir={{ base: "column", md: "column", lg: "row" }}
+        flexDir={{ base: "column", md: "column", lg: "row", sm: "row" }}
         gap={"1rem"}
         justifyContent={"center"}
         fontFamily={"mono"}
@@ -21,7 +20,8 @@ export default function Home() {
         <Flex
           p={{
             base: "20px",
-            md: "50px"
+            md: "40px",
+            sm: "10px",
           }}
           maxWidth={"764px"}>
           <Box>
@@ -37,13 +37,14 @@ export default function Home() {
                     target="_blank"
                     href={link.url}
                     fontSize={"15px"}
-                    shadow={"md"}
+                    shadow={"lg"}
                     px={"10px"}
                     py={"10px"}
                     rounded={"md"}
                     _hover={{
                       textDecoration: "underline",
-                      shadow: "lg",
+                      shadow: "sm",
+                      transition: "ease 100ms"
                     }}>
                     <Box display={"flex"} flexDir={"row"} justifyContent={"center"} gap={"5px"}>
                       {/* <LinkIcon /> */}

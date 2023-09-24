@@ -3,16 +3,17 @@ import { Box, Flex, Text } from "@chakra-ui/layout"
 import { Outlet } from "react-router-dom"
 import { Suspense, useEffect, useState } from "react"
 import Loader from '../components/Loader'
-import { Image } from '@chakra-ui/react'
+import { routes } from '../../data/db'
 
 export default function RootLayout() {
   const [isLoading, setIsLoading] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
 
+
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 3000);
   }, []);
 
   return (
@@ -21,7 +22,13 @@ export default function RootLayout() {
         <Flex gap={"2rem"} alignItems={"center"} fontSize={"18px"} >
           <Text mr={"auto"} ml={"2%"}>
             <Link to={"/"} >
-              <Box mt={"10px"}>Carlos.K</Box>
+              <Box
+                mt={"10px"}
+                transition="transform 0.1s ease-in-out"
+                _hover={{
+                  borderBottom: "2px solid black",
+                  transform: "translateY(-5px)",
+                }}>Carlos.K</Box>
             </Link>
           </Text>
           <Box display={{ base: "block", md: "none" }} onClick={() => setShowMenu(!showMenu)}>
@@ -36,9 +43,18 @@ export default function RootLayout() {
             )}
           </Box>
           <Flex display={{ base: "none", md: "flex" }} gap={"2rem"} >
-            <Link to={"/projects"}>Projects</Link>
-            <Link to={"/about"}>About</Link>
-            <Link to={"/contact"}>Contact</Link>
+            {routes.map(route => <Box
+              transition="transform 0.1s ease-in-out"
+              fontSize="20px"
+              _hover={{
+                transform: "translateY(-2px)",
+                borderBottom: "1px solid black",
+
+              }}
+            >
+              <Link to={route.path}>{route.pathname}</Link>
+            </Box>)}
+
           </Flex>
         </Flex>
       </Box>
@@ -56,27 +72,19 @@ export default function RootLayout() {
           flexDir="column"
           gap=".5rem"
         >
-          <Box
-            transition="transform 0.1s ease-in-out"
-            fontSize="15px"
-            _hover={{ transform: "translateX(2px)" }}
-          >
-            <Link to={"/projects"}>Projects</Link>
-          </Box>
-          <Box
-            transition="transform 0.1s ease-in-out"
-            fontSize="15px"
-            _hover={{ transform: "translateX(2px)" }}
-          >
-            <Link to={"/about"}>About</Link>
-          </Box>
-          <Box
-            transition="transform 0.1s ease-in-out"
-            fontSize="15px"
-            _hover={{ transform: "translateX(2px)" }}
-          >
-            <Link to={"/contact"}>Contact</Link>
-          </Box>
+          {
+            routes.map(route => (
+              <Box
+                transition="transform 0.1s ease-in-out"
+                fontSize="15px"
+                _hover={{ transform: "translateX(12px)" }}
+              >
+                <Link to={route.path}>{route.pathname}</Link>
+              </Box>
+            ))
+          }
+
+
         </Box>
       )}
       <Suspense fallback={<Loader />}>

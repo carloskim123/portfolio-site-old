@@ -12,7 +12,9 @@ import {
 
 import { profile_pic } from '../../data/db';
 
+
 export default function About() {
+  
   return (
     <div>
       <Box>

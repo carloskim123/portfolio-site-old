@@ -5,11 +5,14 @@ import { useState } from "react";
 import { CSSTransition } from 'react-transition-group';
 import "../app.css"; // Import your CSS file for the transition styles
 
+
 const Projects = () => {
   const [isLoading, setIsLoading] = useState(true);
   setTimeout(() => {
     setIsLoading(false)
   }, 500);
+
+
 
   return (
     <Grid templateColumns="repeat(auto-fill, minmax(300px, 1fr))" gap={4} p={"20px"} >
@@ -21,7 +24,26 @@ const Projects = () => {
           classNames="fade"
         >
           {!isLoading ? (
-            <Box key={project.id} p={4} borderColor={"#2b2d42"} shadow={"md"} borderWidth="1px" borderRadius="md" transition={"300ms"} _hover={{ shadow: "2xl", skewX: "10deg" }} fontSize={"17px"}>
+            
+            <Box
+              onClick={() => {
+                window.location.href = project.project_url
+              }}
+              key={project.id}
+              p={4}
+              borderColor={"#2b2d42"}
+              shadow={"2xl"}
+              borderWidth="1px"
+              borderRadius="md"
+              transition={"300ms"}
+              _hover={
+                {
+                  shadow: "sm",
+                  skewX: "10deg",
+                  cursor: "pointer"
+                }
+              }
+              fontSize={"17px"}>
               <Box position="relative" height="200px">
                 <Image
                   src={project.img}

@@ -12,8 +12,7 @@ import Projects from './pages/Projects'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
-import Footer from './components/Footer'
-
+import HasSubmitted from './components/HasSubmitted'
 // router and routes
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,14 +23,18 @@ const router = createBrowserRouter(
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="success" element={<HasSubmitted />} />
+
       </Route>
     </>
 
   )
 )
 
+
 // app
 function App() {
+
   return (
     <>
       <RouterProvider router={router}>
@@ -39,7 +42,6 @@ function App() {
           <main>
             {/* Your content here */}
           </main>
-          <Footer />
         </RootLayout>
       </RouterProvider>
     </>
