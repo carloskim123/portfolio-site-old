@@ -11,7 +11,7 @@ export const links = [
         url: "https://github.com/carloskim123",
         title: "Github",
         icon: github
-        
+
     },
     {
         url: "https://twitter.com/KimKimkirui7",
@@ -28,4 +28,12 @@ export const links = [
         title: "Tiktok",
         icon: tiktok
     },
+]
+
+export const routes = [
+    { path: "/", pathname: "Home" },
+    { path: "/contact", pathname: "Contact" },
+    { path: "/about", pathname: "About" },
+    { path: "/projects", pathname: "Projects" },
+
 ]

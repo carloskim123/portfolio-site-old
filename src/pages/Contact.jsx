@@ -102,10 +102,16 @@ export default function Contact() {
           <FormControl id="name" mb={4}>
             <FormLabel>Name</FormLabel>
             <Input
+              autoComplete="off"
               type="text"
               name="user_name"
               borderColor="black.300"
               focusBorderColor="blue.400"
+              _hover={
+                {
+                  borderColor: "blue.400",
+                }
+              }
               isDisabled={isSubmitted}
             />
             <Text color="red.500">{formErrors.name}</Text>
@@ -116,7 +122,13 @@ export default function Contact() {
               type="email"
               name="user_email"
               borderColor="black.300"
+              autoComplete="off"
               focusBorderColor="blue.400"
+              _hover={
+                {
+                  borderColor: "blue.400",
+                }
+              }
               isDisabled={isSubmitted}
             />
             <Text color="red.500">{formErrors.email}</Text>
@@ -129,6 +141,11 @@ export default function Contact() {
               borderColor="black.300"
               focusBorderColor="blue.400"
               isDisabled={isSubmitted}
+              _hover={
+                {
+                  borderColor: "blue.400",
+                }
+              }
             />
             <Text color="red.500">{formErrors.message}</Text>
           </FormControl>
