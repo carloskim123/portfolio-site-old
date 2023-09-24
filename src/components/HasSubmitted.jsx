@@ -4,21 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function HasSubmitted() {
     const navigate = useNavigate();
-    const [submitted, setSubmitted] = useState(false);
 
-    // Check if the form has been submitted when the component mounts
-    useEffect(() => {
-        const hasSubmitted = localStorage.getItem("formSubmitted");
-        if (hasSubmitted === "true") {
-            setSubmitted(true);
-        }
-    }, []);
-
-    if (!submitted) {
-        // If the form hasn't been submitted, render a message or redirect to another page
-        navigate("/"); // Redirect to the home page or another appropriate page
-        return null; // Return null to prevent rendering the content of this component
-    }
 
     return (
         <Box

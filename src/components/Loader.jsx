@@ -1,9 +1,9 @@
 import { Container, Text } from "@chakra-ui/layout"
-import { MutatingDots } from "react-loader-spinner"
+import { MutatingDots,Discuss  } from "react-loader-spinner"
 
 export default function Loader() {
     return (
-        <Container display={"flex"} justifyContent={"center"} mt={"25%"}>
+        <Container display={"flex"} justifyContent={"center"} mt={"10%"}>
             <MutatingDots
                 height="100"
                 width="100"

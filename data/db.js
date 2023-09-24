@@ -37,3 +37,23 @@ export const routes = [
     { path: "/projects", pathname: "Projects" },
 
 ]
+
+export const accordionContent = [
+    {
+        title: "Why I chose to program over everything else!",
+        content: "I chose to program because it combines my love of problem- solving and creativity.There's something so satisfying about taking a complex problem and breaking it down into manageable pieces. And with programming, the possibilities are endless - I can create anything I can imagine."
+    },
+    {
+        title: "Did I make the right decision?",
+        content: "I think that programming is an excellent choice for many reasons.First and foremost, it's a field that's constantly evolving and growing, so there's always something new to learn. It's also a field that requires a lot of creativity and problem- solving skills, which are great skills to have in any profession.And of course, it can be incredibly rewarding to see your code come to life and solve real - world problems."
+    },
+    {
+        title: "My favorite programming languages",
+        content: "My favorite programming languages are Java, Golang, Javascript, and Python. I like JavaScript because it's a versatile language that can be used for both front-end and back-end development. I also like Python because it's a relatively easy language to learn and use, and it has a large community of developers who create and maintain a wide range of libraries and tools."
+    },
+    {
+        title: "The biggest challenge I've faced as a programmer",
+        content: "The biggest challenge I've faced as a programmer is debugging code. When code doesn't work as expected, it can be difficult to track down and fix the bugs. This can be a frustrating process, especially for complex codebases. However, over time I've learned some tips for debugging code more effectively, such as using good coding practices, using a debugger, and asking for help from other programmers."
+    }
+
+]

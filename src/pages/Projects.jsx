@@ -1,4 +1,4 @@
-import { Grid, Box, Image, Link, Text } from "@chakra-ui/react";
+import { Grid, Box, Image, Link, Text, useInputGroupStyles } from "@chakra-ui/react";
 import { projects } from "../../data/projects_data";
 import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react'
 import { useState } from "react";
@@ -7,10 +7,15 @@ import "../app.css"; // Import your CSS file for the transition styles
 
 
 const Projects = () => {
+  
   const [isLoading, setIsLoading] = useState(true);
   setTimeout(() => {
     setIsLoading(false)
   }, 500);
+
+  function loadNewWindow(url) {
+    return window.open(url, "_blank");
+  }
 
 
 
@@ -26,9 +31,8 @@ const Projects = () => {
           {!isLoading ? (
             
             <Box
-              onClick={() => {
-                window.location.href = project.project_url
-              }}
+              onClick={() => loadNewWindow(project.project_url)}
+               
               key={project.id}
               p={4}
               borderColor={"#2b2d42"}
@@ -47,8 +51,10 @@ const Projects = () => {
               <Box position="relative" height="200px">
                 <Image
                   src={project.img}
+                  minWidth={"100%"}
+                  maxHeight={"100%"}
                   alt={project.name}
-                  objectFit="cover"
+                  objectFit="contain"
                   layout="fill"
                   rounded="md"
                 />
