@@ -43,6 +43,20 @@ export default function RootLayout() {
     setShowMenu(false);
   };
 
+  // Function to handle the animation of the mobile menu
+  useEffect(() => {
+    const menu = menuRef.current;
+    if (menu) {
+      if (showMenu) {
+        menu.style.width = "50%";
+        menu.style.transition = "width 0.5s ease-in-out";
+      } else {
+        menu.style.width = "0";
+        menu.style.transition = "width 0.3s ease-in-out";
+      }
+    }
+  }, [showMenu]);
+
   return (
     <div>
       <Box py={2} px={4} borderBottom={"solid"} borderBottomColor={"black"} borderBottomWidth={"2px"} h={"50px"}>
@@ -82,47 +96,35 @@ export default function RootLayout() {
       </Box>
       {showMenu && (
         <Box
+          ref={menuRef}
           position="fixed"
           top="0"
-          left="0"
+          right="0"
           height="100%"
-          width="100%"
-          background="rgba(0, 0, 0, 0.7)"
-          display="flex"
-          justifyContent="flex-end"
-          alignItems="flex-start"
+          width="0"
+          background="white"
+          overflowY="auto"
+          p="1rem"
           zIndex="999"
           onClick={closeMenu} // Close menu when clicking anywhere on the overlay
         >
-          <Box
-            ref={menuRef}
-            width={{ base: "100%", md: "70%" }}
-            background="white"
-            height="100%"
-            overflowY="auto"
-            p="1rem"
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the menu
-            transition="transform 0.3s ease-in-out" // Adding a transition for animation
-            transform={showMenu ? "translateX(0)" : "translateX(100%)"} // Slide in from right
-          >
-            <Flex justifyContent="space-between" alignItems="center">
-              <Text fontSize="18px">Menu</Text>
-              <Button onClick={closeMenu}>X</Button>
-            </Flex>
-            {routes.map(route => (
-              <Box
-                key={route.path}
-                fontSize="15px"
-                my="0.5rem"
-                transition="transform 0.2s ease-in-out"
-                _hover={{ transform: "translateX(8px)" }}
-              >
-                <Link to={route.path} onClick={handleLinkClick}>
-                  {route.pathname}
-                </Link>
-              </Box>
-            ))}
-          </Box>
+          <Flex justifyContent="space-between" alignItems="center">
+            <Text fontSize="18px">Menu</Text>
+            <Button onClick={closeMenu}>X</Button>
+          </Flex>
+          {routes.map(route => (
+            <Box
+              key={route.path}
+              fontSize="15px"
+              my="0.5rem"
+              transition="transform 0.2s ease-in-out"
+              _hover={{ transform: "translateX(8px)" }}
+            >
+              <Link to={route.path} onClick={handleLinkClick}>
+                {route.pathname}
+              </Link>
+            </Box>
+          ))}
         </Box>
       )}
       <Suspense fallback={<Loader />}>
@@ -130,4 +132,4 @@ export default function RootLayout() {
       </Suspense>
     </div>
   );
-}
+      }
