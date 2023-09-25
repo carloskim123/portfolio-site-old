@@ -1,13 +1,15 @@
-import { Link } from 'react-router-dom';
-import { Box, Flex, Text, Button } from "@chakra-ui/react"; // Make sure to import Button from Chakra UI
+import { Link, useNavigate } from 'react-router-dom';
+import { Box, Flex, Text, Button } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState, useRef } from "react";
 import Loader from '../components/Loader';
 import { routes } from '../../data/db';
 
 export default function RootLayout() {
   const [isLoading, setIsLoading] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
+  const navigate = useNavigate();
+  const menuRef = useRef(null);
 
   useEffect(() => {
     setTimeout(() => {
@@ -22,6 +24,22 @@ export default function RootLayout() {
 
   // Function to close the mobile menu
   const closeMenu = () => {
+    setShowMenu(false);
+  };
+
+  // Close the menu when clicking outside of it
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setShowMenu(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Close the menu when a link is clicked or when changing pages
+  const handleLinkClick = () => {
     setShowMenu(false);
   };
 
@@ -55,14 +73,18 @@ export default function RootLayout() {
           background="rgba(0, 0, 0, 0.7)"
           display="flex"
           justifyContent="flex-end"
+          alignItems="flex-start"
           zIndex="999"
+          onClick={closeMenu} // Close menu when clicking anywhere on the overlay
         >
           <Box
+            ref={menuRef}
             width="70%"
             background="white"
             height="100%"
             overflowY="auto"
             p="1rem"
+            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the menu
           >
             <Flex justifyContent="space-between" alignItems="center">
               <Text fontSize="18px">Menu</Text>
@@ -76,7 +98,9 @@ export default function RootLayout() {
                 transition="transform 0.2s ease-in-out"
                 _hover={{ transform: "translateX(8px)" }}
               >
-                <Link to={route.path}>{route.pathname}</Link>
+                <Link to={route.path} onClick={handleLinkClick}>
+                  {route.pathname}
+                </Link>
               </Box>
             ))}
           </Box>
@@ -87,4 +111,4 @@ export default function RootLayout() {
       </Suspense>
     </div>
   );
-                }
+}
