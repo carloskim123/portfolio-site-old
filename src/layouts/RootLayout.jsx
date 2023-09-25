@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Box, Flex, Text, Button } from '@chakra-ui/react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Suspense } from 'react-router-dom';
 import Loader from '../components/Loader';
 import { routes } from '../../data/db';
 import "./Anim.css";
