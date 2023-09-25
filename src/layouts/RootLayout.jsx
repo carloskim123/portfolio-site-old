@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Box, Flex, Text } from "@chakra-ui/layout";
+import { Box, Flex, Text, Button } from "@chakra-ui/react"; // Make sure to import Button from Chakra UI
 import { Outlet } from "react-router-dom";
 import { Suspense, useEffect, useState } from "react";
 import Loader from '../components/Loader';
@@ -20,6 +20,11 @@ export default function RootLayout() {
     setShowMenu(!showMenu);
   };
 
+  // Function to close the mobile menu
+  const closeMenu = () => {
+    setShowMenu(false);
+  };
+
   return (
     <div>
       <Box py={2} px={4} borderBottom={"solid"} borderBottomColor={"black"} borderBottomWidth={"2px"} h={"50px"}>
@@ -35,31 +40,34 @@ export default function RootLayout() {
                 }}>Carlos.K</Box>
             </Link>
           </Text>
-          <Box display={{ base: "block", md: "none" }} onClick={toggleMenu}>
-            {showMenu ? (
-              <svg fill="black" width="35px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14 6H6v2h8V6zM6 11h8v-2H6v2zm8 3H6v2h8v-2z" />
-              </svg>
-            ) : (
-              <svg fill="black" width="34px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 6h14v2H3zm0 5h14v2H3zm0 5h14v2H3z" />
-              </svg>
-            )}
-          </Box>
+          <Button onClick={toggleMenu} display={{ base: "block", md: "none" }}>
+            {showMenu ? "Close" : "Menu"}
+          </Button>
         </Flex>
       </Box>
       {showMenu && (
         <Box
           position="fixed"
           top="0"
-          right="0"
+          left="0"
           height="100%"
-          width={showMenu ? "70%" : "0"}
-          background="white"
-          transition="width 0.3s ease-in-out"
-          overflowY="auto"
+          width="100%"
+          background="rgba(0, 0, 0, 0.7)"
+          display="flex"
+          justifyContent="flex-end"
+          zIndex="999"
         >
-          <Flex flexDir="column" alignItems="center" p="1rem">
+          <Box
+            width="70%"
+            background="white"
+            height="100%"
+            overflowY="auto"
+            p="1rem"
+          >
+            <Flex justifyContent="space-between" alignItems="center">
+              <Text fontSize="18px">Menu</Text>
+              <Button onClick={closeMenu}>X</Button>
+            </Flex>
             {routes.map(route => (
               <Box
                 key={route.path}
@@ -71,7 +79,7 @@ export default function RootLayout() {
                 <Link to={route.path}>{route.pathname}</Link>
               </Box>
             ))}
-          </Flex>
+          </Box>
         </Box>
       )}
       <Suspense fallback={<Loader />}>
@@ -79,4 +87,4 @@ export default function RootLayout() {
       </Suspense>
     </div>
   );
-}
+                }
