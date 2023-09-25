@@ -13,7 +13,7 @@ const Projects = () => {
     setIsLoading(false)
   }, 500);
 
-  function loadNewWindow(url) {
+  const loadNewWindow = (url) => {
     return window.open(url, "_blank");
   }
 
@@ -65,11 +65,11 @@ const Projects = () => {
               <Text mb={2}>{project.description}</Text>
               <Text mb={2}>
                 <Link target="_blank" href={project.project_url} color="blue.500" mr={2}>
-                  Project Repo
+                🔗 Project Repo
                 </Link>
                 {project.view_live && (
                   <Link target="_blank" href={project.view_live} color="blue.500">
-                    View Live
+                    🔗 View Live
                   </Link>
                 )}
               </Text>
