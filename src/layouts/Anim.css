@@ -1,0 +1,30 @@
+/* Add these CSS classes to your stylesheet */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dimmed background */
+  z-index: 998; /* Below the menu */
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 0;
+  background: white;
+  overflow-y: auto;
+  p: 1rem;
+  z-index: 999;
+  /* Add CSS animations or transitions for the menu appearance here */
+  transition: width 0.3s ease; /* Example animation for width */
+}
+
+.menu.show {
+  width: 250px; /* Adjust the width as needed */
+  /* Add any other styles or animations for showing the menu */
+}
