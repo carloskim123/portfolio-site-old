@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 import { Suspense, useEffect, useState, useRef } from "react";
 import Loader from '../components/Loader';
 import { routes } from '../../data/db';
-import './RootLayout.css'; // Import the CSS file for the header styles
+//import './RootLayout.css'; // Import the CSS file for the header styles
 
 export default function RootLayout() {
   const [isLoading, setIsLoading] = useState(true);
