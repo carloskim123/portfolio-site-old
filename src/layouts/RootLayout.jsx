@@ -66,7 +66,7 @@ export default function RootLayout() {
       {showMenu && (
         <Box
           transition="height 0.3s ease-in-out"
-          overflow="hidden"
+          overflow="auto"
           h={showMenu ? "100px" : "0"}
           py={2}
           px={4}
