@@ -65,54 +65,32 @@ export default function RootLayout() {
           </Button>
         </Flex>
       </Box>
-      {showMenu && (
-        <Box
-          position="fixed"
-          top="0"
-          left="0"
-          height="100%"
-          width="100%"
-          background="rgba(0, 0, 0, 0.7)"
-          display="flex"
-          justifyContent="flex-end"
-          alignItems="flex-start"
-          zIndex="999"
-          onClick={closeMenu} // Close menu when clicking anywhere on the overlay
-        >
+      <div className={`menu-overlay ${showMenu ? 'show' : ''}`} onClick={closeMenu}></div>
+      <Box
+        ref={menuRef}
+        className={`menu ${showMenu ? 'show' : ''}`}
+      >
+        <Flex justifyContent="space-between" alignItems="center">
+          <Text fontSize="18px">Menu</Text>
+          <Button onClick={closeMenu}>X</Button>
+        </Flex>
+        {routes.map(route => (
           <Box
-            ref={menuRef}
-            width="70%"
-            background="white"
-            height="100%"
-            overflowY="auto"
-            p="1rem"
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the menu
-            transition="transform 0.3s ease-in-out" // Adding a transition for animation
-            transform={showMenu ? "translateX(0)" : "translateX(100%)"} // Slide in from right
+            key={route.path}
+            fontSize="15px"
+            my="0.5rem"
+            transition="transform 0.2s ease-in-out"
+            _hover={{ transform: "translateX(8px)" }}
           >
-            <Flex justifyContent="space-between" alignItems="center">
-              <Text fontSize="18px">Menu</Text>
-              <Button onClick={closeMenu}>X</Button>
-            </Flex>
-            {routes.map(route => (
-              <Box
-                key={route.path}
-                fontSize="15px"
-                my="0.5rem"
-                transition="transform 0.2s ease-in-out"
-                _hover={{ transform: "translateX(8px)" }}
-              >
-                <Link to={route.path} onClick={handleLinkClick}>
-                  {route.pathname}
-                </Link>
-              </Box>
-            ))}
+            <Link to={route.path} onClick={handleLinkClick}>
+              {route.pathname}
+            </Link>
           </Box>
-        </Box>
-      )}
+        ))}
+      </Box>
       <Suspense fallback={<Loader />}>
         {isLoading ? <Loader /> : <Outlet />}
       </Suspense>
     </div>
   );
-}
+        }
