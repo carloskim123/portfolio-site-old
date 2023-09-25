@@ -1,20 +1,24 @@
-import { Link } from 'react-router-dom'
-import { Box, Flex, Text } from "@chakra-ui/layout"
-import { Outlet } from "react-router-dom"
-import { Suspense, useEffect, useState } from "react"
-import Loader from '../components/Loader'
-import { routes } from '../../data/db'
+import { Link } from 'react-router-dom';
+import { Box, Flex, Text } from "@chakra-ui/layout";
+import { Outlet } from "react-router-dom";
+import { Suspense, useEffect, useState } from "react";
+import Loader from '../components/Loader';
+import { routes } from '../../data/db';
 
 export default function RootLayout() {
   const [isLoading, setIsLoading] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
-
 
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
   }, []);
+
+  // Function to toggle the mobile menu
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
 
   return (
     <div>
@@ -31,7 +35,7 @@ export default function RootLayout() {
                 }}>Carlos.K</Box>
             </Link>
           </Text>
-          <Box display={{ base: "block", md: "none" }} onClick={() => setShowMenu(!showMenu)}>
+          <Box display={{ base: "block", md: "none" }} onClick={toggleMenu}>
             {showMenu ? (
               <svg fill="black" width="35px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14 6H6v2h8V6zM6 11h8v-2H6v2zm8 3H6v2h8v-2z" />
@@ -43,18 +47,19 @@ export default function RootLayout() {
             )}
           </Box>
           <Flex display={{ base: "none", md: "flex" }} gap={"2rem"} >
-            {routes.map(route => <Box
-              transition="transform 0.1s ease-in-out"
-              fontSize="20px"
-              _hover={{
-                transform: "translateY(-2px)",
-                borderBottom: "1px solid black",
-
-              }}
-            >
-              <Link to={route.path}>{route.pathname}</Link>
-            </Box>)}
-
+            {routes.map(route => (
+              <Box
+                key={route.path}
+                transition="transform 0.1s ease-in-out"
+                fontSize="20px"
+                _hover={{
+                  transform: "translateY(-2px)",
+                  borderBottom: "1px solid black",
+                }}
+              >
+                <Link to={route.path}>{route.pathname}</Link>
+              </Box>
+            ))}
           </Flex>
         </Flex>
       </Box>
@@ -72,24 +77,21 @@ export default function RootLayout() {
           flexDir="column"
           gap=".5rem"
         >
-          {
-            routes.map(route => (
-              <Box
-                transition="transform 0.1s ease-in-out"
-                fontSize="15px"
-                _hover={{ transform: "translateX(12px)" }}
-              >
-                <Link to={route.path}>{route.pathname}</Link>
-              </Box>
-            ))
-          }
-
-
+          {routes.map(route => (
+            <Box
+              key={route.path}
+              transition="transform 0.1s ease-in-out"
+              fontSize="15px"
+              _hover={{ transform: "translateX(12px)" }}
+            >
+              <Link to={route.path}>{route.pathname}</Link>
+            </Box>
+          ))}
         </Box>
       )}
       <Suspense fallback={<Loader />}>
         {isLoading ? <Loader /> : <Outlet />}
       </Suspense>
     </div>
-  )
+  );
 }
