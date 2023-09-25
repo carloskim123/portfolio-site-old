@@ -46,47 +46,32 @@ export default function RootLayout() {
               </svg>
             )}
           </Box>
-          <Flex display={{ base: "none", md: "flex" }} gap={"2rem"} >
+        </Flex>
+      </Box>
+      {showMenu && (
+        <Box
+          position="fixed"
+          top="0"
+          right="0"
+          height="100%"
+          width={showMenu ? "70%" : "0"}
+          background="white"
+          transition="width 0.3s ease-in-out"
+          overflowY="auto"
+        >
+          <Flex flexDir="column" alignItems="center" p="1rem">
             {routes.map(route => (
               <Box
                 key={route.path}
-                transition="transform 0.1s ease-in-out"
-                fontSize="20px"
-                _hover={{
-                  transform: "translateY(-2px)",
-                  borderBottom: "1px solid black",
-                }}
+                fontSize="15px"
+                my="0.5rem"
+                transition="transform 0.2s ease-in-out"
+                _hover={{ transform: "translateX(8px)" }}
               >
                 <Link to={route.path}>{route.pathname}</Link>
               </Box>
             ))}
           </Flex>
-        </Flex>
-      </Box>
-      {showMenu && (
-        <Box
-          transition="height 0.3s ease-in-out"
-          overflow="auto"
-          h={showMenu ? "100px" : "0"}
-          py={2}
-          px={4}
-          borderBottom={"solid"}
-          borderBottomColor={"black"}
-          borderBottomWidth={"2px"}
-          display="flex"
-          flexDir="column"
-          gap=".5rem"
-        >
-          {routes.map(route => (
-            <Box
-              key={route.path}
-              transition="transform 0.1s ease-in-out"
-              fontSize="15px"
-              _hover={{ transform: "translateX(12px)" }}
-            >
-              <Link to={route.path}>{route.pathname}</Link>
-            </Box>
-          ))}
         </Box>
       )}
       <Suspense fallback={<Loader />}>
