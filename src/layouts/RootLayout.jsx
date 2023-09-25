@@ -4,7 +4,6 @@ import { Outlet } from "react-router-dom";
 import { Suspense, useEffect, useState, useRef } from "react";
 import Loader from '../components/Loader';
 import { routes } from '../../data/db';
-//import './RootLayout.css'; // Import the CSS file for the header styles
 
 export default function RootLayout() {
   const [isLoading, setIsLoading] = useState(true);
@@ -44,21 +43,19 @@ export default function RootLayout() {
     setShowMenu(false);
   };
 
-  // Function to handle the scrolling of the header
+  // Function to handle the animation of the mobile menu
   useEffect(() => {
-    const header = document.getElementById("header");
-    if (header) {
-      const handleScroll = () => {
-        if (window.pageYOffset > window.innerHeight * 0.7) {
-          header.classList.add("fixed");
-        } else {
-          header.classList.remove("fixed");
-        }
-      };
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
+    const menu = menuRef.current;
+    if (menu) {
+      if (showMenu) {
+        menu.style.width = "50%";
+        menu.style.transition = "width 0.5s ease-in-out";
+      } else {
+        menu.style.width = "0";
+        menu.style.transition = "width 0.3s ease-in-out";
+      }
     }
-  }, []);
+  }, [showMenu]);
 
   return (
     <div>
