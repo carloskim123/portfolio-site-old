@@ -4,7 +4,6 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Textarea,
   Button,
   Container,
   Text,
@@ -16,12 +15,12 @@ import emailjs from "@emailjs/browser";
 export default function Contact() {
   const form = useRef();
   const navigate = useNavigate();
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [formErrors, setFormErrors] = useState({
     name: "",
     email: "",
     message: "",
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const validateForm = () => {
     const errors = {};
@@ -32,7 +31,9 @@ export default function Contact() {
 
     if (!form.current.user_email.value.trim()) {
       errors.email = "Email is required";
-    } else if (!/^\S+@\S+\.\S+$/.test(form.current.user_email.value.trim())) {
+    } else if (
+      !/^\S+@\S+\.\S+$/.test(form.current.user_email.value.trim())
+    ) {
       errors.email = "Invalid email format";
     }
 
@@ -44,38 +45,29 @@ export default function Contact() {
     return Object.keys(errors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const isFormValid = validateForm();
 
     if (isFormValid) {
       setIsSubmitted(true);
-
-      // Disable form inputs and submit button
-      const formInputs = form.current.elements;
-      for (let i = 0; i < formInputs.length; i++) {
-        formInputs[i].disabled = true;
-      }
-      form.current.querySelector("button[type=submit]").disabled = true;
-
-      try {
-        await emailjs.sendForm(
+      emailjs
+        .sendForm(
           "service_cq60crt",
           "template_4vjr6va",
           form.current,
           "FgoXhK367G_Vghk5J"
-        );
-        navigate("/success");
-      } catch (error) {
-        console.log(error.text);
-        setIsSubmitted(false);
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+            navigate("/success");
 
-        // Re-enable form inputs and submit button on error
-        for (let i = 0; i < formInputs.length; i++) {
-          formInputs[i].disabled = false;
-        }
-        form.current.querySelector("button[type=submit]").disabled = false;
-      }
+          }
+        ).catch((error) => {
+          console.log(error.text);
+          setIsSubmitted(false);
+        })
     }
   };
 
@@ -96,13 +88,14 @@ export default function Contact() {
         borderWidth="1px"
         // borderColor="black.300"
         rounded="md"
-        boxShadow="lg"
+        // boxShadow="lg"
       >
         <form onSubmit={handleSubmit} ref={form}>
-          <FormControl id="name" mb={4}>
+          <FormControl id="user_name" mb={4}>
             <FormLabel>Name</FormLabel>
             <Input
-              autoComplete="off"
+              autoComplete="on"
+              autoFocus="true"
               type="text"
               name="user_name"
               borderColor="black.300"
@@ -116,13 +109,13 @@ export default function Contact() {
             />
             <Text color="red.500">{formErrors.name}</Text>
           </FormControl>
-          <FormControl id="email" mb={4}>
+          <FormControl id="user_email" mb={4}>
             <FormLabel>Email</FormLabel>
             <Input
               type="email"
               name="user_email"
               borderColor="black.300"
-              autoComplete="off"
+              autoComplete="on"
               focusBorderColor="blue.400"
               _hover={
                 {
@@ -135,9 +128,11 @@ export default function Contact() {
           </FormControl>
           <FormControl id="message" mb={4}>
             <FormLabel>Message</FormLabel>
-            <Textarea
+            <Input
+              as="textarea"
               name="message"
               rows={4}
+              height={"100px"}              
               borderColor="black.300"
               focusBorderColor="blue.400"
               isDisabled={isSubmitted}

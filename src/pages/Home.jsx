@@ -12,7 +12,7 @@ export default function Home() {
         rounded={"md"}
         p={"20px"}
         display={"flex"}
-        flexDir={{ base: "column", md: "column", lg: "row", sm: "row" }}
+        flexDir={{ base: "column", md: "column", lg: "row", sm: "column" }}
         gap={"1rem"}
         justifyContent={"center"}
         fontFamily={"mono"}

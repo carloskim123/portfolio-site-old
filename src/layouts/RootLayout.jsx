@@ -1,17 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Box, Flex, Text, Button } from '@chakra-ui/react';
-import { Outlet, Suspense } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Box, Flex, Text } from "@chakra-ui/layout";
+import { Outlet } from "react-router-dom";
+import { Suspense, useEffect, useState } from "react";
 import Loader from '../components/Loader';
 import { routes } from '../../data/db';
-import "./Anim.css";
-
 
 export default function RootLayout() {
   const [isLoading, setIsLoading] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
-  const navigate = useNavigate();
-  const menuRef = useRef(null);
 
   useEffect(() => {
     setTimeout(() => {
@@ -19,126 +15,94 @@ export default function RootLayout() {
     }, 3000);
   }, []);
 
-  const toggleMenu = () => {
-    setShowMenu(!showMenu);
-  };
-
-  const closeMenu = () => {
-    setShowMenu(false);
-  };
-
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setShowMenu(false);
-      }
+  // Function to close the mobile menu when entering desktop view
+  const closeMobileMenu = () => {
+    if (window.innerWidth >= 768) {
+      setShowMenu(false);
     }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const handleLinkClick = () => {
-    setShowMenu(false);
   };
 
+  // Attach the event listener when the component mounts
   useEffect(() => {
-    const header = document.getElementById('header');
-    if (header) {
-      const handleScroll = () => {
-        if (window.pageYOffset > window.innerHeight * 0.7) {
-          header.classList.add('fixed');
-        } else {
-          header.classList.remove('fixed');
-        }
-      };
-      window.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll);
-    }
+    window.addEventListener('resize', closeMobileMenu);
+    return () => {
+      window.removeEventListener('resize', closeMobileMenu);
+    };
   }, []);
-
   return (
     <div>
-      {showMenu && (
-        <div
-          className="overlay"
-          onClick={closeMenu}
-        />
-      )}
-      <Box py={2} px={4} borderBottom={'solid'} borderBottomColor={'black'} borderBottomWidth={'2px'} h={'50px'}>
-        <Flex gap={'2rem'} alignItems={'center'} fontSize={'18px'}>
-          <Text mr={'auto'} ml={{ base: '2%', md: '0' }}>
-            <Link to={'/'}>
+      <Box py={2} px={4} borderBottom={"solid"} borderBottomColor={"black"} borderBottomWidth={"2px"} h={"50px"}>
+        <Flex gap={"2rem"} alignItems={"center"} fontSize={"18px"} >
+          <Text mr={"auto"} ml={"2%"}>
+            <Link to={"/"} >
               <Box
-                mt={'10px'}
+                mt={"10px"}
                 transition="transform 0.1s ease-in-out"
                 _hover={{
-                  borderBottom: '2px solid black',
-                  transform: 'translateY(-5px)',
-                }}
-              >
-                Carlos.K
-              </Box>
+                  borderBottom: "2px solid black",
+                  transform: "translateY(-5px)",
+                }}>Carlos.K</Box>
             </Link>
           </Text>
-          <Button onClick={toggleMenu} display={{ base: 'block', md: 'none' }}>
-            <svg fill="black" width="24px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2 3h16v2H2V3zm0 5h16v2H2V8zm0 5h16v2H2v-2z" />
-            </svg>
-          </Button>
-          <Flex alignItems={'center'} display={{ base: 'none', md: 'flex' }}>
-            {routes.map(route => (
-              <Box
-                key={route.path}
-                fontSize="15px"
-                mx="1rem"
-                transition="transform 0.2s ease-in-out"
-                _hover={{ transform: 'translateY(-5px)' }}
-              >
-                <Link to={route.path} onClick={handleLinkClick}>
-                  {route.pathname}
-                </Link>
-              </Box>
-            ))}
+          <Box display={{ base: "block", md: "none" }} onClick={() => setShowMenu(!showMenu)}>
+            {showMenu ? (
+              <svg fill="black" width="35px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 6H6v2h8V6zM6 11h8v-2H6v2zm8 3H6v2h8v-2z" />
+              </svg>
+            ) : (
+              <svg fill="black" width="34px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 6h14v2H3zm0 5h14v2H3zm0 5h14v2H3z" />
+              </svg>
+            )}
+          </Box>
+          <Flex display={{ base: "none", md: "flex" }} gap={"2rem"} >
+            {routes.map(route => <Box
+              transition="transform 0.1s ease-in-out"
+              fontSize="20px"
+              _hover={{
+                transform: "translateY(-2px)",
+                borderBottom: "1px solid black",
+
+              }}
+            >
+              <Link to={route.path}>{route.pathname}</Link>
+            </Box>)}
+
           </Flex>
         </Flex>
       </Box>
       {showMenu && (
         <Box
-          ref={menuRef}
-          className="menu"
-          position="fixed"
-          top="0"
-          right="0"
-          height="100%"
-          width="250px"
-          background="white"
-          overflowY="auto"
-          p="1rem"
-          zIndex="999"
+          transition="height 0.3s ease-in-out"
+          overflow="scroll"
+          h={showMenu ? "100px" : "0"}
+          py={2}
+          px={4}
+          borderBottom={"solid"}
+          borderBottomColor={"black"}
+          borderBottomWidth={"2px"}
+          display="flex"
+          flexDir="column"
+          gap=".5rem"
         >
-          <Flex justifyContent="space-between" alignItems="center">
-            <Text fontSize="18px">Menu</Text>
-            <Button onClick={closeMenu}>X</Button>
-          </Flex>
-          {routes.map(route => (
-            <Box
-              key={route.path}
-              fontSize="15px"
-              my="0.5rem"
-              transition="transform 0.2s ease-in-out"
-              _hover={{ transform: 'translateX(8px)' }}
-            >
-              <Link to={route.path} onClick={handleLinkClick}>
-                {route.pathname}
-              </Link>
-            </Box>
-          ))}
+          {
+            routes.map(route => (
+              <Box
+                transition="transform 0.1s ease-in-out"
+                fontSize="15px"
+                _hover={{ transform: "translateX(12px)" }}
+              >
+                <Link to={route.path}>{route.pathname}</Link>
+              </Box>
+            ))
+          }
+
+
         </Box>
       )}
       <Suspense fallback={<Loader />}>
         {isLoading ? <Loader /> : <Outlet />}
       </Suspense>
     </div>
-  );
-              }
-            
+  )
+}
