@@ -59,7 +59,9 @@ export default function RootLayout() {
             </Link>
           </Text>
           <Button onClick={toggleMenu} display={{ base: "block", md: "none" }}>
-            {showMenu ? "Close" : "Menu"}
+            <svg fill="black" width="24px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 3h16v2H2V3zm0 5h16v2H2V8zm0 5h16v2H2v-2z" />
+            </svg>
           </Button>
         </Flex>
       </Box>
@@ -85,6 +87,8 @@ export default function RootLayout() {
             overflowY="auto"
             p="1rem"
             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the menu
+            transition="transform 0.3s ease-in-out" // Adding a transition for animation
+            transform={showMenu ? "translateX(0)" : "translateX(100%)"} // Slide in from right
           >
             <Flex justifyContent="space-between" alignItems="center">
               <Text fontSize="18px">Menu</Text>
