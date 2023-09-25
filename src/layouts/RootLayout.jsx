@@ -47,7 +47,7 @@ export default function RootLayout() {
     <div>
       <Box py={2} px={4} borderBottom={"solid"} borderBottomColor={"black"} borderBottomWidth={"2px"} h={"50px"}>
         <Flex gap={"2rem"} alignItems={"center"} fontSize={"18px"} >
-          <Text mr={"auto"} ml={"2%"}>
+          <Text mr={"auto"} ml={{ base: "2%", md: "0" }}>
             <Link to={"/"} >
               <Box
                 mt={"10px"}
@@ -63,6 +63,21 @@ export default function RootLayout() {
               <path d="M2 3h16v2H2V3zm0 5h16v2H2V8zm0 5h16v2H2v-2z" />
             </svg>
           </Button>
+          <Flex alignItems={"center"} display={{ base: "none", md: "flex" }}>
+            {routes.map(route => (
+              <Box
+                key={route.path}
+                fontSize="15px"
+                mx="1rem"
+                transition="transform 0.2s ease-in-out"
+                _hover={{ transform: "translateY(-5px)" }}
+              >
+                <Link to={route.path} onClick={handleLinkClick}>
+                  {route.pathname}
+                </Link>
+              </Box>
+            ))}
+          </Flex>
         </Flex>
       </Box>
       {showMenu && (
@@ -81,7 +96,7 @@ export default function RootLayout() {
         >
           <Box
             ref={menuRef}
-            width="70%"
+            width={{ base: "100%", md: "70%" }}
             background="white"
             height="100%"
             overflowY="auto"
