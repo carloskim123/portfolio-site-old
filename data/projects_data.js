@@ -39,7 +39,7 @@ export const projects = [
         name: 'My Portfolio',
         id: Math.random(),
         img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9f-HkJ8dmt9TlMZPNMrp6POHjXHai81S6-2EEJwTOP2do1vIQTwfQEb5rksBkGTtvkTQ&usqp=CAU',
-        tech_stack: 'React, Framer Motion, Tailwindcss, EmailJS',
+        tech_stack: 'ReactJS, Framer Motion, Chakraui, EmailJS',
         project_url: 'https://github.com/carloskim123/My-Website/',
         view_live: 'https://kimk.vercel.app',
         description: "A decent portfolio website built around some of the most popular javascript frameworks."
