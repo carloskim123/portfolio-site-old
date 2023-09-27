@@ -31,7 +31,7 @@ const Projects = () => {
           {!isLoading ? (
             
             <Box
-              onClick={() => loadNewWindow(project.project_url)}
+          
                
               key={project.id}
               p={4}
