@@ -3,7 +3,7 @@ import { MutatingDots,Discuss  } from "react-loader-spinner"
 
 export default function Loader() {
     return (
-        <Container display={"flex"} justifyContent={"center"} mt={"10%"}>
+        <Container display={"flex"} justifyContent={"center"} mt={"30%"}>
             <MutatingDots
                 height="100"
                 width="100"

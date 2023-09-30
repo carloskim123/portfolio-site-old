@@ -13,7 +13,7 @@ const RootLayout = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 5000);
+    }, 1500);
   }, []);
 
   // Attach the event listener when the component mounts
@@ -31,7 +31,7 @@ const RootLayout = () => {
   };
 
   const closeMobileMenu = () => {
-    if (window.innerWidth >= 7 && showMenu) {
+    if (window.innerWidth >= 770 && showMenu) {
       setShowMenu(false);
     } else {
       setShowMenu(false);
@@ -82,10 +82,12 @@ const RootLayout = () => {
           </Flex>
         </Flex>
       </Box>
-      <Flex flex="1">
+      <Flex flex="1" onClick={closeMobileMenu}>
+
         <Box
           position="fixed"
-          top="0"
+          mt={".8rem"}
+          top="12"
           left={showMenu ? "0" : "-100%"}
           zIndex="10"
           w="100%"
@@ -93,14 +95,14 @@ const RootLayout = () => {
           // className="sidebar-open"
           backdropFilter="blur(5px)"
           background="rgba(0, 0, 0, 0.01)"
-          transition="left 0.3s ease-in-out"
-          onClick={closeMobileMenu}
+          transition="left .4s ease-in-out"
         >
           <Box
+            onClick={toggleMobileMenu}
             className="sidebar"
             overflow="hidden"
             h="100vh"
-            w="80%"
+            w="70%"
             py={7}
             px={6}
             background="#EDE0D4"
@@ -115,7 +117,7 @@ const RootLayout = () => {
               cursor="pointer"
               fontSize="20px"
               _hover={{ transform: "scale(1.2)" }}
-            >X</Box>
+            >✖️</Box>
             {routes.map(route => (
               <Link
                 key={route.path}
@@ -126,8 +128,9 @@ const RootLayout = () => {
                 }}
               >
                 <Text
-                  fontSize="20px"
-                  _hover={{ transform: "translateX(2px)", cursor: "pointer" }}
+                 
+                  fontSize="30px"
+                  _hover={{ cursor: "pointer", textDecoration: "underline", transition: "all" }}
                 >
                   {route.pathname}
                 </Text>
