@@ -1,9 +1,0 @@
-.mobile-menu-opened {
-    transform: translateX(100px);
-    transition: 1s ease;
-}
-
-.mobile-menu-closed {
-    transform: translateX(-100px);
-    transition: 1s ease;
-}

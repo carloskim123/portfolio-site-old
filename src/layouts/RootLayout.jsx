@@ -4,7 +4,6 @@ import { Outlet } from "react-router-dom";
 import { Suspense, useEffect, useState, useRef } from "react";
 import Loader from '../components/Loader';
 import { routes } from '../../data/db';
-import "../RootLayout.css";
 
 
 const RootLayout = () => {
@@ -26,6 +25,7 @@ const RootLayout = () => {
 
     };
   }, [showMenu]);
+
 
   const toggleMobileMenu = () => {
     setShowMenu(!showMenu);
