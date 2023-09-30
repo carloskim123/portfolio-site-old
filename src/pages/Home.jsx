@@ -1,8 +1,10 @@
 import { Image } from "@chakra-ui/image"
-import { Box, Flex, Link, Text } from "@chakra-ui/layout";
+import { Box, Flex, Link, Text, Container } from "@chakra-ui/layout";
 import "../app.css"
 import { profile_pic, links, waving_hand } from "../../data/db"
-import { useState } from "react";
+import Contact from './Contact';
+import About from "./About";
+
 
 export default function Home() {
   return (

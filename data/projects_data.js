@@ -81,3 +81,33 @@ export const projects = [
         description: "A Vanilla Java project using fundamental java features."
     },
 ];
+
+export const home_projects = [
+    {
+        name: 'Java Contact List Manager (Console Application)',
+        id: Math.random(),
+        img: 'https://3.bp.blogspot.com/-KIrCDuRSDdQ/WgSUMYqVWhI/AAAAAAAADxs/cbSerxnGbw05cLh1GnzQQ9ruozC9W1gJACLcBGAs/w1200-h630-p-k-no-nu/JAVA%2BContact%2BManagement%2BSystem%2BProject.png',
+        tech_stack: 'Java',
+        project_url: 'https://github.com/carloskim123/Java/blob/main/Projects/ContactListApp.java',
+        view_live: null,
+        description: "A Vanilla Java project using fundamental java features."
+    },
+    {
+        name: 'Machine Learning Models',
+        id: Math.random(),
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgxiNuPJZQHBR_mV5LyeqZ6yvXYYk4fSSESYWcWBZcaQrkF4gm0zWUh8qkje2o6u5GS8A&usqp=CAU',
+        tech_stack: 'Python, Java, Javascript, Golang',
+        project_url: 'https://github.com/carloskim123/machine_learning_models',
+        view_live: null,
+        description: "Absolute Basic Machine Learning Models"
+    },
+    {
+        name: 'React Ecommece Website',
+        id: Math.random(),
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNAev0NcmwvmHGBMGoSa0CgCTvl1u23gPgtpsZIK8edKgcZNJlaLoQL0ja_gr8YlcbVw&usqp=CAU',
+        tech_stack: 'React, Vanilla CSS',
+        project_url: 'https://github.com/carloskim123/React-Ecommerce',
+        view_live: 'https://react-ecm.netlify.app',
+        description: "An Ecommerce Website built around React Framework"
+    }
+]
