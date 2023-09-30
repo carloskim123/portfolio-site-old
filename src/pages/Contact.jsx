@@ -63,11 +63,11 @@ export default function Contact() {
             console.log(result.text);
             navigate("/success");
 
-          }
-        ).catch((error) => {
-          console.log(error.text);
-          setIsSubmitted(false);
-        })
+          }, (error) => {
+            consle.log(error.text);
+            navigate('/error');
+          } 
+        );
     }
   };
 
