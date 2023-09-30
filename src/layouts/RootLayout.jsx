@@ -4,11 +4,7 @@ import { Outlet } from "react-router-dom";
 import { Suspense, useEffect, useState, useRef } from "react";
 import Loader from '../components/Loader';
 import { routes } from '../../data/db';
-import "../RootLayout.css";
-
-
-
-
+import { Button, Icon } from '@chakra-ui/react';
 
 const RootLayout = () => {
   const [isLoading, setIsLoading] = useState(true);
