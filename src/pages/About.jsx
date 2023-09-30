@@ -31,7 +31,7 @@ export default function About() {
             <Text fontSize={{ base: '20px', md: '25px' }}>Hey there, I'm Carlos, nice to meet you!</Text>
           </Box>
           <Box fontSize={{ base: '16px', md: '18px' }} pt="1rem">
-            I'm a 15-year-old web developer with a passion for creating and solving problems. I love the challenge of finding creative solutions to complex problems, and I'm always looking to learn new things and improve my skills. With a can-do attitude and a strong work ethic, I'm ready to take on any challenge.
+            I'm a 15 - year-old web developer with a passion for creating and solving problems. I love the challenge of finding creative solutions to complex problems, and I'm always looking to learn new things and improve my skills. With a can-do attitude and a strong work ethic, I'm ready to take on any challenge.
           </Box>
         </Container>
         <Container mt="2rem">

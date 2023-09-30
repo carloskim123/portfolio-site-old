@@ -43,7 +43,7 @@ const RootLayout = () => {
     <div >
       <Flex flexDirection="column" minH="100vh" >
         <Box py={2} px={4} borderBottom="2px solid black" h="50px" >
-          <Flex justifyContent="space-between" alignItems="center" fontSize="18px">
+          <Flex justifyContent={"space-between"} alignItems="center" fontSize="18px">
             <Link to="/">
               <Text
               fontSize={"20px"}
@@ -105,7 +105,7 @@ const RootLayout = () => {
               className="sidebar"
               overflow="hidden"
               h="100vh"
-              w="70%"
+              w="80%"
               py={7}
               px={6}
               background="#EDE0D4"
@@ -141,7 +141,7 @@ const RootLayout = () => {
               ))}
             </Box>
           </Box>
-          <Box flex="1" p="20px">
+          <Box flex="1">
             <Suspense fallback={<Loader />}>
               {isLoading ? <Loader /> : <Outlet />}
             </Suspense>
