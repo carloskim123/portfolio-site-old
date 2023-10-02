@@ -18,7 +18,7 @@ const Footer = () => {
             backdropFilter="blur(12px)"
             background="rgba(0, 0, 0, 0.01)"
         >
-            <Center>
+            <Box>
                 <Text>
                     &copy; 2023 Carlos Kirui. All rights reserved.
                     <Flex justify="center" mt={2}>
@@ -30,7 +30,7 @@ const Footer = () => {
 
                     </Flex>
                 </Text>
-            </Center>
+            </Box>
         </Box>
     );
 };

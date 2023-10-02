@@ -49,6 +49,10 @@ export const dr = new DirectLinks();
 
 export const pg_lk = [
     {
+        url: portfolio_url,
+        pathname: "Carlos Kirui"
+    },
+    {
         url: dr.github,
         pathname: "Github"
     },
@@ -58,7 +62,8 @@ export const pg_lk = [
     }, {
         url: dr.tiktok,
         pathname: "Tiktok"
-    }
+    },
+
 ]
 export const routes = [
     { path: "/", pathname: "Home" },
