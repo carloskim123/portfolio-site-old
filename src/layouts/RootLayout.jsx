@@ -59,7 +59,7 @@ const RootLayout = () => {
           borderBottom="2px solid black"
           h="60px"
           w={"100%"}
-          top={0}
+          top={10}
           position={"fixed"}
           zIndex={100}
           backdropFilter="blur(12px)"
