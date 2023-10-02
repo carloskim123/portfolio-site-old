@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Box, Text, Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-
+import { dev_email } from '../../data/db'
 function HasSubmitted() {
     const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ function HasSubmitted() {
                 Submission Successful!
             </Text>
             <Text fontSize="lg" textAlign="center" mb={8}>
-                Email sent to carloskirui154@gmail.com
+                Email sent to {dev_email}
             </Text>
             <Button colorScheme="blue" size="lg" onClick={() => navigate("/")}>
                 Back to Home

@@ -1,9 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { Box, Flex, Text, Icon, background } from "@chakra-ui/react";
+import { Box, Flex, Text, Icon, background, position } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
 import { Suspense, useEffect, useState, useRef } from "react";
 import Loader from '../components/Loader';
 import { routes } from '../../data/db';
+import Footer from '../components/Footer';
 
 const RootLayout = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -11,11 +12,18 @@ const RootLayout = () => {
   const navigate = useNavigate();
 
 
+
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
     }, 1500);
+
+    return () => {
+
+    }
   }, []);
+
+
 
   // Attach the event listener when the component mounts
   useEffect(() => {
@@ -24,6 +32,7 @@ const RootLayout = () => {
       window.removeEventListener('resize', closeMobileMenu);
 
     };
+
   }, [showMenu]);
 
 
@@ -39,15 +48,32 @@ const RootLayout = () => {
     }
   };
 
+
+
   return (
     <div >
       <Flex flexDirection="column" minH="100vh" >
-        <Box py={2} px={4} borderBottom="2px solid black" h="50px" >
+        <Box
+          py={2}
+          px={4}
+          borderBottom="2px solid black"
+          h="60px"
+          w={"100%"}
+          top={0}
+          position={"fixed"}
+          zIndex={100}
+          backdropFilter="blur(12px)"
+          background="rgba(0, 0, 0, 0.01)"
+
+
+        >
+
           <Flex justifyContent={"space-between"} alignItems="center" fontSize="18px">
             <Link to="/">
               <Text
-              fontSize={"20px"}
+                fontSize={"20px"}
                 mt="10px"
+                ml={'auto'}
                 _hover={{
                   borderBottom: "2px solid black",
                   transform: "translateY(-5px)",
@@ -68,7 +94,7 @@ const RootLayout = () => {
 
               )}
             </Box>
-            <Flex display={{ base: "none", md: "flex" }} gap="2rem">
+            <Flex  display={{ base: "none", md: "flex" }} gap="2rem">
               {routes.map(route => (
                 <Link key={route.path} to={route.path}>
                   <Text
@@ -85,30 +111,29 @@ const RootLayout = () => {
             </Flex>
           </Flex>
         </Box>
-        <Flex flex="1" onClick={closeMobileMenu}>
+        <Flex flex="1" onClick={closeMobileMenu} paddingTop={"60px"} >
 
           <Box
             position="fixed"
-            mt={".8rem"}
             top="0"
             left={showMenu ? "0" : "-100%"}
             zIndex="10"
             w="100%"
             h="100%"
-            // className="sidebar-open"
-            backdropFilter="blur(5px)"
+            backdropFilter="blur(3px)"
             background="rgba(0, 0, 0, 0.01)"
             transition="left .4s ease-in-out"
           >
             <Box
-              onClick={toggleMobileMenu}
+
+              onClick={() => setShowMenu(true)}
               className="sidebar"
               overflow="hidden"
               h="100vh"
-              w="80%"
+              w="60%"
               py={7}
               px={6}
-              background="#EDE0D4"
+              background="#fff"
               borderBottom="2px solid black"
               display="flex"
               flexDir="column"
@@ -132,7 +157,7 @@ const RootLayout = () => {
                 >
                   <Text
 
-                    fontSize="30px"
+                    fontSize="25px"
                     _hover={{ cursor: "pointer", textDecoration: "underline", transition: "all" }}
                   >
                     {route.pathname}
@@ -141,12 +166,13 @@ const RootLayout = () => {
               ))}
             </Box>
           </Box>
-          <Box flex="1">
+          <Box flex="1" style={showMenu ? { position: "fixed" } : { position: "" }}>
             <Suspense fallback={<Loader />}>
               {isLoading ? <Loader /> : <Outlet />}
             </Suspense>
           </Box>
         </Flex>
+        <Footer/>
       </Flex>
     </div>
   );

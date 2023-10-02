@@ -5,6 +5,8 @@ import twitter from './icons/twitter.svg'
 import github from './icons/github.svg'
 import waving_hand_url from './icons/waving_hand.svg'
 export const waving_hand = waving_hand_url;
+export const dev_email = "kimaccess123@gmail.com"
+export const portfolio_url = "https://kimk.vercel.app/"
 
 export const links = [
     {

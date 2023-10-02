@@ -13,14 +13,12 @@ const Projects = () => {
     setIsLoading(false)
   }, 500);
 
-  const loadNewWindow = (url) => {
-    return window.open(url, "_blank");
-  }
+
 
 
 
   return (
-    <Grid templateColumns="repeat(auto-fill, minmax(300px, 1fr))" gap={4} p={"20px"} >
+    <Grid templateColumns="repeat(auto-fill, minmax(300px, 1fr))" gap={6} p={"20px"} >
       {projects.map((project) => (
         <CSSTransition
           key={project.id}
@@ -36,15 +34,16 @@ const Projects = () => {
               key={project.id}
               p={4}
               borderColor={"#2b2d42"}
-              shadow={"2xl"}
+              shadow={"sm"}
               borderWidth="1px"
-              borderRadius="md"
-              transition={"300ms"}
+              // borderRadius="md"
+              transition={"150ms"}
               _hover={
                 {
-                  shadow: "sm",
-                  skewX: "10deg",
-                  cursor: "pointer"
+                  shadow: "2xl",
+                  skewX: "40deg",
+                  cursor: "pointer",
+                  transform: "translateY(-10px)",
                 }
               }
               fontSize={"17px"}>
@@ -56,7 +55,7 @@ const Projects = () => {
                   alt={project.name}
                   objectFit="contain"
                   layout="fill"
-                  rounded="md"
+                  // rounded="md"
                 />
               </Box>
               <Text fontWeight="bold" fontSize="2xl" mb={2}>

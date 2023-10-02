@@ -5,6 +5,7 @@ import {
   RouterProvider
 } from 'react-router-dom'
 
+
 // layouts and pages
 import RootLayout from './layouts/RootLayout'
 import Home from './pages/Home'
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
         <Route path="*" element={<NotFound />} />
         <Route path="success" element={<HasSubmitted />} />
         <Route path="error" element={Error}/>
+        
       </Route>
     </>
 
@@ -40,7 +42,6 @@ function App() {
       <RouterProvider router={router}>
         <RootLayout>
           <main>
-            {/* Your content here */}
           </main>
         </RootLayout>
       </RouterProvider>

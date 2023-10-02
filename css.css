@@ -10,9 +10,6 @@
     /* Default dark mode background color */
 }
 
-#root, html{
-    overflow: hidden !important
-}
 
 @media(prefers-color-scheme: dark) {
     #root, html {

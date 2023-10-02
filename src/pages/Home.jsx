@@ -1,12 +1,15 @@
 import { Image } from "@chakra-ui/image"
-import { Box, Flex, Link, Text, Container } from "@chakra-ui/layout";
+import { Box, Flex, Link, Text } from "@chakra-ui/layout";
 import "../app.css"
-import { profile_pic, links, waving_hand } from "../../data/db"
-import Contact from './Contact';
-import About from "./About";
+import { profile_pic, links } from "../../data/db"
+import { Tooltip } from "@chakra-ui/react";
 
 
 export default function Home() {
+
+  const loadNewWindow = (url) => {
+    return window.open(url, "_blank");
+  }
   return (
 
     <Box>
@@ -50,7 +53,6 @@ export default function Home() {
                       transition: "ease 100ms"
                     }}>
                     <Box display={"flex"} flexDir={"row"} justifyContent={"center"} gap={"5px"}>
-                      {/* <LinkIcon /> */}
                       <Image src={link.icon} h={"20px"} />
                       <Text>{link.title}</Text>
                     </Box>
@@ -61,7 +63,29 @@ export default function Home() {
           </Box>
         </Flex>
         <Flex flexDir={"column"} p={{ base: "20px", md: "50px" }}>
-          <Image src={profile_pic} h={"300px"} rounded={"md"} />
+          <Tooltip
+            label="click for image url"
+            aria-label='A tooltip'
+            placement="auto-start"
+            hasArrow
+            arrowSize={"10"}
+          >
+
+            <Image
+              src={profile_pic}
+              h={"300px"}
+              rounded={"none"}
+              onClick={() => loadNewWindow(profile_pic)}
+              _hover={
+                {
+                  cursor: "pointer"
+                }
+              }
+
+
+            />
+
+          </Tooltip>
           <Text>Always love a sunny and beautiful sunset</Text>
         </Flex>
       </Box >
