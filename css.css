@@ -4,9 +4,9 @@
     --light-background-color: #fff;
     /* Default light mode background color */
 
-    --dark-text-color: #fff;
+    --dark-text-color: #000;
     /* Default dark mode text color */
-    --dark-background-color: #000;
+    --dark-background-color: #EDE0D4;
     /* Default dark mode background color */
 }
 
