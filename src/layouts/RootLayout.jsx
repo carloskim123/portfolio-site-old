@@ -88,7 +88,7 @@ const RootLayout = () => {
                 <Box onClick={closeMobileMenu} ></Box>
               ) : (
                 <Box onClick={toggleMobileMenu} _hover={{ cursor: "pointer" }} >
-                  <svg fill="white" width="34px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <svg fill="black" width="34px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3 6h14v2H3zm0 5h14v2H3zm0 5h14v2H3z" />
                   </svg>
                 </Box>
