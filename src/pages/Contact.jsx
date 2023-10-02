@@ -144,7 +144,9 @@ export default function Contact() {
             />
             <Text color="red.500">{formErrors.message}</Text>
           </FormControl>
+
           <Button
+            disabled
             colorScheme="blue"
             size="lg"
             width="100%"
