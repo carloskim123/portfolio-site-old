@@ -38,9 +38,9 @@ export const links = [
 class DirectLinks {
     constructor() {
         this.github = "https://github.com/carloskim123"
-        this.twitter = "https://github.com/carloskim123"
-        this.tiktok = "https://github.com/carloskim123"
-        this.instagram = "https://github.com/carloskim123"
+        this.twitter = "https://twitter.com/KimKimkirui7"
+        this.tiktok = "https://www.tiktok.com/@carloskim456"
+        this.instagram = "https://www.instagram.com/carloskirui541/"
 
     }
 }

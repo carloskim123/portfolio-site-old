@@ -11,14 +11,14 @@ const Projects = () => {
   const [isLoading, setIsLoading] = useState(true);
   setTimeout(() => {
     setIsLoading(false)
-  }, 500);
+  }, 3000);
 
 
 
 
 
   return (
-    <Grid templateColumns="repeat(auto-fill, minmax(300px, 1fr))" gap={6} p={"20px"} >
+    <Grid templateColumns="repeat(auto-fill, minmax(300px, 1fr))" gap={6} p={"20px"} pb={"10rem"} >
       {projects.map((project) => (
         <CSSTransition
           key={project.id}
@@ -29,7 +29,7 @@ const Projects = () => {
           {!isLoading ? (
             
             <Box
-          
+              mb={"3rem"}
                
               key={project.id}
               p={4}
@@ -41,13 +41,13 @@ const Projects = () => {
               _hover={
                 {
                   shadow: "2xl",
-                  skewX: "40deg",
                   cursor: "pointer",
                   transform: "translateY(-10px)",
+                  rounded: "sm"
                 }
               }
               fontSize={"17px"}>
-              <Box position="relative" height="200px">
+              <Box position="relative" height="200px" >
                 <Image
                   src={project.img}
                   minWidth={"100%"}
@@ -75,7 +75,7 @@ const Projects = () => {
               <Text>Tech Stack: {project.tech_stack}</Text>
             </Box>
           ) : (
-            <Skeleton height={"400px"} rounded={"md"} />
+            <Skeleton height={"400px"} rounded={"none"} />
           )}
         </CSSTransition>
       ))}
