@@ -1,14 +1,15 @@
 import React from 'react';
 import { Box, Center, Text, Link, Flex } from '@chakra-ui/react';
 import { pg_lk } from '../../data/db';
+import "../app.css"
 
 const Footer = () => {
 
 
     return (
         <Box
+            className='footer'
             bg="teal.500"
-            color="black"
             py={4}
             textAlign="center"
             bottom="0"
