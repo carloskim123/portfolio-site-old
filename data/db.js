@@ -1,9 +1,12 @@
-export const profile_pic = "https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHByb2dyYW1tZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+// imports
 import tiktok from './icons/tiktok.svg'
 import instagram from './icons/instagram.svg'
 import twitter from './icons/twitter.svg'
 import github from './icons/github.svg'
 import waving_hand_url from './icons/waving_hand.svg'
+
+// exports
+export const profile_pic = "https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHByb2dyYW1tZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
 export const waving_hand = waving_hand_url;
 export const dev_email = "kimaccess123@gmail.com"
 export const portfolio_url = "https://kimk.vercel.app/"
@@ -32,6 +35,31 @@ export const links = [
     },
 ]
 
+class DirectLinks {
+    constructor() {
+        this.github = "https://github.com/carloskim123"
+        this.twitter = "https://github.com/carloskim123"
+        this.tiktok = "https://github.com/carloskim123"
+        this.instagram = "https://github.com/carloskim123"
+
+    }
+}
+
+export const dr = new DirectLinks();
+
+export const pg_lk = [
+    {
+        url: dr.github,
+        pathname: "Github"
+    },
+    {
+        url: dr.twitter,
+        pathname: "Twitter"
+    }, {
+        url: dr.tiktok,
+        pathname: "Tiktok"
+    }
+]
 export const routes = [
     { path: "/", pathname: "Home" },
     { path: "/contact", pathname: "Contact" },
