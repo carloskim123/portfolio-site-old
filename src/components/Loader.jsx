@@ -3,7 +3,7 @@ import { MutatingDots, Discuss, RotatingLines } from "react-loader-spinner"
 
 export default function Loader() {
     return (
-            <Container display={"flex"}  justifyContent={"center"} mt={"12%"}>
+            <Container display={"flex"}  justifyContent={"center"} mt={"30vh"}>
                 <RotatingLines
                     strokeColor="grey"
                     height="100"

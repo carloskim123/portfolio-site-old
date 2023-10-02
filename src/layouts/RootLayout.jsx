@@ -64,7 +64,7 @@ const RootLayout = () => {
           top={0}
           position={"fixed"}
           zIndex={100}
-          backdropFilter="blur(90px)"
+          backdropFilter="blur(10px)"
           background="rgba(0, 0, 0, 0.001)"
 
         >
