@@ -90,7 +90,7 @@ export default function Contact() {
         rounded="md"
         // boxShadow="lg"
       >
-        <form onSubmit={handleSubmit} ref={form}>
+        <form onSubmit={handleSubmit} ref={form} disabled>
           <FormControl id="user_name" mb={4}>
             <FormLabel>Name</FormLabel>
             <Input
@@ -144,7 +144,9 @@ export default function Contact() {
             />
             <Text color="red.500">{formErrors.message}</Text>
           </FormControl>
+
           <Button
+            disabled
             colorScheme="blue"
             size="lg"
             width="100%"
