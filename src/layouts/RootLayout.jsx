@@ -19,7 +19,7 @@ const RootLayout = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 2500);
 
     return () => {
 

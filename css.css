@@ -4,9 +4,9 @@
     --light-background-color: #fff;
     /* Default light mode background color */
 
-    --dark-text-color: #0A000A;
+    --dark-text-color: #fff;
     /* Default dark mode text color */
-    --dark-background-color: #EDE0D4;
+    --dark-background-color: #000814;
     /* Default dark mode background color */
 }
 
@@ -24,5 +24,3 @@
         color: var(--light-text-color)
     }
 }
-
-
