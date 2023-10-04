@@ -53,7 +53,7 @@ export default function Loader() {
                         width="80"
                         color="#000"
                         ariaLabel="tail-spin-loading"
-                        radius="1"
+                        radius="0"
                         wrapperStyle={{}}
                         wrapperClass=""
                         visible={true}

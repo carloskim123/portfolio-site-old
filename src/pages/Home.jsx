@@ -13,7 +13,7 @@ export default function Home() {
       <Box
         as={"section"}
         rounded={"md"}
-        p={"20px"}
+        px={"0px"}
         display={"flex"}
         flexDir={{ base: "column", md: "column", lg: "row", sm: "column" }}
         gap={"1rem"}
@@ -28,7 +28,7 @@ export default function Home() {
           }}
           maxWidth={"764px"}>
           <Box>
-            <Text fontSize={{ base: "20px", md: "30px" }}>
+            <Text fontSize={{ base: "20px", md: "30px", sm: "25px" }}>
               Hi there 👋🏾
               I'm Carlos Kirui, a passionate and resourceful developer ready to take on the world of web development. 🚀</Text>
             <Flex gap={"1rem"} mt={"0.4rem"} flexWrap="wrap">

@@ -19,7 +19,7 @@ const RootLayout = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 3400);
 
     return () => {
 
@@ -125,7 +125,7 @@ const RootLayout = () => {
             h="100%"
             backdropFilter="blur(3px)"
             background="rgba(0, 0, 0, 0.01)"
-            transition="left .4s ease-in-out"
+            transition="left 250ms ease-in-out"
           >
 
             <Box
