@@ -125,7 +125,8 @@ const RootLayout = () => {
             h="100%"
             backdropFilter="blur(3px)"
             background="rgba(0, 0, 0, 0.01)"
-            transition="left 250ms ease-in-out"
+            transition="left 250ms cubic-bezier(0.25, 1, 0.5, 1)
+"
           >
 
             <Box
