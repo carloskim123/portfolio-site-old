@@ -1,15 +1,12 @@
 import { Image } from "@chakra-ui/image"
 import { Box, Flex, Link, Text } from "@chakra-ui/layout";
 import "../app.css"
-import { profile_pic, links } from "../../data/db"
+import { profile_pic, links, loadNewWindow } from "../../data/db"
 import { Tooltip } from "@chakra-ui/react";
-
 
 export default function Home() {
 
-  const loadNewWindow = (url) => {
-    return window.open(url, "_blank");
-  }
+
   return (
 
     <Box>

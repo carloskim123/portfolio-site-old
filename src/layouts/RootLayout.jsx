@@ -19,7 +19,7 @@ const RootLayout = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 2500);
+    }, 3000);
 
     return () => {
 
@@ -64,6 +64,7 @@ const RootLayout = () => {
           top={0}
           position={"fixed"}
           zIndex={100}
+          borderBottom={"2px solid black"}
           backdropFilter="blur(10px)"
           background="rgba(0, 0, 0, 0.001)"
 

@@ -12,14 +12,14 @@
 
 
 @media(prefers-color-scheme: dark) {
-    #root, html, .sidebar, .footer {
+    #root, html, .sidebar, .footer, .loader-overlay {
         background-color: var(--dark-background-color);
         color: var(--dark-text-color)
     }
 }
 
 @media(prefers-color-scheme: light) {
-    #root, html, .sidebar, .footer {
+    #root, html, .sidebar, .footer, .loader-overlay {
         background-color: var(--light-background-color);
         color: var(--light-text-color)
     }
