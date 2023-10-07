@@ -4,7 +4,7 @@ import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 function NotFound() {
-    const [secondsLeft, setSecondsLeft] = useState(5);
+    const [secondsLeft, setSecondsLeft] = useState(10);
 
     const handleTick = () => {
         setSecondsLeft(secondsLeft - 1);
@@ -19,7 +19,7 @@ function NotFound() {
     }, [])
 
     return (
-        <Container>
+        <Container textAlign={"center"} mt={"15%"}>
             <Text>The Page Your Looking for was not found!!</Text>
             <Text>Redirecting in {secondsLeft} seconds</Text>
         </Container>
