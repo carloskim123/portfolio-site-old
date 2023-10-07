@@ -36,8 +36,8 @@ export default function About() {
         </Container>
         <Container mt="2rem">
           <Accordion allowToggle>
-            {accordionContent.map((accordion) => (
-              <AccordionItem>
+            {accordionContent.map((accordion, index) => (
+              <AccordionItem key={index}>
                 <h2>
                   <AccordionButton>
                     <Box as="span" flex="1" textAlign="left" fontSize={{ base: '18px', md: '20px' }}>

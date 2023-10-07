@@ -41,8 +41,6 @@ function App() {
     <>
       <RouterProvider router={router}>
         <RootLayout>
-          <main>
-          </main>
         </RootLayout>
       </RouterProvider>
     </>

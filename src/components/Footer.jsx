@@ -17,17 +17,17 @@ const Footer = () => {
             background="rgba(0, 0, 0, 0.01)"
         >
             <Box>
-                <Text>
+                <Box>
                     &copy; 2023 Carlos Kirui. All rights reserved.
                     <Flex justify="center" mt={2} _hover={{ cursor: "pointer" }}>
-                        {pg_lk.map((link) => (
-                            <Text transition={".4s ease-in-out"} _hover={{ cursor: "pointer", textDecoration: "underline" }} onClick={() => loadNewWindow(link.url)} textDecoration="none" mr={4}>
+                        {pg_lk.map((link, index) => (
+                            <a key={index} transition={".4s ease-in-out"} _hover={{ cursor: "pointer", textDecoration: "underline" }} onClick={() => loadNewWindow(link.url)} textDecoration="none" mr={4}>
                                 {link.pathname}
-                            </Text>
+                            </a>
                         ))}
 
                     </Flex>
-                </Text>
+                </Box>
             </Box>
         </Box>
     );
