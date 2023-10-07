@@ -1,19 +1,26 @@
+// Lib Imports
+import { useEffect, useState } from "react";
 import { Container, Text, Flex } from "@chakra-ui/layout";
 import { TailSpin } from "react-loader-spinner";
-import { loadingQuotes } from "../../data/db";
-import { useEffect, useState } from "react";
+
+// Local Imports
+import { currentDayTime, currentTime, getRandomQuote } from "../../data/db";
+import { daytimeQuotes, nighttimeQuotes } from "../../data/quoteable";
 
 export default function Loader() {
     const [randomQuote, setRandomQuote] = useState("");
+    const [dayPeriod, setDayPeriod] = useState("day");
 
-    const getRandomQuote = () => {
-        const randomIndex = Math.floor(Math.random() * loadingQuotes.length);
-        setRandomQuote(loadingQuotes[randomIndex].text);
-    }
+    let currentQuotesArray;
 
     useEffect(() => {
-        getRandomQuote();
-    },[])
+        currentDayTime(setDayPeriod, currentTime);
+
+        if (dayPeriod === "night") currentQuotesArray = nighttimeQuotes;
+        if (dayPeriod === "day") currentQuotesArray = daytimeQuotes;
+
+        getRandomQuote(setRandomQuote, currentQuotesArray);
+    }, [currentTime]);
 
     const loaderOverlayStyles = {
         position: "fixed",
@@ -33,22 +40,14 @@ export default function Loader() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-
+        marginTop: "30vh",
     };
-
 
     return (
         <div className="loader-overlay" style={loaderOverlayStyles}>
-            <Container
-                display={"flex"}
-                justifyContent={"center"}
-                mt={"30vh"}
-                style={loaderStyles}
-            >
-
+            <Container style={loaderStyles}>
                 <Flex>
                     <TailSpin
-
                         height="45"
                         width="80"
                         color="#000"
@@ -60,10 +59,9 @@ export default function Loader() {
                     />
                 </Flex>
                 <Flex mt={"1em"}>
-                    <Text>{randomQuote}</Text>
+                    <Text> {console.log(dayPeriod)}{randomQuote}</Text>
                 </Flex>
             </Container>
-
-        </div >
+        </div>
     );
 }

@@ -5,6 +5,7 @@ import twitter from './icons/twitter.svg'
 import github from './icons/github.svg'
 import waving_hand_url from './icons/waving_hand.svg'
 
+
 // exports
 export const profile_pic = "https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHByb2dyYW1tZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
 export const waving_hand = waving_hand_url;
@@ -97,164 +98,31 @@ export const accordionContent = [
 ]
 
 
-export const loadingQuotes = [
-    {
-        text: "Live with passion and purpose. 😃"
-    },
-    {
-        text: "Dream big, achieve bigger. 🌟"
-    },
-    {
-        text: "Love deeply, laugh daily, live fully. ❤️"
-    },
-    {
-        text: "Kindness is a gift that keeps giving. 🌼"
-    },
-    {
-        text: "Find joy in life's simple moments. 😊"
-    },
-    {
-        text: "Stay positive, keep moving forward. 🚀"
-    },
-    {
-        text: "Believe in yourself, defy limitations. 🌈"
-    },
-    {
-        text: "Cherish moments, not things. 🕰️"
-    },
-    {
-        text: "Life is short; embrace it fully. 🌞"
-    },
-    {
-        text: "Smile often, worry less, live more. 😄"
-    },
-    {
-        text: "Make each day a masterpiece. 🎨"
-    },
-    {
-        text: "Dare to dream; dare to achieve. ✨"
-    },
-    {
-        text: "Live with purpose; make it count. 🎯"
-    },
-    {
-        text: "Create your own path in life. 🚶‍♂️"
-    },
-    {
-        text: "Success starts with self-belief. 🌟"
-    },
-    {
-        text: "Inhale confidence; exhale doubt. 🌬️"
-    },
-    {
-        text: "Be the change you seek. 🌍"
-    },
-    {
-        text: "Embrace your uniqueness; it's your power. 🌟"
-    },
-    {
-        text: "Stay curious, keep learning always. 📚"
-    },
-    {
-        text: "Inspire others through your actions. 🌟"
-    },
-    {
-        text: "Radiate positivity wherever you go. 🌞"
-    },
-    {
-        text: "Find strength in adversity's challenges. 💪"
-    },
-    {
-        text: "Your journey defines your destination. 🚗"
-    },
-    {
-        text: "Live fully, love deeply, laugh daily. 😊"
-    },
-    {
-        text: "Success is a journey, not a destination. 🚀"
-    },
-    {
-        text: "Make your life a work of art. 🎨"
-    },
-    {
-        text: "Small steps lead to big achievements. 👣"
-    },
-    {
-        text: "Dream, believe, achieve; repeat daily. 🌟"
-    },
-    {
-        text: "Life is a gift; cherish it. 🎁"
-    },
-    {
-        text: "Your potential is limitless; embrace it. 🚀"
-    },
-    {
-        text: "Every moment is a fresh beginning. 🌅"
-    },
-    {
-        text: "Dwell in possibility and limitless potential. 🌌"
-    },
-    {
-        text: "Find magic in the ordinary moments. ✨"
-    },
-    {
-        text: "See beauty in every day. 🌼"
-    },
-    {
-        text: "Live with gratitude, love abundantly. ❤️"
-    },
-    {
-        text: "Life's a journey; enjoy the ride. 🚴‍♀️"
-    },
-    {
-        text: "Savor life's sweetest moments always. 🍭"
-    },
-    {
-        text: "Stay true to yourself; be authentic. 🌟"
-    },
-    {
-        text: "Create happiness with your own hands. 🌞"
-    },
-    {
-        text: "Live intentionally; embrace the present moment. 🎁"
-    },
-    {
-        text: "Sparkle with positivity and kindness daily. ✨"
-    },
-    {
-        text: "Be the reason someone smiles today. 😊"
-    },
-    {
-        text: "Find joy in the journey of life. 🌄"
-    },
-    {
-        text: "Celebrate the beauty of every day. 🎉"
-    },
-    {
-        text: "Do more of what makes you happy. 😃"
-    },
-    {
-        text: "Love unconditionally; it's the purest form. ❤️"
-    },
-    {
-        text: "Inspire others by being your authentic self. 🌟"
-    },
-    {
-        text: "Create a life that feels good inside. 🌈"
-    },
-    {
-        text: "Laugh at yourself; it's liberating. 😂"
-    },
-    {
-        text: "Life is a precious gift; cherish it. 🎁"
-    }
-    // Add more quotes as needed
-];
-
-
-
-export  const loadNewWindow = (url) => {
+export const loadNewWindow = (url) => {
     return window.open(url, "_blank");
 }
 
 
+export let currentTime = new Date().getHours();
+export let currentQuotesArray = [];
+
+export const currentDayTime = (setDayPeriod, currentTime) => {
+    if (currentTime >= 19 && currentTime <= 6) {
+        setDayPeriod("night");
+    } else if (currentTime >= 6 && currentTime <= 19) {
+        setDayPeriod("day");
+    } else {
+        setDayPeriod(null);
+    }
+};
+
+export const getRandomQuote = (setRandomQuote, currentQuotesArray) => {
+    // check if currentQuotesArray is defined and is an array
+    if (Array.isArray(currentQuotesArray)) {
+        const randomIndex = Math.floor(Math.random() * currentQuotesArray.length);
+        setRandomQuote(currentQuotesArray[randomIndex].text);
+    } else {
+        console.error('currentQuotesArray is not defined or empty');
+    }
+
+}

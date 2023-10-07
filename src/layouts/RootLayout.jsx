@@ -1,20 +1,19 @@
+// External Libraries
 import { Link, useNavigate } from 'react-router-dom';
-import { Box, Flex, Text, Icon, background, position } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
-import { Suspense, useEffect, useState, useRef } from "react";
+import { Suspense, useEffect, useState } from "react"
+
+// Local Imports
 import Loader from '../components/Loader';
 import Footer from '../components/Footer';
 import { routes } from '../../data/db';
 import "../app.css";
 
-import logo from '../../public/dark.svg';
-
 const RootLayout = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
-
-
 
   useEffect(() => {
     setTimeout(() => {
@@ -22,22 +21,16 @@ const RootLayout = () => {
     }, 3400);
 
     return () => {
-
+      // Cleanup logic here if needed
     }
   }, []);
 
-
-
-  // Attach the event listener when the component mounts
   useEffect(() => {
     window.addEventListener('resize', closeMobileMenu);
     return () => {
       window.removeEventListener('resize', closeMobileMenu);
-
     };
-
   }, [showMenu]);
-
 
   const toggleMobileMenu = () => {
     setShowMenu(!showMenu);
@@ -51,11 +44,9 @@ const RootLayout = () => {
     }
   };
 
-
-
   return (
-    <div >
-      <Flex flexDirection="column" minH="100vh" >
+    <div>
+      <Flex flexDirection="column" minH="100vh" cursor="auto ">
         <Box
           py={2}
           px={4}
@@ -67,9 +58,7 @@ const RootLayout = () => {
           borderBottom={"2px solid black"}
           backdropFilter="blur(10px)"
           background="rgba(0, 0, 0, 0.001)"
-
         >
-
           <Flex justifyContent={"space-between"} alignItems="center" fontSize="18px">
             <Link to="/">
               <Text
@@ -86,14 +75,13 @@ const RootLayout = () => {
             </Link>
             <Box display={{ base: "block", md: "none" }} onClick={toggleMobileMenu}>
               {showMenu ? (
-                <Box onClick={closeMobileMenu} ></Box>
+                <Box onClick={closeMobileMenu}></Box>
               ) : (
-                <Box onClick={toggleMobileMenu} _hover={{ cursor: "pointer" }} >
+                <Box onClick={toggleMobileMenu} _hover={{ cursor: "pointer" }}>
                   <svg fill="black" width="34px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3 6h14v2H3zm0 5h14v2H3zm0 5h14v2H3z" />
                   </svg>
                 </Box>
-
               )}
             </Box>
             <Flex display={{ base: "none", md: "flex" }} gap="2rem">
@@ -114,7 +102,6 @@ const RootLayout = () => {
           </Flex>
         </Box>
         <Flex flex="1" paddingTop={"60px"} >
-
           <Box
             cursor={"pointer"}
             position="fixed"
@@ -125,35 +112,29 @@ const RootLayout = () => {
             h="100%"
             backdropFilter="blur(3px)"
             background="rgba(0, 0, 0, 0.01)"
-            transition="left 250ms cubic-bezier(0.25, 1, 0.5, 1)
-"
+            transition="left 250ms ease"
           >
-
             <Box
-
               className="sidebar"
               overflow="hidden"
               h="100vh"
               w="100%"
               py={7}
               px={6}
-              // background="#EDE0D4"
               borderBottom="2px solid black"
               display="flex"
               flexDir="column"
               gap=".5rem"
             >
               <Flex >
-                <Box  mr={"auto"} fontSize={"23px"}>Carlos.K 👋🏽</Box>
+                <Box mr={"auto"} fontSize={"23px"}>Carlos.K 👋🏽</Box>
                 <Box
-                  // ml="auto"
                   onClick={closeMobileMenu}
                   cursor="pointer"
                   fontSize="20px"
                   _hover={{ transform: "scale(1.2)" }}
                 >✖️</Box>
               </Flex>
-
               {routes.map(route => (
                 <Link
                   key={route.path}
@@ -182,7 +163,7 @@ const RootLayout = () => {
         </Flex>
         <Footer />
       </Flex>
-    </div >
+    </div>
   );
 };
 

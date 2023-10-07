@@ -1,12 +1,12 @@
 :root {
     --light-text-color: #000;
     /* Default light mode text color */
-    --light-background-color: #fff;
+    --light-background-color: #f7e1d7;
     /* Default light mode background color */
 
     --dark-text-color: #000;
     /* Default dark mode text color */
-    --dark-background-color: #EDE0D4;
+    --dark-background-color: #fefae0;
     /* Default dark mode background color */
 }
 
