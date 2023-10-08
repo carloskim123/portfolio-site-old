@@ -19,7 +19,7 @@ const Footer = () => {
             <Box>
                 <Box>
                     &copy; 2023 Carlos Kirui. All rights reserved.
-                    <Flex justify="center" mt={2} _hover={{ cursor: "pointer" }}>
+                    <Flex justify="center" mt={2} _hover={{ cursor: "pointer" }} gap={"1rem"}>
                         {pg_lk.map((link, index) => (
                             <a key={index} transition={".4s ease-in-out"} _hover={{ cursor: "pointer", textDecoration: "underline" }} onClick={() => loadNewWindow(link.url)} textDecoration="none" mr={4}>
                                 {link.pathname}

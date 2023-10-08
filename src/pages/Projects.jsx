@@ -20,12 +20,7 @@ const Projects = () => {
   return (
     <Grid templateColumns="repeat(auto-fill, minmax(300px, 1fr))" gap={6} p={"20px"} pb={"10rem"} >
       {projects.map((project) => (
-        <CSSTransition
-          key={project.id}
-          in={!isLoading}
-          timeout={400}
-          classNames="fade"
-        >
+        <div key={project.id}>
           {!isLoading ? (
 
             <Box
@@ -62,7 +57,7 @@ const Projects = () => {
                 {project?.name}
               </Text>
               <Text mb={2}>{project?.description}</Text>
-              <Text mb={2}>
+              <Box mb={2}>
                 {(project?.view_live || project?.project_url != null || undefined || "") && (
                   <div key={project.id}>
                     <Link target="_blank" href={project?.project_url} color="blue.500" mr={2}>
@@ -74,13 +69,13 @@ const Projects = () => {
                     </Link>
                   </div>
                 )}
-              </Text>
+              </Box>
               <Text>Tech Stack: {project?.tech_stack}</Text>
             </Box>
           ) : (
             <Skeleton height={"400px"} rounded={"none"} />
           )}
-        </CSSTransition>
+        </div>
       ))}
     </Grid>
   );

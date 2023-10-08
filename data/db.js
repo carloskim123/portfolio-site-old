@@ -97,17 +97,17 @@ export const accordionContent = [
 
 ]
 
+export const colorsArray = ["#fefae0", "#e9ecef", "#edf6f9", "#fdffb6", "#f4f1de", "#f0f3bd"];
+
+
 
 export const loadNewWindow = (url) => {
     return window.open(url, "_blank");
 }
 
 
-export let currentTime = new Date().getHours();
-export let currentQuotesArray = [];
-
 export const currentDayTime = (setDayPeriod, currentTime) => {
-    if (currentTime >= 19 && currentTime <= 6) {
+    if (currentTime >= 19 || currentTime <= 6) {
         setDayPeriod("night");
     } else if (currentTime >= 6 && currentTime <= 19) {
         setDayPeriod("day");
@@ -116,13 +116,14 @@ export const currentDayTime = (setDayPeriod, currentTime) => {
     }
 };
 
-export const getRandomQuote = (setRandomQuote, currentQuotesArray) => {
+export const getRandomFromArray = (setRandom, currentArray) => {
     // check if currentQuotesArray is defined and is an array
-    if (Array.isArray(currentQuotesArray)) {
-        const randomIndex = Math.floor(Math.random() * currentQuotesArray.length);
-        setRandomQuote(currentQuotesArray[randomIndex].text);
+    if (Array.isArray(currentArray)) {
+        const randomIndex = Math.floor(Math.random() * currentArray.length);
+        setRandom(currentArray[randomIndex].text);
     } else {
-        console.error('currentQuotesArray is not defined or empty');
+        console.error('currentArray is not defined or empty');
     }
 
 }
+

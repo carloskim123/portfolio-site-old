@@ -95,7 +95,7 @@ export default function Contact() {
             <FormLabel>Name</FormLabel>
             <Input
               autoComplete="on"
-              autoFocus="true"
+              autoFocus={true}
               type="text"
               name="user_name"
               borderColor="black.300"

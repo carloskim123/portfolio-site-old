@@ -1,26 +1,25 @@
-// Lib Imports
 import { useEffect, useState } from "react";
 import { Container, Text, Flex } from "@chakra-ui/layout";
 import { TailSpin } from "react-loader-spinner";
-
-// Local Imports
-import { currentDayTime, currentTime, getRandomQuote } from "../../data/db";
+import { currentDayTime, getRandomFromArray } from "../../data/db";
 import { daytimeQuotes, nighttimeQuotes } from "../../data/quoteable";
 
 export default function Loader() {
     const [randomQuote, setRandomQuote] = useState("");
     const [dayPeriod, setDayPeriod] = useState("day");
-
-    let currentQuotesArray;
+    const [currentTime, setCurrentTime] = useState(new Date().getHours()); // Get current hour
 
     useEffect(() => {
+        // Update the current time in state
+        setCurrentTime(new Date().getHours());
+
+        // Calculate dayPeriod and get quotes
         currentDayTime(setDayPeriod, currentTime);
 
-        if (dayPeriod === "night") currentQuotesArray = nighttimeQuotes;
-        if (dayPeriod === "day") currentQuotesArray = daytimeQuotes;
+        let currentQuotesArray = dayPeriod === "night" ? nighttimeQuotes : daytimeQuotes;
 
-        getRandomQuote(setRandomQuote, currentQuotesArray);
-    }, [currentTime]);
+        getRandomFromArray(setRandomQuote, currentQuotesArray);
+    }, [currentTime, dayPeriod]);
 
     const loaderOverlayStyles = {
         position: "fixed",
@@ -32,6 +31,7 @@ export default function Loader() {
         justifyContent: "start",
         alignItems: "start",
         zIndex: 9999,
+        background: "white"
     };
 
     const loaderStyles = {
@@ -59,7 +59,7 @@ export default function Loader() {
                     />
                 </Flex>
                 <Flex mt={"1em"}>
-                    <Text> {console.log(dayPeriod)}{randomQuote}</Text>
+                    <Text>{randomQuote}</Text>
                 </Flex>
             </Container>
         </div>

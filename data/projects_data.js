@@ -1,4 +1,4 @@
-import shopZetuVendorsBanner from "../public/img/Shop-Zetu-Vendors-Banner.png"
+import shopZetuVendorsBanner from "../src/img/Shop-Zetu-Vendors-Banner.png"
 export const projects = [
     {
         name: 'Advanced Todo App',

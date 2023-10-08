@@ -1,4 +1,4 @@
-// External Libraries
+// External Library
 import { Link, useNavigate } from 'react-router-dom';
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
@@ -13,17 +13,26 @@ import "../app.css";
 const RootLayout = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
+  const [currentTime, setCurrentTime] = useState(new Date());
+
   const navigate = useNavigate();
 
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 3400);
+
+    const intervalId = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
 
     return () => {
-      // Cleanup logic here if needed
-    }
+      clearInterval(intervalId); // Cleanup interval
+    };
+
   }, []);
+
+
 
   useEffect(() => {
     window.addEventListener('resize', closeMobileMenu);
@@ -44,9 +53,11 @@ const RootLayout = () => {
     }
   };
 
+  
+
   return (
     <div>
-      <Flex flexDirection="column" minH="100vh" cursor="auto ">
+      <Flex flexDirection="column" minH="100vh" cursor="auto">
         <Box
           py={2}
           px={4}
@@ -97,7 +108,9 @@ const RootLayout = () => {
                     {route.pathname}
                   </Text>
                 </Link>
+
               ))}
+              
             </Flex>
           </Flex>
         </Box>
@@ -112,7 +125,7 @@ const RootLayout = () => {
             h="100%"
             backdropFilter="blur(3px)"
             background="rgba(0, 0, 0, 0.01)"
-            transition="left 250ms ease"
+            transition="left 250ms cubic-bezier(0.25, 1, 0.5, 1)"
           >
             <Box
               className="sidebar"
@@ -127,7 +140,7 @@ const RootLayout = () => {
               gap=".5rem"
             >
               <Flex >
-                <Box mr={"auto"} fontSize={"23px"}>Carlos.K 👋🏽</Box>
+                <Box mr={"auto"} fontSize={"23px"}>Carlos.K 👋🏽<Text fontSize={"14px"}>{currentTime.toLocaleTimeString()}</Text></Box>
                 <Box
                   onClick={closeMobileMenu}
                   cursor="pointer"

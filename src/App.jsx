@@ -25,8 +25,8 @@ const router = createBrowserRouter(
         <Route path="contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
         <Route path="success" element={<HasSubmitted />} />
-        <Route path="error" element={Error}/>
-        
+        <Route path="error" element={Error} />
+
       </Route>
     </>
 
@@ -40,8 +40,7 @@ function App() {
   return (
     <>
       <RouterProvider router={router}>
-        <RootLayout>
-        </RootLayout>
+        <RootLayout />
       </RouterProvider>
     </>
   )

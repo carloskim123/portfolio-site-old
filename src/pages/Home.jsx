@@ -9,9 +9,8 @@ import {
   profile_pic,
   links,
   loadNewWindow,
-  currentTime,
   currentDayTime,
-  getRandomQuote,
+  getRandomFromArray,
 } from "../../data/db";
 import { daytimeQuotes, nighttimeQuotes } from "../../data/quoteable";
 
@@ -20,14 +19,23 @@ import "../app.css";
 export default function Home() {
   const [dayPeriod, setDayPeriod] = useState("day");
   const [randomQuote, setRandomQuote] = useState("");
+  let currentTime = new Date().getHours();
+  const [secondsLeft, setSecondsLeft] = useState(10);
+
+  const handleTick = () => {
+    setSecondsLeft(secondsLeft - 1);
+  }
+  setInterval(handleTick, 1000);
 
   useEffect(() => {
     currentDayTime(setDayPeriod, currentTime);
 
     const currentQuotesArray = dayPeriod === "night" ? nighttimeQuotes : daytimeQuotes;
 
-    getRandomQuote(setRandomQuote, currentQuotesArray);
-  }, [currentTime]);
+    getRandomFromArray(setRandomQuote, currentQuotesArray);
+
+  }, [currentTime, dayPeriod]);
+
 
   return (
     <Box>
