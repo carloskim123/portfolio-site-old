@@ -20,12 +20,7 @@ export default function Home() {
   const [dayPeriod, setDayPeriod] = useState("day");
   const [randomQuote, setRandomQuote] = useState("");
   let currentTime = new Date().getHours();
-  const [secondsLeft, setSecondsLeft] = useState(10);
 
-  const handleTick = () => {
-    setSecondsLeft(secondsLeft - 1);
-  }
-  setInterval(handleTick, 1000);
 
   useEffect(() => {
     currentDayTime(setDayPeriod, currentTime);

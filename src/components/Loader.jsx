@@ -31,7 +31,6 @@ export default function Loader() {
         justifyContent: "start",
         alignItems: "start",
         zIndex: 9999,
-        background: "white"
     };
 
     const loaderStyles = {
