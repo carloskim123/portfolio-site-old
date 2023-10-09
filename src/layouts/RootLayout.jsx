@@ -8,7 +8,7 @@ import Loader from '../components/Loader';
 import Footer from '../components/Footer';
 import { routes } from '../../data/db';
 import "../app.css";
-import CustomModal from '../components/customModal';
+import CustomModal from '../components/CustomModal';
 
 const RootLayout = () => {
   const [hasCheckedForUpdate, setHasCheckedForUpdate] = useState(false);
