@@ -148,14 +148,16 @@ const RootLayout = () => {
             </Flex>
           </Flex>
         </Box>
-        <Box mt={"4rem"}>
-          {showUpdateButton && (
-            <Button ml={"10px"} bg={"blue.400"} color={"black"} _hover={{color: "black"}} onClick={openModal}>Check for Updates</Button>
-          )}
-          {showUpdateButton && (
-            <CustomModal isOpen={isModalOpen} onClose={closeModal} />
-          )}
-        </Box>
+        {showUpdateButton && (
+
+          <Box mt={"4rem"}>
+            <>
+              <Button ml={"10px"} bg={"blue.400"} color={"black"} _hover={{ color: "black" }} onClick={openModal}>Check for Updates</Button>
+              <CustomModal isOpen={isModalOpen} onClose={closeModal} />
+            </>
+          </Box>
+        )}
+
         <Flex flex="1" paddingTop={"60px"} >
           <Box
             cursor={"pointer"}
