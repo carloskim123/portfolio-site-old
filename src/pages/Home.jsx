@@ -11,6 +11,7 @@ import {
   loadNewWindow,
   currentDayTime,
   getRandomFromArray,
+  shuffle,
 } from "../../data/db";
 import { daytimeQuotes, nighttimeQuotes } from "../../data/quoteable";
 
@@ -19,15 +20,24 @@ import "../app.css";
 export default function Home() {
   const [dayPeriod, setDayPeriod] = useState("day");
   const [randomQuote, setRandomQuote] = useState("");
-  let currentTime = new Date().getHours();
+
+  const currentTime = new Date().getHours();
+  const shuffledArray = shuffle(links);
+
+
+
+
+
 
 
   useEffect(() => {
+
     currentDayTime(setDayPeriod, currentTime);
 
     const currentQuotesArray = dayPeriod === "night" ? nighttimeQuotes : daytimeQuotes;
 
     getRandomFromArray(setRandomQuote, currentQuotesArray);
+    
 
   }, [currentTime, dayPeriod]);
 
@@ -54,7 +64,7 @@ export default function Home() {
                 Check me out on:
               </Box>
               {links &&
-                links.map((link) => (
+                shuffledArray.map((link) => (
                   <Link
                     key={link.url}
                     target="_blank"
@@ -96,6 +106,7 @@ export default function Home() {
                 cursor: "pointer",
               }}
             />
+
           </Tooltip>
           <Text>{randomQuote}</Text>
         </Flex>

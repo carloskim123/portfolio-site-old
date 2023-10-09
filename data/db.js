@@ -6,6 +6,9 @@ import github from './icons/github.svg'
 import waving_hand_url from './icons/waving_hand.svg'
 
 
+
+
+
 // exports
 export const profile_pic = "https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHByb2dyYW1tZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
 export const waving_hand = waving_hand_url;
@@ -35,6 +38,8 @@ export const links = [
         icon: tiktok
     },
 ]
+
+
 
 class DirectLinks {
     constructor() {
@@ -98,7 +103,23 @@ export const accordionContent = [
 ]
 
 export const colorsArray = ["#fefae0", "#e9ecef", "#edf6f9", "#fdffb6", "#f4f1de", "#f0f3bd"];
-
+export const newImages = [
+    {
+        url: "https://images.pexels.com/photos/3791466/pexels-photo-3791466.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        url: "https://images.pexels.com/photos/1743366/pexels-photo-1743366.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        url: "https://images.pexels.com/photos/2724664/pexels-photo-2724664.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        url: "https://images.pexels.com/photos/3791466/pexels-photo-3791466.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+        url: "https://images.pexels.com/photos/3791466/pexels-photo-3791466.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+]
 
 
 export const loadNewWindow = (url) => {
@@ -126,4 +147,17 @@ export const getRandomFromArray = (setRandom, currentArray) => {
     }
 
 }
+
+export const shuffle = (array) => {
+    const shuffledArray = [...array];
+
+    for(let i = shuffledArray.length -1; i > 0; i--) {
+        const randomIndex = Math.floor(Math.random() * (i + 1));
+
+        [shuffledArray[i], shuffledArray[randomIndex]] = [shuffledArray[randomIndex], shuffledArray[i]]
+    }
+
+    return shuffledArray;
+}
+
 
