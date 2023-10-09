@@ -1,6 +1,5 @@
-// External Library
 import { Link, useNavigate } from 'react-router-dom';
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text, Button } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
 import { Suspense, useEffect, useState } from "react"
 
@@ -9,11 +8,15 @@ import Loader from '../components/Loader';
 import Footer from '../components/Footer';
 import { routes } from '../../data/db';
 import "../app.css";
+import CustomModal from '../components/customModal';
 
 const RootLayout = () => {
+  const [hasCheckedForUpdate, setHasCheckedForUpdate] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [lastUpdateCheckTime, setLastUpdateCheckTime] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -22,6 +25,14 @@ const RootLayout = () => {
       setIsLoading(false);
     }, 3400);
 
+    const fetchedUpdateState = localStorage.getItem("hasCheckedForUpdate");
+    setHasCheckedForUpdate(fetchedUpdateState === "true"); // Parse as boolean
+
+    const lastCheckedTime = localStorage.getItem("lastUpdateCheckTime");
+    if (lastCheckedTime) {
+      setLastUpdateCheckTime(Number(lastCheckedTime));
+    }
+
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
@@ -29,10 +40,7 @@ const RootLayout = () => {
     return () => {
       clearInterval(intervalId); // Cleanup interval
     };
-
   }, []);
-
-
 
   useEffect(() => {
     window.addEventListener('resize', closeMobileMenu);
@@ -45,6 +53,35 @@ const RootLayout = () => {
     setShowMenu(!showMenu);
   };
 
+  const checkedForUpdate = () => {
+    setHasCheckedForUpdate(true);
+    localStorage.setItem('hasCheckedForUpdate', true);
+
+    setLastUpdateCheckTime(Date.now());
+    localStorage.setItem('lastUpdateCheckTime', Date.now().toString());
+
+    setTimeout(() => {
+      setHasCheckedForUpdate(false); // Reset to false after 24 hours
+      localStorage.setItem('hasCheckedForUpdate', false);
+    }, 86400000); // 24 hours in milliseconds
+  }
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    checkedForUpdate();
+
+  };
+
+  // Determine whether to show the "Check for updates" button
+  const showUpdateButton =
+    !hasCheckedForUpdate &&
+    (!lastUpdateCheckTime ||
+      Date.now() - lastUpdateCheckTime >= 24 * 60 * 60 * 1000); // 24 hours in milliseconds
+
   const closeMobileMenu = () => {
     if (window.innerWidth >= 770 && showMenu) {
       setShowMenu(false);
@@ -52,8 +89,6 @@ const RootLayout = () => {
       setShowMenu(false);
     }
   };
-
-  
 
   return (
     <div>
@@ -95,6 +130,7 @@ const RootLayout = () => {
                 </Box>
               )}
             </Box>
+
             <Flex display={{ base: "none", md: "flex" }} gap="2rem">
               {routes.map(route => (
                 <Link key={route.path} to={route.path}>
@@ -108,11 +144,17 @@ const RootLayout = () => {
                     {route.pathname}
                   </Text>
                 </Link>
-
               ))}
-              
             </Flex>
           </Flex>
+        </Box>
+        <Box mt={"4rem"}>
+          {showUpdateButton && (
+            <Button ml={"10px"} bg={"blue.400"} color={"black"} _hover={{color: "black"}} onClick={openModal}>Check for Updates</Button>
+          )}
+          {showUpdateButton && (
+            <CustomModal isOpen={isModalOpen} onClose={closeModal} />
+          )}
         </Box>
         <Flex flex="1" paddingTop={"60px"} >
           <Box
