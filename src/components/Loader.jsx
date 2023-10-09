@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Container, Text, Flex } from "@chakra-ui/layout";
-import { TailSpin } from "react-loader-spinner";
+import { TailSpin, ColorRing } from "react-loader-spinner";
 import { currentDayTime, getRandomFromArray } from "../../data/db";
 import { daytimeQuotes, nighttimeQuotes } from "../../data/quoteable";
 
@@ -46,15 +46,14 @@ export default function Loader() {
         <div className="loader-overlay" style={loaderOverlayStyles}>
             <Container style={loaderStyles}>
                 <Flex>
-                    <TailSpin
-                        height="45"
-                        width="80"
-                        color="#000"
-                        ariaLabel="tail-spin-loading"
-                        radius="0"
-                        wrapperStyle={{}}
-                        wrapperClass=""
+                    <ColorRing
                         visible={true}
+                        height="80"
+                        width="80"
+                        ariaLabel="blocks-loading"
+                        wrapperStyle={{}}
+                        wrapperClass="blocks-wrapper"
+                        colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
                     />
                 </Flex>
                 <Flex mt={"1em"}>

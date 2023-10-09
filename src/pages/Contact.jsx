@@ -22,6 +22,8 @@ export default function Contact() {
     message: "",
   });
 
+  const inputWidthCustom = "120%"
+
   const validateForm = () => {
     const errors = {};
 
@@ -66,7 +68,7 @@ export default function Contact() {
           }, (error) => {
             consle.log(error.text);
             navigate('/error');
-          } 
+          }
         );
     }
   };
@@ -78,6 +80,7 @@ export default function Contact() {
         justifyContent={"center"}
         fontSize={"26px"}
         my={"1rem"}
+        ml={"12%"}
       >
         You can Contact me through the form below
       </Flex>
@@ -85,15 +88,13 @@ export default function Contact() {
         maxW="md"
         mx="auto"
         p={4}
-        borderWidth="1px"
-        // borderColor="black.300"
         rounded="md"
-        // boxShadow="lg"
       >
         <form onSubmit={handleSubmit} ref={form} disabled>
           <FormControl id="user_name" mb={4}>
             <FormLabel>Name</FormLabel>
             <Input
+              width={inputWidthCustom}
               autoComplete="on"
               autoFocus={true}
               type="text"
@@ -114,6 +115,7 @@ export default function Contact() {
             <Input
               type="email"
               name="user_email"
+              width={inputWidthCustom}
               borderColor="black.300"
               autoComplete="on"
               focusBorderColor="blue.400"
@@ -130,9 +132,13 @@ export default function Contact() {
             <FormLabel>Message</FormLabel>
             <Input
               as="textarea"
+              pt={"5px"}
+              autoCorrect="true"
+              autoSave="true"
               name="message"
               rows={4}
-              height={"100px"}              
+              width={inputWidthCustom}
+              height={"120px"}
               borderColor="black.300"
               focusBorderColor="blue.400"
               isDisabled={isSubmitted}
@@ -149,7 +155,7 @@ export default function Contact() {
             disabled
             colorScheme="blue"
             size="lg"
-            width="100%"
+            width={inputWidthCustom}
             type="submit"
             isLoading={isSubmitted}
             loadingText="Submitting..."

@@ -2,7 +2,6 @@ import { Grid, Box, Image, Link, Text, useInputGroupStyles } from "@chakra-ui/re
 import { projects } from "../../data/projects_data";
 import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react'
 import { useState } from "react";
-import { CSSTransition } from 'react-transition-group';
 import "../app.css"; // Import your CSS file for the transition styles
 
 

@@ -6,12 +6,12 @@
 
     --dark-text-color: #000;
     /* Default dark mode text color */
-    --dark-background-color: #eeebd0;
+    --dark-background-color: #e9edc9;
     /* Default dark mode background color */
 }
 
 
- @media(prefers-color-scheme: dark) {
+@media(prefers-color-scheme: dark) {
     #root, html, .sidebar, .footer, .loader-overlay {
         background-color: var(--dark-background-color);
         color: var(--dark-text-color)
@@ -23,4 +23,4 @@
         background-color: var(--light-background-color);
         color: var(--light-text-color)
     }
-} 
+}
