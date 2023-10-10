@@ -42,11 +42,15 @@ const RootLayout = () => {
     };
   }, []);
 
+
   useEffect(() => {
     window.addEventListener('resize', closeMobileMenu);
     return () => {
       window.removeEventListener('resize', closeMobileMenu);
     };
+
+
+
   }, [showMenu]);
 
   const toggleMobileMenu = () => {
@@ -59,11 +63,6 @@ const RootLayout = () => {
 
     setLastUpdateCheckTime(Date.now());
     localStorage.setItem('lastUpdateCheckTime', Date.now().toString());
-
-    setTimeout(() => {
-      setHasCheckedForUpdate(false); // Reset to false after 24 hours
-      localStorage.setItem('hasCheckedForUpdate', false);
-    }, 86400000); // 24 hours in milliseconds
   }
 
   const openModal = () => {
@@ -73,8 +72,15 @@ const RootLayout = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     checkedForUpdate();
-
   };
+
+
+
+  setTimeout(() => {
+    setHasCheckedForUpdate(false);
+    localStorage.setItem("hasCheckedForUpdate", false);
+    localStorage.clear();
+  }, (86400000 * 2))
 
   // Determine whether to show the "Check for updates" button
   const showUpdateButton =
