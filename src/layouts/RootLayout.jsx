@@ -80,7 +80,7 @@ const RootLayout = () => {
     setHasCheckedForUpdate(false);
     localStorage.setItem("hasCheckedForUpdate", false);
     localStorage.clear();
-  }, 5000)
+  }, 846000)
 
   // Determine whether to show the "Check for updates" button
   const showUpdateButton =
