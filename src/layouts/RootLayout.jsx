@@ -14,7 +14,7 @@ import "../app.css";
 const RootLayout = () => {
   const [hasCheckedForUpdate, setHasCheckedForUpdate] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [lastUpdateCheckTime, setLastUpdateCheckTime] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -45,14 +45,18 @@ const RootLayout = () => {
 
 
   useEffect(() => {
+    // Check screen size and set showMenu accordingly
+    const screenWidth = window.innerWidth;
+    setShowMenu(screenWidth < 770);
+
     window.addEventListener('resize', closeMobileMenu);
     return () => {
       window.removeEventListener('resize', closeMobileMenu);
     };
+  }, []);
 
 
 
-  }, [showMenu]);
 
   const toggleMobileMenu = () => {
     setShowMenu(!showMenu);
@@ -130,7 +134,7 @@ const RootLayout = () => {
               {showMenu ? (
                 <Box onClick={closeMobileMenu}></Box>
               ) : (
-                <Box onClick={toggleMobileMenu}  _hover={{ cursor: "pointer", transform: "rotate(360deg)" }}>
+                <Box onClick={toggleMobileMenu} _hover={{ cursor: "pointer", transform: "rotate(360deg)" }}>
                   <svg fill="black" width="34px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3 6h14v2H3zm0 5h14v2H3zm0 5h14v2H3z" />
                   </svg>
