@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Center, Text, Link, Flex } from '@chakra-ui/react';
-import { pg_lk, loadNewWindow } from '../../data/db';
+import { loadNewWindow } from '../../data/helpers';
+import { pg_lk } from '../../data/db';
 import "../app.css"
 
 

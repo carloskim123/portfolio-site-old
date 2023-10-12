@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container, Text, Flex } from "@chakra-ui/layout";
-import { TailSpin, ColorRing } from "react-loader-spinner";
-import { currentDayTime, getRandomFromArray } from "../../data/db";
+import { ColorRing } from "react-loader-spinner";
+import { currentDayTime, getRandomFromArray } from "../../data/helpers";
 import { daytimeQuotes, nighttimeQuotes } from "../../data/quoteable";
 
 export default function Loader() {
@@ -22,6 +22,7 @@ export default function Loader() {
     }, [currentTime, dayPeriod]);
 
     const loaderOverlayStyles = {
+        cursor: "none",
         position: "fixed",
         top: 0,
         left: 0,
@@ -34,7 +35,6 @@ export default function Loader() {
     };
 
     const loaderStyles = {
-        /* Add any additional loader styles here */
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -48,12 +48,12 @@ export default function Loader() {
                 <Flex>
                     <ColorRing
                         visible={true}
-                        height="80"
-                        width="80"
+                        height="94"
+                        width="94"
                         ariaLabel="blocks-loading"
                         wrapperStyle={{}}
                         wrapperClass="blocks-wrapper"
-                        colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+                        colors={['#e15b64', '#f47e60', '#fb8b24', '#abbd81', '#ef476f']}
                     />
                 </Flex>
                 <Flex mt={"1em"}>

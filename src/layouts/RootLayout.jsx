@@ -6,9 +6,10 @@ import { Suspense, useEffect, useState } from "react"
 // Local Imports
 import Loader from '../components/Loader';
 import Footer from '../components/Footer';
+import CustomModal from '../components/CustomModal';
+
 import { routes } from '../../data/db';
 import "../app.css";
-import CustomModal from '../components/CustomModal';
 
 const RootLayout = () => {
   const [hasCheckedForUpdate, setHasCheckedForUpdate] = useState(false);
@@ -98,7 +99,7 @@ const RootLayout = () => {
 
   return (
     <div>
-      <Flex flexDirection="column" minH="100vh" cursor="auto">
+      <Flex flexDirection="column" minH="100vh" cursor="auto" >
         <Box
           py={2}
           px={4}
@@ -108,7 +109,7 @@ const RootLayout = () => {
           position={"fixed"}
           zIndex={100}
           borderBottom={"2px solid black"}
-          backdropFilter="blur(10px)"
+          backdropFilter="blur(5px)"
           background="rgba(0, 0, 0, 0.001)"
         >
           <Flex justifyContent={"space-between"} alignItems="center" fontSize="18px">
@@ -129,7 +130,7 @@ const RootLayout = () => {
               {showMenu ? (
                 <Box onClick={closeMobileMenu}></Box>
               ) : (
-                <Box onClick={toggleMobileMenu} _hover={{ cursor: "pointer" }}>
+                <Box onClick={toggleMobileMenu}  _hover={{ cursor: "pointer", transform: "rotate(360deg)" }}>
                   <svg fill="black" width="34px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3 6h14v2H3zm0 5h14v2H3zm0 5h14v2H3z" />
                   </svg>
@@ -166,16 +167,16 @@ const RootLayout = () => {
 
         <Flex flex="1" paddingTop={"60px"} >
           <Box
-            cursor={"pointer"}
+            cursor="pointer"
             position="fixed"
-            top="0"
-            left={showMenu ? "0" : "-100%"}
-            zIndex="100"
+            top={showMenu ? "0px" : "-100%"}
+            left={0}
+            zIndex={100}
             w="100%"
             h="100%"
             backdropFilter="blur(3px)"
             background="rgba(0, 0, 0, 0.01)"
-            transition="left 250ms cubic-bezier(0.25, 1, 0.5, 1)"
+            transition="top 500ms ease"
           >
             <Box
               className="sidebar"
@@ -184,7 +185,7 @@ const RootLayout = () => {
               w="100%"
               py={7}
               px={6}
-              borderBottom="2px solid black"
+              // borderBottom="2px solid black"
               display="flex"
               flexDir="column"
               gap=".5rem"
