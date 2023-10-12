@@ -45,15 +45,11 @@ const RootLayout = () => {
 
 
   useEffect(() => {
-    // Check screen size and set showMenu accordingly
-    const screenWidth = window.innerWidth;
-    setShowMenu(screenWidth < 770);
-
     window.addEventListener('resize', closeMobileMenu);
     return () => {
       window.removeEventListener('resize', closeMobileMenu);
     };
-  }, []);
+  }, [showMenu])
 
 
 
@@ -174,14 +170,13 @@ const RootLayout = () => {
             cursor="pointer"
             position="fixed"
             top={0}
-            left={0}
             right={showMenu ? "0px" : "-100%"}
             zIndex={100}
             w="100%"
             h="100%"
             backdropFilter="blur(4px)"
             background="rgba(0, 0, 0, 0.01)"
-            transition="right 500ms ease"
+            transition="right 400ms ease"
           >
             <Box
               className="sidebar"
