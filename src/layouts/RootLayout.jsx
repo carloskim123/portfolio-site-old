@@ -176,6 +176,7 @@ const RootLayout = () => {
             h="100%"
             backdropFilter="blur(4px)"
             background="rgba(0, 0, 0, 0.01)"
+            transition="bottom 200ms ease-in"
           >
             <Box
               className="sidebar"
