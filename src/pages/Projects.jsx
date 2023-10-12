@@ -39,7 +39,7 @@ const Projects = () => {
                 rounded: "sm",
               }}
               fontSize={"17px"}
-              h="425px" // Set a fixed height for all project boxes
+              h="4445px" // Set a fixed height for all project boxes
             >
               <Box position="relative" height="200px">
                 <Image
@@ -69,7 +69,7 @@ const Projects = () => {
               <Text>Tech Stack: {project?.tech_stack}</Text>
             </Box>
           ) : (
-            <Skeleton height={"425px"} rounded={"none"} />
+            <Skeleton height={"445px"} rounded={"none"} />
           )}
         </div>
       ))}
