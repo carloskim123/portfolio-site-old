@@ -169,14 +169,15 @@ const RootLayout = () => {
           <Box
             cursor="pointer"
             position="fixed"
-            top={0}
-            right={showMenu ? "0px" : "-100%"}
+            // top={0}
+            bottom={showMenu ? "0px" : "-100%"}
             zIndex={100}
+
             w="100%"
             h="100%"
             backdropFilter="blur(4px)"
             background="rgba(0, 0, 0, 0.01)"
-            transition="right 400ms ease"
+            transition="bottom 400ms ease"
           >
             <Box
               className="sidebar"
@@ -185,7 +186,7 @@ const RootLayout = () => {
               w="100%"
               py={7}
               px={6}
-              // borderBottom="2px solid black"
+              borderBottom="2px solid black"
               display="flex"
               flexDir="column"
               gap=".5rem"
