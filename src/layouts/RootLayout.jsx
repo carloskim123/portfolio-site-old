@@ -155,15 +155,6 @@ const RootLayout = () => {
             </Flex>
           </Flex>
         </Box>
-        {showUpdateButton && (
-
-          <Box mt={"4rem"}>
-            <>
-              <Button ml={"10px"} bg={"blue.400"} color={"black"} _hover={{ color: "black" }} onClick={openModal}>Check for Updates</Button>
-              <CustomModal isOpen={isModalOpen} onClose={closeModal} />
-            </>
-          </Box>
-        )}
 
         <Flex flex="1" paddingTop={"60px"} >
           <Box
@@ -176,7 +167,7 @@ const RootLayout = () => {
             h="100%"
             backdropFilter="blur(4px)"
             background="rgba(0, 0, 0, 0.01)"
-            transition="bottom 200ms ease-in"
+            transition="bottom 100ms ease-in-out"
           >
             <Box
               className="sidebar"
