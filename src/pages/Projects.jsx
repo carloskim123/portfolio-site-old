@@ -39,7 +39,7 @@ const Projects = () => {
                 rounded: "sm",
               }}
               fontSize={"17px"}
-              h="4445px" // Set a fixed height for all project boxes
+              h="445px" // Set a fixed height for all project boxes
             >
               <Box position="relative" height="200px">
                 <Image
