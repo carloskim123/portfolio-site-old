@@ -172,12 +172,12 @@ const RootLayout = () => {
             // top={0}
             bottom={showMenu ? "0px" : "-100%"}
             zIndex={100}
-
             w="100%"
             h="100%"
             backdropFilter="blur(4px)"
             background="rgba(0, 0, 0, 0.01)"
-            transition="bottom 400ms ease"
+            borderTop="2px solid #5a189a"
+            transition="bottom 400ms cubic-bezier(0.645, 0.045, 0.355, 1)"
           >
             <Box
               className="sidebar"
