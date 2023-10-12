@@ -14,7 +14,7 @@ import "../app.css";
 const RootLayout = () => {
   const [hasCheckedForUpdate, setHasCheckedForUpdate] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [showMenu, setShowMenu] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [lastUpdateCheckTime, setLastUpdateCheckTime] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -173,14 +173,15 @@ const RootLayout = () => {
           <Box
             cursor="pointer"
             position="fixed"
-            top={showMenu ? "0px" : "-100%"}
+            top={0}
             left={0}
+            right={showMenu ? "0px" : "-100%"}
             zIndex={100}
             w="100%"
             h="100%"
-            backdropFilter="blur(3px)"
+            backdropFilter="blur(4px)"
             background="rgba(0, 0, 0, 0.01)"
-            transition="top 500ms ease"
+            transition="right 500ms ease"
           >
             <Box
               className="sidebar"
