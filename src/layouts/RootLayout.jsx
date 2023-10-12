@@ -24,7 +24,7 @@ const RootLayout = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 5000);
+    }, 3000);
 
     const fetchedUpdateState = localStorage.getItem("hasCheckedForUpdate");
     setHasCheckedForUpdate(fetchedUpdateState === "true"); // Parse as boolean
