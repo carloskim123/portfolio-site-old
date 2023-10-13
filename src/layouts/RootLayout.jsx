@@ -6,18 +6,14 @@ import { Suspense, useEffect, useState } from "react"
 // Local Imports
 import Loader from '../components/Loader';
 import Footer from '../components/Footer';
-import CustomModal from '../components/CustomModal';
 
 import { routes } from '../../data/db';
 import "../app.css";
 
 const RootLayout = () => {
-  const [hasCheckedForUpdate, setHasCheckedForUpdate] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [lastUpdateCheckTime, setLastUpdateCheckTime] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -25,14 +21,6 @@ const RootLayout = () => {
     setTimeout(() => {
       setIsLoading(false);
     }, 5000);
-
-    const fetchedUpdateState = localStorage.getItem("hasCheckedForUpdate");
-    setHasCheckedForUpdate(fetchedUpdateState === "true"); // Parse as boolean
-
-    const lastCheckedTime = localStorage.getItem("lastUpdateCheckTime");
-    if (lastCheckedTime) {
-      setLastUpdateCheckTime(Number(lastCheckedTime));
-    }
 
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
@@ -58,36 +46,7 @@ const RootLayout = () => {
     setShowMenu(!showMenu);
   };
 
-  const checkedForUpdate = () => {
-    setHasCheckedForUpdate(true);
-    localStorage.setItem('hasCheckedForUpdate', true);
 
-    setLastUpdateCheckTime(Date.now());
-    localStorage.setItem('lastUpdateCheckTime', Date.now().toString());
-  }
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    checkedForUpdate();
-  };
-
-
-
-  setTimeout(() => {
-    setHasCheckedForUpdate(false);
-    localStorage.setItem("hasCheckedForUpdate", false);
-    localStorage.clear();
-  }, 846000)
-
-  // Determine whether to show the "Check for updates" button
-  const showUpdateButton =
-    !hasCheckedForUpdate &&
-    (!lastUpdateCheckTime ||
-      Date.now() - lastUpdateCheckTime >= 24 * 60 * 60 * 1000); // 24 hours in milliseconds
 
   const closeMobileMenu = () => {
     if (window.innerWidth >= 770 && showMenu) {
@@ -155,29 +114,19 @@ const RootLayout = () => {
             </Flex>
           </Flex>
         </Box>
-        {showUpdateButton && (
 
-          <Box mt={"4rem"}>
-            <>
-              <Button ml={"10px"} bg={"blue.400"} color={"black"} _hover={{ color: "black" }} onClick={openModal}>Check for Updates</Button>
-              <CustomModal isOpen={isModalOpen} onClose={closeModal} />
-            </>
-          </Box>
-        )}
 
         <Flex flex="1" paddingTop={"60px"} >
           <Box
             cursor="pointer"
             position="fixed"
-            // top={0}
             bottom={showMenu ? "0px" : "-100%"}
             zIndex={100}
             w="100%"
             h="100%"
             backdropFilter="blur(4px)"
             background="rgba(0, 0, 0, 0.01)"
-            borderTop="2px solid #5a189a"
-            transition="bottom 400ms cubic-bezier(0.645, 0.045, 0.355, 1)"
+            borderTop="2px solid zff5400"
           >
             <Box
               className="sidebar"
