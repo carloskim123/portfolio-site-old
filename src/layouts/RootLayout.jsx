@@ -20,7 +20,7 @@ const RootLayout = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 5000);
+    }, 3000);
 
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
@@ -114,7 +114,15 @@ const RootLayout = () => {
             </Flex>
           </Flex>
         </Box>
+        {showUpdateButton && (
 
+          <Box mt={"4rem"}>
+            <>
+              <Button ml={"10px"} bg={"blue.400"} color={"black"} _hover={{ color: "black" }} onClick={openModal}>Check for Updates</Button>
+              <CustomModal isOpen={isModalOpen} onClose={closeModal} />
+            </>
+          </Box>
+        )}
 
         <Flex flex="1" paddingTop={"60px"} >
           <Box
@@ -126,7 +134,8 @@ const RootLayout = () => {
             h="100%"
             backdropFilter="blur(4px)"
             background="rgba(0, 0, 0, 0.01)"
-            borderTop="2px solid zff5400"
+            borderTop="2px solid #5a189a"
+            transition="bottom 400ms cubic-bezier(0.645, 0.045, 0.355, 1)"
           >
             <Box
               className="sidebar"
