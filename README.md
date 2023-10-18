@@ -2,8 +2,6 @@
 
 This is my portfolio site, built using React, Chakra UI, Vite, and various other dependencies.
 
-![Project Screenshot](screenshot.png)
-
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
