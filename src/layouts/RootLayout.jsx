@@ -15,7 +15,7 @@ const RootLayout = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
 
-  const navigate = useNavigate();
+
 
   useEffect(() => {
     setTimeout(() => {
@@ -30,6 +30,16 @@ const RootLayout = () => {
       clearInterval(intervalId); // Cleanup interval
     };
   }, []);
+
+  let validated_key = localStorage.getItem("validated");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!validated_key) {
+      navigate('/validate_page')
+    }
+
+  }, [validated_key])
 
 
   useEffect(() => {

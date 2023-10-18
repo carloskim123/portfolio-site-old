@@ -1,8 +1,12 @@
 // External Libraries
+import { useNavigate } from 'react-router-dom'
 import { Image } from "@chakra-ui/image";
 import { Box, Flex, Link, Text } from "@chakra-ui/layout";
-import { SkeletonText, Tooltip } from "@chakra-ui/react";
+import { Tooltip } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+
+
+
 // Local Imports
 import {
   links, profile_pic,
@@ -25,7 +29,10 @@ export default function Home() {
   const currentTime = new Date().getHours();
   const shuffledArray = shuffle(links);
 
+  let validated_key = localStorage.getItem("validated");
 
+
+  const navigate = useNavigate()
   useEffect(() => {
 
     currentDayTime(setDayPeriod, currentTime);
@@ -36,6 +43,13 @@ export default function Home() {
 
 
   }, [currentTime, dayPeriod]);
+
+
+  useEffect(() => {
+    if (!validated_key) {
+      navigate('/validate_page')
+    } 
+  }, [validated_key])
 
 
   return (

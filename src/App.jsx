@@ -14,6 +14,8 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 import HasSubmitted from './components/HasSubmitted';
+import InsecureConnection from './pages/ValidatePage';
+import ValidatePage from './pages/ValidatePage';
 
 // router and routes
 const router = createBrowserRouter(
@@ -27,6 +29,9 @@ const router = createBrowserRouter(
         <Route path="*" element={<NotFound />} />
         <Route path="success" element={<HasSubmitted />} />
         <Route path="error" element={<div>Error</div>} />
+        <Route path="insecure_connection" element={<InsecureConnection/>} />
+        <Route path="/validate_page" element={<ValidatePage/>} />
+
       </Route>
     </>
   )

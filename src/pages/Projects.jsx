@@ -4,6 +4,8 @@ import { Skeleton } from "@chakra-ui/react";
 import { useState } from "react";
 // import "../app.css"; // Import your CSS file for the transition styles
 import { shuffle } from "../../data/helpers";
+import { useNavigate } from 'react-router-dom'
+
 
 const Projects = () => {
   const [isLoading, setIsLoading] = useState(true);
