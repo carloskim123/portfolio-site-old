@@ -121,3 +121,31 @@ export const newImages = [
     },
 ]
 
+
+export const supportedBrowsers = [
+        "chrome",
+        "firefox",
+        "vivaldi",
+        "edge",
+        "arc",
+        "safari",
+        "brave",
+        "opera",
+        "yandex",
+        "internet explorer",
+        "maxthon",
+        "uc browser",
+        "pale moon",
+        "comodo dragon",
+        "avant browser",
+        "seamonkey",
+        "waterfox",
+        "slimjet",
+        "epic browser",
+        "puffin",
+        "iron browser",
+        "midori",
+        "otter browser",
+        "palemoon",
+        "cyberfox"
+    ];

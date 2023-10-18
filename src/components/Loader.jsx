@@ -22,7 +22,6 @@ export default function Loader() {
     }, [currentTime, dayPeriod]);
 
     const loaderOverlayStyles = {
-        cursor: "none",
         position: "fixed",
         top: 0,
         left: 0,

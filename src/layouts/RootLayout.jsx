@@ -31,15 +31,9 @@ const RootLayout = () => {
     };
   }, []);
 
-  let validated_key = localStorage.getItem("validated");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!validated_key) {
-      navigate('/validate_page')
-    }
 
-  }, [validated_key])
 
 
   useEffect(() => {
@@ -135,7 +129,7 @@ const RootLayout = () => {
             backdropFilter="blur(4px)"
             background="rgba(0, 0, 0, 0.01)"
             borderTop="2px solid #5a189a"
-            transition="bottom 100ms ease"
+            transition="right 100ms ease"
           >
             <Box
               className="sidebar"
