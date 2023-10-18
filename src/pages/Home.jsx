@@ -1,21 +1,26 @@
 // External Libraries
+import { useNavigate } from 'react-router-dom'
 import { Image } from "@chakra-ui/image";
 import { Box, Flex, Link, Text } from "@chakra-ui/layout";
 import { Tooltip } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
+
+
 // Local Imports
 import {
-  profile_pic,
-  links,
-  loadNewWindow,
-  currentDayTime,
-  getRandomFromArray,
-  shuffle,
+  links, profile_pic,
 } from "../../data/db";
 import { daytimeQuotes, nighttimeQuotes } from "../../data/quoteable";
+import {
+  loadNewWindow,
+  shuffle,
+  currentDayTime,
+  getRandomFromArray,
+} from '../../data/helpers'
 
 import "../app.css";
+
 
 export default function Home() {
   const [dayPeriod, setDayPeriod] = useState("day");
@@ -24,12 +29,10 @@ export default function Home() {
   const currentTime = new Date().getHours();
   const shuffledArray = shuffle(links);
 
+  let validated_key = localStorage.getItem("validated");
 
 
-
-
-
-
+  const navigate = useNavigate()
   useEffect(() => {
 
     currentDayTime(setDayPeriod, currentTime);
@@ -37,9 +40,16 @@ export default function Home() {
     const currentQuotesArray = dayPeriod === "night" ? nighttimeQuotes : daytimeQuotes;
 
     getRandomFromArray(setRandomQuote, currentQuotesArray);
-    
+
 
   }, [currentTime, dayPeriod]);
+
+
+  useEffect(() => {
+    if (!validated_key) {
+      navigate('/validate_page')
+    } 
+  }, [validated_key])
 
 
   return (

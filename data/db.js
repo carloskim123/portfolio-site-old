@@ -76,9 +76,9 @@ export const pg_lk = [
 ]
 export const routes = [
     { path: "/", pathname: "Home" },
-    { path: "/contact", pathname: "Contact" },
-    { path: "/about", pathname: "About" },
     { path: "/projects", pathname: "Projects" },
+    { path: "/about", pathname: "About" },
+    { path: "/contact", pathname: "Contact" },
 
 ]
 
@@ -104,60 +104,20 @@ export const accordionContent = [
 
 export const colorsArray = ["#fefae0", "#e9ecef", "#edf6f9", "#fdffb6", "#f4f1de", "#f0f3bd"];
 export const newImages = [
+    // {
+    //     param: "https://images.pexels.com/photos/3791466/pexels-photo-3791466.jpeg?auto=compress&cs=tinysrgb&w=600"
+    // },
     {
-        url: "https://images.pexels.com/photos/3791466/pexels-photo-3791466.jpeg?auto=compress&cs=tinysrgb&w=600"
+        param: "https://images.pexels.com/photos/1743366/pexels-photo-1743366.jpeg?auto=compress&cs=tinysrgb&w=600"
     },
     {
-        url: "https://images.pexels.com/photos/1743366/pexels-photo-1743366.jpeg?auto=compress&cs=tinysrgb&w=600"
+        param: "https://images.pexels.com/photos/2724664/pexels-photo-2724664.jpeg?auto=compress&cs=tinysrgb&w=600"
     },
     {
-        url: "https://images.pexels.com/photos/2724664/pexels-photo-2724664.jpeg?auto=compress&cs=tinysrgb&w=600"
+        param: "https://images.pexels.com/photos/3791466/pexels-photo-3791466.jpeg?auto=compress&cs=tinysrgb&w=600"
     },
     {
-        url: "https://images.pexels.com/photos/3791466/pexels-photo-3791466.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-        url: "https://images.pexels.com/photos/3791466/pexels-photo-3791466.jpeg?auto=compress&cs=tinysrgb&w=600"
+        param: "https://images.pexels.com/photos/3791466/pexels-photo-3791466.jpeg?auto=compress&cs=tinysrgb&w=600"
     },
 ]
-
-
-export const loadNewWindow = (url) => {
-    return window.open(url, "_blank");
-}
-
-
-export const currentDayTime = (setDayPeriod, currentTime) => {
-    if (currentTime >= 19 || currentTime <= 6) {
-        setDayPeriod("night");
-    } else if (currentTime >= 6 && currentTime <= 19) {
-        setDayPeriod("day");
-    } else {
-        setDayPeriod(null);
-    }
-};
-
-export const getRandomFromArray = (setRandom, currentArray) => {
-    // check if currentQuotesArray is defined and is an array
-    if (Array.isArray(currentArray)) {
-        const randomIndex = Math.floor(Math.random() * currentArray.length);
-        setRandom(currentArray[randomIndex].text);
-    } else {
-        console.error('currentArray is not defined or empty');
-    }
-
-}
-
-export const shuffle = (array) => {
-    const shuffledArray = [...array];
-
-    for(let i = shuffledArray.length -1; i > 0; i--) {
-        const randomIndex = Math.floor(Math.random() * (i + 1));
-
-        [shuffledArray[i], shuffledArray[randomIndex]] = [shuffledArray[randomIndex], shuffledArray[i]]
-    }
-
-    return shuffledArray;
-}
-
 

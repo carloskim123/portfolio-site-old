@@ -1,12 +1,12 @@
-// External Library
 import { Link, useNavigate } from 'react-router-dom';
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text, Button } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
 import { Suspense, useEffect, useState } from "react"
 
 // Local Imports
 import Loader from '../components/Loader';
 import Footer from '../components/Footer';
+
 import { routes } from '../../data/db';
 import "../app.css";
 
@@ -15,12 +15,12 @@ const RootLayout = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
 
-  const navigate = useNavigate();
+
 
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 3400);
+    }, 3000);
 
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
@@ -29,9 +29,17 @@ const RootLayout = () => {
     return () => {
       clearInterval(intervalId); // Cleanup interval
     };
-
   }, []);
 
+  let validated_key = localStorage.getItem("validated");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!validated_key) {
+      navigate('/validate_page')
+    }
+
+  }, [validated_key])
 
 
   useEffect(() => {
@@ -39,11 +47,16 @@ const RootLayout = () => {
     return () => {
       window.removeEventListener('resize', closeMobileMenu);
     };
-  }, [showMenu]);
+  }, [showMenu])
+
+
+
 
   const toggleMobileMenu = () => {
     setShowMenu(!showMenu);
   };
+
+
 
   const closeMobileMenu = () => {
     if (window.innerWidth >= 770 && showMenu) {
@@ -53,11 +66,9 @@ const RootLayout = () => {
     }
   };
 
-  
-
   return (
     <div>
-      <Flex flexDirection="column" minH="100vh" cursor="auto">
+      <Flex flexDirection="column" minH="100vh" cursor="auto" >
         <Box
           py={2}
           px={4}
@@ -67,7 +78,7 @@ const RootLayout = () => {
           position={"fixed"}
           zIndex={100}
           borderBottom={"2px solid black"}
-          backdropFilter="blur(10px)"
+          backdropFilter="blur(5px)"
           background="rgba(0, 0, 0, 0.001)"
         >
           <Flex justifyContent={"space-between"} alignItems="center" fontSize="18px">
@@ -88,13 +99,14 @@ const RootLayout = () => {
               {showMenu ? (
                 <Box onClick={closeMobileMenu}></Box>
               ) : (
-                <Box onClick={toggleMobileMenu} _hover={{ cursor: "pointer" }}>
+                <Box onClick={toggleMobileMenu} _hover={{ cursor: "pointer", transform: "rotate(360deg)" }}>
                   <svg fill="black" width="34px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3 6h14v2H3zm0 5h14v2H3zm0 5h14v2H3z" />
                   </svg>
                 </Box>
               )}
             </Box>
+
             <Flex display={{ base: "none", md: "flex" }} gap="2rem">
               {routes.map(route => (
                 <Link key={route.path} to={route.path}>
@@ -108,24 +120,22 @@ const RootLayout = () => {
                     {route.pathname}
                   </Text>
                 </Link>
-
               ))}
-              
             </Flex>
           </Flex>
         </Box>
         <Flex flex="1" paddingTop={"60px"} >
           <Box
-            cursor={"pointer"}
+            cursor="pointer"
             position="fixed"
-            top="0"
-            left={showMenu ? "0" : "-100%"}
-            zIndex="100"
+            bottom={showMenu ? "0px" : "-100%"}
+            zIndex={100}
             w="100%"
             h="100%"
-            backdropFilter="blur(3px)"
+            backdropFilter="blur(4px)"
             background="rgba(0, 0, 0, 0.01)"
-            transition="left 250ms cubic-bezier(0.25, 1, 0.5, 1)"
+            borderTop="2px solid #5a189a"
+            transition="bottom 100ms ease"
           >
             <Box
               className="sidebar"

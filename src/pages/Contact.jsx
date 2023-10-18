@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   Box,
   FormControl,
@@ -22,7 +22,6 @@ export default function Contact() {
     message: "",
   });
 
-  const inputWidthCustom = "120%"
 
   const validateForm = () => {
     const errors = {};
@@ -80,7 +79,6 @@ export default function Contact() {
         justifyContent={"center"}
         fontSize={"26px"}
         my={"1rem"}
-        ml={"12%"}
       >
         You can Contact me through the form below
       </Flex>
@@ -94,7 +92,6 @@ export default function Contact() {
           <FormControl id="user_name" mb={4}>
             <FormLabel>Name</FormLabel>
             <Input
-              width={inputWidthCustom}
               autoComplete="on"
               autoFocus={true}
               type="text"
@@ -115,7 +112,6 @@ export default function Contact() {
             <Input
               type="email"
               name="user_email"
-              width={inputWidthCustom}
               borderColor="black.300"
               autoComplete="on"
               focusBorderColor="blue.400"
@@ -137,7 +133,6 @@ export default function Contact() {
               autoSave="true"
               name="message"
               rows={4}
-              width={inputWidthCustom}
               height={"120px"}
               borderColor="black.300"
               focusBorderColor="blue.400"
@@ -155,7 +150,7 @@ export default function Contact() {
             disabled
             colorScheme="blue"
             size="lg"
-            width={inputWidthCustom}
+            w={"100%"}
             type="submit"
             isLoading={isSubmitted}
             loadingText="Submitting..."

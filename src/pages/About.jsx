@@ -11,14 +11,10 @@ import {
 } from '@chakra-ui/react';
 
 import { accordionContent, profile_pic } from '../../data/db';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 export default function About() {
-
-  const { pathname } = useLocation();
-
-
 
   return (
     <div>
