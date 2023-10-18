@@ -44,7 +44,7 @@ export default function ValidateForm() {
                 <Box maxW="md" mx="auto" p={4} rounded="md">
                     <form onSubmit={(e) => e.preventDefault()}>
                         <FormControl id="user_name" mb={4}>
-                            <Text>For security purposes, you need to enter your browser name. You will be asked to enter browser name after 2hrs</Text>
+                            <Text>For security purposes, you need to enter your browser name. You will be asked to enter browser name after 12hrs</Text>
                             <FormLabel>Enter Browser Name:</FormLabel>
                             <Input
                                 autoComplete="off"
