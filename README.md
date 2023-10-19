@@ -1,4 +1,4 @@
-`# Portfolio Site
+# Carlos Kirui Portfolio 
 
 This is my portfolio site, built using React, Chakra UI, Vite, and various other dependencies.
 
