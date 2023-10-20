@@ -4,7 +4,6 @@ import { Box, Flex, Text } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { Suspense } from "react";
-import { useSwipeable } from "react-swipeable";
 
 // Import local components
 import Loader from '../components/Loader';
@@ -76,15 +75,7 @@ const RootLayout = () => {
     }
   };
 
-  const swipeHandlers = useSwipeable({
-    onSwipedUp: () => {
-      setShowMenu(false)
-    },
-    onSwipedDown: () => {
-      setShowMenu(true)
-    },
 
-  })
 
   // Render the RootLayout component
   return (
@@ -170,7 +161,6 @@ const RootLayout = () => {
               display="flex"
               flexDir="column"
               gap=".5rem"
-              {...swipeHandlers}
             >
               <Flex>
                 <Box mr={"auto"} fontSize={"23px"}>Carlos.K 👋🏽<Text fontSize={"14px"}>{currentTime.toLocaleTimeString()}</Text></Box>
