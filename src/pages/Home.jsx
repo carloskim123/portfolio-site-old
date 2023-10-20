@@ -36,6 +36,7 @@ export default function Home() {
   useEffect(() => {
     // Determine the day period based on the current time
     currentDayTime(setDayPeriod, currentTime);
+    
 
     // Select quotes based on the day period
     const currentQuotesArray = dayPeriod === "night" ? nighttimeQuotes : daytimeQuotes;

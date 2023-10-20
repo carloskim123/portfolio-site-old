@@ -53,7 +53,6 @@ const Projects = () => {
           zIndex={100}
         >
           <Input
-            autoFocus={true}
             backdropFilter="blur(10px)"
             background="rgba(0, 0, 0, 0.001)"
             variant={"unstyled"}
@@ -69,6 +68,7 @@ const Projects = () => {
             _placeholder={{
               color: "black",
             }}
+            fontFamily={"Klee One"}
           />
         </form>
       </Box>
