@@ -140,16 +140,15 @@ const RootLayout = () => {
           <Box
             cursor="pointer"
             position="fixed"
-            // top={0}
-            bottom={0}
-            top={showMenu ? "0px" : "-100%"}
+            top={showMenu ? "0px" : "-100vh"} // Use 'top' property
+            left="0"
             zIndex={100}
             w="100%"
             h="100%"
             backdropFilter="blur(4px)"
             background="rgba(0, 0, 0, 0.01)"
             borderTop="2px solid #000"
-            transition="top 200ms ease"
+            transition="top 200ms ease" // Use 'top' for the transition
           >
             <Box
               className="sidebar"
