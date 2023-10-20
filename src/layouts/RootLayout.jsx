@@ -1,63 +1,73 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { Box, Flex, Text, Button } from "@chakra-ui/react";
+// Import necessary modules and components
+import { useEffect, useState } from "react";
+import { Box, Flex, Text } from "@chakra-ui/react";
+import { Link, useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import { Suspense, useEffect, useState } from "react"
+import { Suspense } from "react";
 
-// Local Imports
+// Import local components
 import Loader from '../components/Loader';
 import Footer from '../components/Footer';
 
+// Import route data
 import { routes } from '../../data/db';
+
+// Import styling
 import "../app.css";
 
+// Define the RootLayout component
 const RootLayout = () => {
+  // State to track whether the application is loading
   const [isLoading, setIsLoading] = useState(true);
+  // State to manage the display of the mobile menu
   const [showMenu, setShowMenu] = useState(false);
+  // State to store the current time
   const [currentTime, setCurrentTime] = useState(new Date());
 
-
-
+  // Simulate loading for 3 seconds and then set 'isLoading' to false
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
 
+    // Update 'currentTime' every second
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
 
+    // Cleanup the interval when the component unmounts
     return () => {
-      clearInterval(intervalId); // Cleanup interval
+      clearInterval(intervalId);
     };
   }, []);
 
+  // Check for a validated key in local storage
   let validated_key = localStorage.getItem("validated");
+  // Initialize the navigation function from 'react-router-dom'
   const navigate = useNavigate();
 
+  // Redirect to the validation page if not validated
   useEffect(() => {
     if (!validated_key) {
-      navigate('/validate_page')
+      navigate('/validate_page');
     }
+  }, [validated_key]);
 
-  }, [validated_key])
-
-
+  // Add event listener for window resize and call 'closeMobileMenu' function when 'showMenu' changes
   useEffect(() => {
     window.addEventListener('resize', closeMobileMenu);
+    // Remove event listener when the component unmounts
     return () => {
       window.removeEventListener('resize', closeMobileMenu);
     };
-  }, [showMenu])
+  }, [showMenu]);
 
-
-
-
+  // Toggle the mobile menu
   const toggleMobileMenu = () => {
     setShowMenu(!showMenu);
   };
 
-
-
+  // Close the mobile menu if the window width is >= 770 pixels
   const closeMobileMenu = () => {
     if (window.innerWidth >= 770 && showMenu) {
       setShowMenu(false);
@@ -66,9 +76,10 @@ const RootLayout = () => {
     }
   };
 
+  // Render the RootLayout component
   return (
     <div>
-      <Flex flexDirection="column" minH="100vh" cursor="auto" >
+      <Flex flexDirection="column" minH="100vh" cursor="auto">
         <Box
           py={2}
           px={4}
@@ -81,7 +92,7 @@ const RootLayout = () => {
           backdropFilter="blur(5px)"
           background="rgba(0, 0, 0, 0.001)"
         >
-          <Flex justifyContent={"space-between"} alignItems="center" fontSize="18px">
+          <Flex justifyContent={"space-between"} alignItems="center" fontSize="18px" >
             <Link to="/">
               <Text
                 fontSize={"20px"}
@@ -107,7 +118,7 @@ const RootLayout = () => {
               )}
             </Box>
 
-            <Flex display={{ base: "none", md: "flex" }} gap="2rem">
+            <Flex display={{ base: "none", md: "flex" }} gap="2rem" >
               {routes.map(route => (
                 <Link key={route.path} to={route.path}>
                   <Text
@@ -124,18 +135,21 @@ const RootLayout = () => {
             </Flex>
           </Flex>
         </Box>
-        <Flex flex="1" paddingTop={"60px"} >
+        
+        <Flex flex="1" paddingTop={"60px"} onClick={closeMobileMenu}>
           <Box
             cursor="pointer"
             position="fixed"
-            bottom={showMenu ? "0px" : "-100%"}
+            // top={0}
+            bottom={0}
+            top={showMenu ? "0px" : "-100%"}
             zIndex={100}
             w="100%"
             h="100%"
             backdropFilter="blur(4px)"
             background="rgba(0, 0, 0, 0.01)"
-            borderTop="2px solid #5a189a"
-            transition="bottom 100ms ease"
+            borderTop="2px solid #000"
+            transition="top 200ms ease"
           >
             <Box
               className="sidebar"
@@ -149,7 +163,7 @@ const RootLayout = () => {
               flexDir="column"
               gap=".5rem"
             >
-              <Flex >
+              <Flex>
                 <Box mr={"auto"} fontSize={"23px"}>Carlos.K 👋🏽<Text fontSize={"14px"}>{currentTime.toLocaleTimeString()}</Text></Box>
                 <Box
                   onClick={closeMobileMenu}
@@ -190,4 +204,5 @@ const RootLayout = () => {
   );
 };
 
+// Export the RootLayout component
 export default RootLayout;

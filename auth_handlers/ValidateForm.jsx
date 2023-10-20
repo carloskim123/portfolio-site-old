@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react"
-import { validateBrowser } from "./validator"
-import { useNavigate } from 'react-router-dom'
-
+import { useState, useEffect } from "react";
+import { validateBrowser } from "./validator"; // Importing a function for browser validation
+import { useNavigate } from 'react-router-dom';
 import {
     Box,
     FormControl,
@@ -12,19 +11,21 @@ import {
     Text,
     Flex,
 } from "@chakra-ui/react";
-export default function ValidateForm() {
-    const [browserName, setBrowserName] = useState("")
 
-    let validated_key = localStorage.getItem("validated");
-    const navigate = useNavigate();
+export default function ValidateForm() {
+    const [browserName, setBrowserName] = useState(""); // Initialize state for the browser name input
+
+    let validated_key = localStorage.getItem("validated"); // Get a value from local storage
+    const navigate = useNavigate(); // Initialize navigation function using the 'useNavigate' hook
 
     useEffect(() => {
+        // If the user is already validated, navigate to the home page
         if (validated_key) {
-            navigate('/')
+            navigate('/');
         }
+    }, [validated_key]);
 
-    }, [validated_key])
-
+    // Define styles for the loader overlay
     const loaderOverlayStyles = {
         position: "fixed",
         top: 0,
@@ -39,12 +40,11 @@ export default function ValidateForm() {
 
     return (
         <div className="loader-overlay" style={loaderOverlayStyles}>
-
             <Container mt="3rem">
                 <Box maxW="md" mx="auto" p={4} rounded="md">
                     <form onSubmit={(e) => e.preventDefault()}>
                         <FormControl id="user_name" mb={4}>
-                            <Text>For security purposes, you need to enter your browser name. You will be asked to enter browser name after 12hrs</Text>
+                            <Text>For security purposes, you need to enter your browser name. You will be asked to enter the browser name after 12 hours.</Text>
                             <FormLabel>Enter Browser Name:</FormLabel>
                             <Input
                                 autoComplete="off"
@@ -61,7 +61,7 @@ export default function ValidateForm() {
                             />
                         </FormControl>
                         <Button
-                            onClick={() => validateBrowser(browserName, navigate)}
+                            onClick={() => validateBrowser(browserName, navigate)} // Call the 'validateBrowser' function with the browser name and navigate function
                             colorScheme="blue"
                             size="lg"
                             w="100%"
@@ -73,12 +73,5 @@ export default function ValidateForm() {
                 </Box>
             </Container>
         </div>
-
     )
-}
-
-
-
-export  function InsecureConnection() {
-    return <div>Your browser is not valid</div>;
 }

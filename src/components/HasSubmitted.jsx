@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Box, Text, Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { dev_email } from '../../data/db'
-function HasSubmitted() {
-    const navigate = useNavigate();
+import { dev_email } from '../../data/db';
 
+function HasSubmitted() {
+    const navigate = useNavigate(); // Initialize the navigation function from 'react-router-dom'
 
     return (
         <Box
@@ -15,13 +15,13 @@ function HasSubmitted() {
             height="60vh"
         >
             <Text fontSize="3xl" fontWeight="bold" mb={4}>
-                Submission Successful!
+                Submission Successful! {/* Display a success message */}
             </Text>
             <Text fontSize="lg" textAlign="center" mb={8}>
-                Email sent to {dev_email}
+                Email sent to {dev_email} {/* Display the developer's email address */}
             </Text>
             <Button colorScheme="blue" size="lg" onClick={() => navigate("/")}>
-                Back to Home
+                Back to Home {/* Provide a button to return to the home page */}
             </Button>
         </Box>
     );

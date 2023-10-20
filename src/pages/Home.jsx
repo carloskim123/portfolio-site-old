@@ -1,56 +1,56 @@
 // External Libraries
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'; // Importing the 'useNavigate' hook for navigation
 import { Image } from "@chakra-ui/image";
 import { Box, Flex, Link, Text } from "@chakra-ui/layout";
 import { Tooltip } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
-
-
 // Local Imports
 import {
   links, profile_pic,
-} from "../../data/db";
-import { daytimeQuotes, nighttimeQuotes } from "../../data/quoteable";
+} from "../../data/db"; // Importing data from a local source
+import { daytimeQuotes, nighttimeQuotes } from "../../data/quoteable"; // Importing quotes based on day or night
 import {
   loadNewWindow,
   shuffle,
   currentDayTime,
   getRandomFromArray,
-} from '../../data/helpers'
+} from '../../data/helpers' // Importing helper functions
 
-import "../app.css";
-
+import "../app.css"; // Importing CSS styles
 
 export default function Home() {
-  const [dayPeriod, setDayPeriod] = useState("day");
-  const [randomQuote, setRandomQuote] = useState("");
+  const [dayPeriod, setDayPeriod] = useState("day"); // Initialize state for the current day period
+  const [randomQuote, setRandomQuote] = useState(""); // Initialize state for a random quote
 
-  const currentTime = new Date().getHours();
-  const shuffledArray = shuffle(links);
+  const currentTime = new Date().getHours(); // Get the current time in hours
+  const shuffledArray = shuffle(links); // Shuffle an array of links
 
+  // Get values from local storage
   let validated_key = localStorage.getItem("validated");
+  let trials = localStorage.getItem("trials");
 
+  const navigate = useNavigate(); // Initialize navigation function using the 'useNavigate' hook
 
-  const navigate = useNavigate()
   useEffect(() => {
-
+    // Determine the day period based on the current time
     currentDayTime(setDayPeriod, currentTime);
 
+    // Select quotes based on the day period
     const currentQuotesArray = dayPeriod === "night" ? nighttimeQuotes : daytimeQuotes;
 
+    // Set a random quote in the state
     getRandomFromArray(setRandomQuote, currentQuotesArray);
-
 
   }, [currentTime, dayPeriod]);
 
-
   useEffect(() => {
-    if (!validated_key) {
-      navigate('/validate_page')
-    } 
+    // Check if the user is not validated and the number of trials is greater than or equal to 5
+    if (!validated_key && trials >= 5) {
+      // Navigate to the '/validate_page' route
+      navigate('/validate_page');
+    }
   }, [validated_key])
-
 
   return (
     <Box>

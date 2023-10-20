@@ -1,32 +1,16 @@
-const supportedBrowsers = [
-    "chrome",
-    "firefox",
-    "vivaldi",
-    "edge",
-    "arc",
-    "safari",
-    "brave"
-]
-
-
 export const validateBrowser = (browserName, redirectHandler) => {
-    let clean_name = browserName.toLowerCase();
+    let clean_name = browserName.toLowerCase(); // Convert the provided browser name to lowercase for comparison
+    const userAgent = window.navigator.userAgent.toLowerCase(); // Get the user agent string of the browser
 
-    if (supportedBrowsers.includes(clean_name)) {
-        redirectHandler("/");
-        localStorage.setItem("validated", true);
-
+    if (userAgent.includes(clean_name)) {
+        console.log(clean_name); // Log the cleaned browser name to the console
+        redirectHandler('/'); // Redirect to the home page using the provided 'redirectHandler' function
+        localStorage.setItem("validated", true); // Set a flag in local storage to indicate the browser is validated
+        console.log("correct browser name"); // Log a message indicating the browser name is correct
     }
-    else {
-        redirectHandler("/insecure_connection");
-        localStorage.removeItem("validated");
-    }
-
-    console.log("Validating")
-
 }
 
-
+// Set a timeout to remove the 'validated' flag from local storage after 3 hours (10,800,000 milliseconds)
 setTimeout(() => {
     localStorage.removeItem("validated");
-}, 3600000);
+}, 10800000);
