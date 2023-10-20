@@ -1,20 +1,21 @@
 // External Libraries
 import { useNavigate } from 'react-router-dom'; // Importing the 'useNavigate' hook for navigation
 import { Image } from "@chakra-ui/image";
-import { Box, Flex, Link, Text } from "@chakra-ui/layout";
+import { Box, Flex, Link, Text, } from "@chakra-ui/layout";
 import { Tooltip } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 // Local Imports
 import {
-  links, profile_pic,
+  links,
+  newImages
 } from "../../data/db"; // Importing data from a local source
 import { daytimeQuotes, nighttimeQuotes } from "../../data/quoteable"; // Importing quotes based on day or night
 import {
   loadNewWindow,
   shuffle,
   currentDayTime,
-  getRandomFromArray,
+  getRandomFromArray
 } from '../../data/helpers' // Importing helper functions
 
 import "../app.css"; // Importing CSS styles
@@ -22,13 +23,13 @@ import "../app.css"; // Importing CSS styles
 export default function Home() {
   const [dayPeriod, setDayPeriod] = useState("day"); // Initialize state for the current day period
   const [randomQuote, setRandomQuote] = useState(""); // Initialize state for a random quote
+  const [randomImage, setRandomImage] = useState(""); // Initialize state for a random image
 
   const currentTime = new Date().getHours(); // Get the current time in hours
   const shuffledArray = shuffle(links); // Shuffle an array of links
 
   // Get values from local storage
   let validated_key = localStorage.getItem("validated");
-  let trials = localStorage.getItem("trials");
 
   const navigate = useNavigate(); // Initialize navigation function using the 'useNavigate' hook
 
@@ -38,15 +39,18 @@ export default function Home() {
 
     // Select quotes based on the day period
     const currentQuotesArray = dayPeriod === "night" ? nighttimeQuotes : daytimeQuotes;
+    const shuffledImages = shuffle(newImages);
+
 
     // Set a random quote in the state
     getRandomFromArray(setRandomQuote, currentQuotesArray);
+    getRandomFromArray(setRandomImage,shuffledImages);
 
   }, [currentTime, dayPeriod]);
 
   useEffect(() => {
     // Check if the user is not validated and the number of trials is greater than or equal to 5
-    if (!validated_key && trials >= 5) {
+    if (!validated_key) {
       // Navigate to the '/validate_page' route
       navigate('/validate_page');
     }
@@ -108,10 +112,10 @@ export default function Home() {
             arrowSize="10"
           >
             <Image
-              src={profile_pic}
+              src={randomImage}
               h="300px"
               rounded="none"
-              onClick={() => loadNewWindow(profile_pic)}
+              onClick={() => loadNewWindow(randomImage)}
               _hover={{
                 cursor: "pointer",
               }}

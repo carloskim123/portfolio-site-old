@@ -8,8 +8,7 @@ import {
     Input,
     Button,
     Container,
-    Text,
-    Flex,
+    Text
 } from "@chakra-ui/react";
 
 export default function ValidateForm() {

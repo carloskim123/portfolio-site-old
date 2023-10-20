@@ -57,7 +57,7 @@ export default function Loader() {
                         ariaLabel="blocks-loading"
                         wrapperStyle={{}}
                         wrapperClass="blocks-wrapper"
-                        colors={['#e15b64', '#f47e60', '#fb8b24', '#abbd81', '#ef476f']}
+                        colors={['#e15b64', '#f47e60', '#fb8b24', '#ef476f','#ef476f']}
                     />
                 </Flex>
                 <Flex mt={"1em"}>

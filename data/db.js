@@ -80,6 +80,7 @@ export const routes = [
     { path: "/about", pathname: "About" },
     { path: "/contact", pathname: "Contact" },
 
+
 ]
 
 export const accordionContent = [
@@ -104,20 +105,17 @@ export const accordionContent = [
 
 export const colorsArray = ["#fefae0", "#e9ecef", "#edf6f9", "#fdffb6", "#f4f1de", "#f0f3bd"];
 export const newImages = [
-    // {
-    //     param: "https://images.pexels.com/photos/3791466/pexels-photo-3791466.jpeg?auto=compress&cs=tinysrgb&w=600"
-    // },
     {
-        param: "https://images.pexels.com/photos/1743366/pexels-photo-1743366.jpeg?auto=compress&cs=tinysrgb&w=600"
+        param: "https://images.pexels.com/photos/592077/pexels-photo-592077.jpeg?auto=compress&cs=tinysrgb&w=600"
     },
     {
-        param: "https://images.pexels.com/photos/2724664/pexels-photo-2724664.jpeg?auto=compress&cs=tinysrgb&w=600"
+        param: "https://images.pexels.com/photos/12174293/pexels-photo-12174293.jpeg?auto=compress&cs=tinysrgb&w=600"
     },
     {
-        param: "https://images.pexels.com/photos/3791466/pexels-photo-3791466.jpeg?auto=compress&cs=tinysrgb&w=600"
+        param: "https://images.pexels.com/photos/1261728/pexels-photo-1261728.jpeg?auto=compress&cs=tinysrgb&w=600"
     },
     {
-        param: "https://images.pexels.com/photos/3791466/pexels-photo-3791466.jpeg?auto=compress&cs=tinysrgb&w=600"
+        param: "https://images.pexels.com/photos/640809/pexels-photo-640809.jpeg?auto=compress&cs=tinysrgb&w=600"
     },
 ]
 

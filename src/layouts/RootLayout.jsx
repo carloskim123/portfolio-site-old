@@ -28,7 +28,7 @@ const RootLayout = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 1900);
 
     // Update 'currentTime' every second
     const intervalId = setInterval(() => {
