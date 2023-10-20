@@ -42,7 +42,7 @@ export default function ValidateForm() {
             <Container mt="3rem">
                 <Box maxW="md" mx="auto" p={4} rounded="md">
                     <form onSubmit={(e) => e.preventDefault()}>
-                        <FormControl id="user_name" mb={4}>
+                        <FormControl id="browser_name" mb={4}>
                             <Text>For security purposes, you need to enter your browser name. You will be asked to enter the browser name after 12 hours.</Text>
                             <FormLabel>Enter Browser Name:</FormLabel>
                             <Input
@@ -51,7 +51,7 @@ export default function ValidateForm() {
                                 type="text"
                                 value={browserName}
                                 onChange={(e) => setBrowserName(e.target.value)}
-                                name="user_name"
+                                name="browser_name"
                                 borderColor="black.300"
                                 focusBorderColor="blue.400"
                                 _hover={{

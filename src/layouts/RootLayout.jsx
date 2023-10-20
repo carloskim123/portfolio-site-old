@@ -89,7 +89,7 @@ const RootLayout = () => {
           position={"fixed"}
           zIndex={100}
           borderBottom={"2px solid black"}
-          backdropFilter="blur(5px)"
+          backdropFilter="blur(10px)"
           background="rgba(0, 0, 0, 0.001)"
         >
           <Flex justifyContent={"space-between"} alignItems="center" fontSize="18px" >
