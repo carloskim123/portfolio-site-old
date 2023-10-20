@@ -148,7 +148,7 @@ const RootLayout = () => {
             backdropFilter="blur(4px)"
             background="rgba(0, 0, 0, 0.01)"
             borderTop="2px solid #000"
-            transition="top 200ms ease" // Use 'top' for the transition
+            transition="top 100ms ease" // Use 'top' for the transition
           >
             <Box
               className="sidebar"
