@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Container } from "@chakra-ui/react";
+import React, { useState, useEffect } from "react";
 import {
     getAllProjectsData,
     createProject,
@@ -7,82 +6,132 @@ import {
     deleteProject,
 } from "./data";
 
-
 export const Dashboard = () => {
-    const [data, setData] = useState([]);
-    const [newProject, setNewProject] = useState({
+    const [projects, setProjects] = useState([]);
+    const [newProjectData, setNewProjectData] = useState({
         name: "",
         description: "",
-        img: "",
-        project_url: "",
         tech_stack: "",
-        view_live: ""
+        project_url: "",
+        view_live: "",
+        img: "",
     });
 
     useEffect(() => {
-        getAllProjectsData(setData);
+        // Fetch projects data when the component mounts
+        getAllProjectsData(setProjects);
     }, []);
 
-    const handleCreateProject = () => {
-        createProject(newProject, setData);
-    }
+    const handleDelete = async (projectId) => {
+        // Confirm deletion with the user
+        const confirmDelete = window.confirm("Are you sure you want to delete this project?");
+        if (!confirmDelete) {
+            return;
+        }
 
-    const handleUpdateProject = (projectId, updatedData) => {
-        updateProject(projectId, updatedData, setData);
-    }
+        // Send a DELETE request to delete the project
+        const success = await deleteProject(projectId, setProjects);
 
-    const handleDeleteProject = (projectId) => {
-        deleteProject(projectId, setData);
-    }
+        if (success) {
+            alert("Project deleted successfully.");
+        }
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        // Send a POST request to create a new project
+        const createdProject = await createProject(newProjectData, setProjects);
+
+        if (createdProject) {
+            alert("Project created successfully.");
+            // Clear the input fields after successful creation
+            setNewProjectData({
+                name: "",
+                description: "",
+                tech_stack: "",
+                project_url: "",
+                view_live: "",
+                img: "",
+            });
+        }
+    };
 
     return (
-        <Container>
-            <button onClick={() => getAllProjectsData(setData)}>Get Data</button>
-            {data.map(item => (
-                <div key={item._id}>
-                    <div>{item.name}</div>
-                    <button onClick={() => handleUpdateProject(item._id, { name: "Updated Name" })}>Update</button>
-                    <button onClick={() => handleDeleteProject(item._id)}>Delete</button>
-                </div>
-            ))}
-            <h2>Create a New Project</h2>
-            <input
-                type="text"
-                placeholder="Name"
-                value={newProject.name}
-                onChange={(e) => setNewProject({ ...newProject, name: e.target.value })}
-            />
-            <input
-                type="text"
-                placeholder="Description"
-                value={newProject.description}
-                onChange={(e) => setNewProject({ ...newProject, description: e.target.value })}
-            />
-            <input
-                type="text"
-                placeholder="img"
-                value={newProject.img}
-                onChange={(e) => setNewProject({ ...newProject, img: e.target.value })}
-            />
-            <input
-                type="text"
-                placeholder="project url"
-                value={newProject.project_url}
-                onChange={(e) => setNewProject({ ...newProject, project_url: e.target.value })}
-            />
-            <input
-                type="text"
-                placeholder="view project"
-                value={newProject.view_live}
-                onChange={(e) => setNewProject({ ...newProject, view_live: e.target.value })}
-            />
-            <input
-                type="text"
-                placeholder="tech stack"
-                value={newProject.tech_stack}
-                onChange={(e) => setNewProject({ ...newProject, tech_stack: e.target.value })}
-            />
-            <button onClick={handleCreateProject}>Create Project</button>
-        </Container>
+        <div style={{ display: "flex" }}>
+            <div style={{ flex: 1, marginRight: "20px" }}>
+                <h1>Project Dashboard</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Tech Stack</th>
+                            <th>Project URL</th>
+                            <th>View Live</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {projects.map((project) => (
+                            <tr key={project._id}>
+                                <td>{project.name}</td>
+                                <td>{project.description}</td>
+                                <td>{project.tech_stack}</td>
+                                <td>
+                                    <a href={project.project_url} target="_blank" rel="noopener noreferrer">
+                                        Visit Project
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href={project.view_live} target="_blank" rel="noopener noreferrer">
+                                        View Live
+                                    </a>
+                                </td>
+                                <td>Project Image</td>
+                                <td>
+                                    <button onClick={() => handleDelete(project._id)}>Delete</button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+            <div style={{ flex: 1 }}>
+                <h2>Create New Project</h2>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        placeholder="Name"
+                        value={newProjectData.name}
+                        onChange={(e) => setNewProjectData({ ...newProjectData, name: e.target.value })}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Description"
+                        value={newProjectData.description}
+                        onChange={(e) => setNewProjectData({ ...newProjectData, description: e.target.value })}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Tech Stack"
+                        value={newProjectData.tech_stack}
+                        onChange={(e) => setNewProjectData({ ...newProjectData, tech_stack: e.target.value })}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Project URL"
+                        value={newProjectData.project_url}
+                        onChange={(e) => setNewProjectData({ ...newProjectData, project_url: e.target.value })}
+                    />
+                    <input
+                        type="text"
+                        placeholder="View Live URL"
+                        value={newProjectData.view_live}
+                        onChange={(e) => setNewProjectData({ ...newProjectData, view_live: e.target.value })}
+                    />
+                    <button type="submit">Create Project</button>
+                </form>
+            </div>
+        </div>
     );
 };

@@ -1,5 +1,5 @@
-const allDataUrl = "http://localhost:8000/api/projects/"
-const sendNewDataUrl = "http://localhost:8000/api/projects/new/"
+const allDataUrl = "http://localhost:8000/api/projects"
+const sendNewDataUrl = "http://localhost:8000/api/projects/new"
 const updateDataUrl = "http://localhost:8000/api/projects/edit/"
 const deleteDataUrl = "http://localhost:8000/api/projects/delete/"
 const getOneItem = "http://localhost:8000/api/projects/project/"
@@ -23,7 +23,7 @@ export const getAllProjectsData = async (setData) => {
 
 export const createProject = async (projectData, setData) => {
     try {
-        
+        console.log(projectData)
         const response = await fetch(sendNewDataUrl, {
             method: 'POST',
             headers: {
@@ -33,10 +33,10 @@ export const createProject = async (projectData, setData) => {
         });
 
         if (response.ok) {
-            const createdProject = await response.json();
-            setData((prevData) => [...prevData, createdProject]);
-            return createdProject;
-            console.log(createProject) // Return the created project data
+            // const createdProject = await response.json();
+            // setData((prevData) => [...prevData, createdProject]);
+            // return createdProject;
+            console.log("project created")
         } else {
             console.error(`Failed to create a project. Status: ${response.status}`);
             return null;
@@ -46,6 +46,7 @@ export const createProject = async (projectData, setData) => {
         return null;
     }
 }
+
 
 export const updateProject = async (projectId, updatedData, setData) => {
     try {
