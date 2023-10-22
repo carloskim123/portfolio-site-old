@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
-import { Grid, Box, Image, Link, Text, Input, Skeleton } from "@chakra-ui/react";
+import { Grid, Box, Image, Link, Text, Input, Skeleton, filter } from "@chakra-ui/react";
 import { shuffle } from "../../data/helpers";
 import { projects } from "../../data/projects_data";
 import "../../css.css";
+import { getAllProjectsData } from "../../services/_api_data";
 
 // Projects component
 const Projects = () => {
   // State variables
+  const [projectsData, setProjectsData] = useState([])
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -25,8 +27,12 @@ const Projects = () => {
     }, 1000);
   }, []);
 
+  useEffect(() => {
+    getAllProjectsData(setProjectsData)
+  }, [])
+
   // Filter projects based on the search query
-  const filteredProjects = shuffledProjects.filter((project) =>
+  const filteredProjects = projectsData.filter((project) =>
     project.name.toLowerCase().includes(searchQuery.toLowerCase().trim()) ||
     project.description.toLowerCase().includes(searchQuery.toLowerCase().trim()) ||
     project.tech_stack.toLowerCase().includes(searchQuery.toLowerCase().trim())
@@ -81,67 +87,62 @@ const Projects = () => {
         pt={"4.5rem"}
         pb={"10rem"}
       >
-        {filteredProjects.length === 0 ? (
-          <Box>
-            <Text>No projects found.</Text>
-          </Box>
-        ) : (
-          filteredProjects.map((project) => (
-            <div key={project.id}>
-              {!isLoading ? (
-                // Project card
-                <Box
-                  mb={"3rem"}
-                  key={project.id}
-                  p={4}
-                  borderColor={"#2b2d42"}
-                  shadow={"sm"}
-                  borderWidth="1px"
-                  transition={"transform 0.2s ease, box-shadow 0.2s ease"}
-                  _hover={{
-                    shadow: "2xl",
-                    cursor: "pointer",
-                    transform: "translateY(-10px)",
-                    rounded: "sm",
-                  }}
-                  fontSize={"17px"}
-                  h="445px"
-                >
-                  <Box position="relative" height="200px">
-                    <Image
-                      src={project.img}
-                      minWidth={"100%"}
-                      maxHeight={"100%"}
-                      alt={project.name}
-                      objectFit="contain"
-                      layout="fill"
-                    />
-                  </Box>
-                  <Text fontWeight="bold" fontSize="2xl" mb={2}>
-                    {project.name}
-                  </Text>
-                  <Text mb={2}>{project.description}</Text>
-                  <Box>
-                    <div key={project.id}>
-                      <Link target="_blank" href={project.project_url} color="blue.500" mr={2}>
-                        🔗 Project Repo
-                      </Link>
-                      {project.view_live != null && (
-                        <Link target="_blank" href={project.view_live} color="blue.500">
-                          🔗 View Live
-                        </Link>
-                      )}
-                    </div>
-                  </Box>
-                  <Text>Tech Stack: {project.tech_stack}</Text>
+        {filteredProjects.map((project) => (
+          <div key={project.id}>
+            {!isLoading ? (
+              // Project card
+              <Box
+                mb={"3rem"}
+                key={project.id}
+                p={4}
+                borderColor={"#2b2d42"}
+                shadow={"sm"}
+                borderWidth="1px"
+                transition={"transform 0.2s ease, box-shadow 0.2s ease"}
+                _hover={{
+                  shadow: "2xl",
+                  cursor: "pointer",
+                  transform: "translateY(-10px)",
+                  rounded: "sm",
+                }}
+                fontSize={"17px"}
+                h="445px"
+              >
+                <Box position="relative" height="200px">
+                  <Image
+                    src={project.img}
+                    minWidth={"100%"}
+                    maxHeight={"100%"}
+                    alt={project.name}
+                    objectFit="contain"
+                    layout="fill"
+                  />
                 </Box>
-              ) : (
-                // Loading skeleton
-                <Skeleton height={"445px"} rounded={"none"} />
-              )}
-            </div>
-          ))
-        )}
+                <Text fontWeight="bold" fontSize="2xl" mb={2}>
+                  {project.name}
+                </Text>
+                <Text mb={2}>{project.description}</Text>
+                <Box>
+                  <div key={project.id}>
+                    <Link target="_blank" href={project.project_url} color="blue.500" mr={2}>
+                      🔗 Project Repo
+                    </Link>
+                    {project.view_live != null && (
+                      <Link target="_blank" href={project.view_live} color="blue.500">
+                        🔗 View Live
+                      </Link>
+                    )}
+                  </div>
+                </Box>
+                <Text>Tech Stack: {project.tech_stack}</Text>
+              </Box>
+            ) : (
+              // Loading skeleton
+              <Skeleton height={"445px"} rounded={"none"} />
+            )}
+          </div>
+        ))
+        }
       </Grid>
     </Box>
   );

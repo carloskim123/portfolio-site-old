@@ -1,8 +1,9 @@
-const allDataUrl = "http://localhost:8000/api/projects"
-const sendNewDataUrl = "http://localhost:8000/api/projects/new"
-const updateDataUrl = "http://localhost:8000/api/projects/edit/"
-const deleteDataUrl = "http://localhost:8000/api/projects/delete/"
-const getOneItem = "http://localhost:8000/api/projects/project/"
+
+export const allDataUrl = process.env.REACT_APP_ALL_DATA_URL
+const sendNewDataUrl = process.env.REACT_APP_SEND_NEW_DATA_URL
+const updateDataUrl = process.env.REACT_APP_UPDATE_DATA_URL
+const deleteDataUrl = process.env.REACT_APP_DELETE_DATA_URL
+const getOneItem = process.env.REACT_APP_GET_ONE_ITEM
 
 export const getAllProjectsData = async (setData) => {
     try {
@@ -21,7 +22,7 @@ export const getAllProjectsData = async (setData) => {
     }
 }
 
-export const createProject = async (projectData, setData) => {
+export const createProject = async (projectData) => {
     try {
         console.log(projectData)
         const response = await fetch(sendNewDataUrl, {
@@ -33,14 +34,12 @@ export const createProject = async (projectData, setData) => {
         });
 
         if (response.ok) {
-            // const createdProject = await response.json();
-            // setData((prevData) => [...prevData, createdProject]);
-            // return createdProject;
             console.log("project created")
         } else {
             console.error(`Failed to create a project. Status: ${response.status}`);
             return null;
         }
+
     } catch (err) {
         console.error('An error occurred:', err);
         return null;
@@ -83,3 +82,6 @@ export const deleteProject = async (projectId, setData) => {
         console.error('An error occurred:', err);
     }
 }
+
+
+

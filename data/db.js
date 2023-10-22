@@ -78,9 +78,7 @@ export const routes = [
     { path: "/", pathname: "Home" },
     { path: "/projects", pathname: "Projects" },
     { path: "/about", pathname: "About" },
-    { path: "/contact", pathname: "Contact" },
-
-
+    { path: "/contact", pathname: "Contact" }, 
 ]
 
 export const accordionContent = [
