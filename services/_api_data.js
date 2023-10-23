@@ -1,15 +1,26 @@
+import {
+    REACT_APP_ALL_DATA_URL,
+    REACT_APP_SEND_NEW_DATA_URL,
+    REACT_APP_UPDATE_DATA_URL,
+    REACT_APP_DELETE_DATA_URL,
+    REACT_APP_GET_ONE_ITEM
+} from './variables'
 
-export const allDataUrl = process.env.REACT_APP_ALL_DATA_URL
-const sendNewDataUrl = process.env.REACT_APP_SEND_NEW_DATA_URL
-const updateDataUrl = process.env.REACT_APP_UPDATE_DATA_URL
-const deleteDataUrl = process.env.REACT_APP_DELETE_DATA_URL
-const getOneItem = process.env.REACT_APP_GET_ONE_ITEM
+
+export const allDataUrl = REACT_APP_ALL_DATA_URL
+const sendNewDataUrl = REACT_APP_SEND_NEW_DATA_URL
+const updateDataUrl = REACT_APP_UPDATE_DATA_URL
+const deleteDataUrl = REACT_APP_DELETE_DATA_URL
+const getOneItem = REACT_APP_GET_ONE_ITEM
+
+
 
 export const getAllProjectsData = async (setData) => {
     try {
         const response = await fetch(allDataUrl, {
             method: 'GET'
         });
+    
 
         if (response.ok) {
             const data = await response.json();

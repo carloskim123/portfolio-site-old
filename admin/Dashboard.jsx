@@ -132,49 +132,50 @@ export const Dashboard = () => {
 
     return (
         <Container maxW={"100%"}>
-            <Box
-                mt={"3.79em"}
-                h="60px"
-                top={0}
-                width={"100%"}
-                position={"fixed"}
-                zIndex={40}
-            >
-                <form
-                    onSubmit={(e) => e.preventDefault()}
-                    px={4}
-                    h="60px"
-                    w={"100%"}
-                    top={0}
-                    position={"fixed"}
-                    zIndex={100}
-                >
-                    <Input
-                        backdropFilter="blur(10px)"
-                        background="rgba(0, 0, 0, 0.001)"
-                        variant={"unstyled"}
-                        padding={"7px"}
-                        fontSize={"20px"}
-                        value={searchQuery}
-                        onChange={(e) => handleSearch(e.target.value)}
-                        placeholder="Search projects"
-                        rounded={"none"}
-                        borderBottom={"2px solid black"}
-                        borderTop={"none"}
-                        outline={"none"}
-                        _placeholder={{
-                            color: "black",
-                        }}
-                        fontFamily={"Klee One"}
-                    />
-                </form>
-            </Box>
+
             <TableContainer spacing="3" margin={"0 auto"}>
                 <Heading as="h1" size="xl">
                     Project Dashboard
                 </Heading>
+                <Box
+                    mt={"3.79em"}
+                    h="60px"
+                    width={"100%"}
+                >
+                    <form
+                        onSubmit={(e) => e.preventDefault()}
+                        px={4}
+                        h="60px"
+                        w={"100%"}
+                        top={0}
+                        position={"fixed"}
+                        zIndex={100}
+                    >
+                        <Input
+                            backdropFilter="blur(10px)"
+                            background="rgba(0, 0, 0, 0.001)"
+                            variant={"unstyled"}
+                            padding={"7px"}
+                            fontSize={"20px"}
+                            value={searchQuery}
+                            onChange={(e) => handleSearch(e.target.value)}
+                            placeholder="Search projects"
+                            rounded={"none"}
+                            borderBottom={"2px solid black"}
+                            borderTop={"none"}
+                            outline={"none"}
+                            _placeholder={{
+                                color: "black",
+                            }}
+                            fontFamily={"Klee One"}
+                        />
+                    </form>
+                </Box>
                 <Button colorScheme="green" onClick={handleRefresh}>
                     Refresh
+                </Button>
+                <Button colorScheme="blue">
+                    Clear forms
                 </Button>
                 <Table variant="simple">
                     <Thead>
