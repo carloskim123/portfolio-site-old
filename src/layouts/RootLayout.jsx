@@ -146,8 +146,6 @@ const RootLayout = () => {
             zIndex={100}
             w="100%"
             h="100%"
-            backdropFilter="blur(4px)"
-            background="rgba(0, 0, 0, 0.01)"
             borderTop="2px solid #000"
             transition="top 100ms ease" // Use 'top' for the transition
           >
