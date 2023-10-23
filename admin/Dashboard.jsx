@@ -25,7 +25,7 @@ import {
     Tooltip
 } from "@chakra-ui/react";
 
-export const Dashboard = () => {
+const Dashboard = () => {
     const [projects, setProjects] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [newProjectData, setNewProjectData] = useState({
@@ -423,3 +423,6 @@ export const Dashboard = () => {
         </Container>
     );
 };
+
+
+export default Dashboard

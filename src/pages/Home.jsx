@@ -28,9 +28,6 @@ export default function Home() {
   const currentTime = new Date().getHours(); // Get the current time in hours
   const shuffledArray = shuffle(links); // Shuffle an array of links
 
-  // Get values from local storage
-  let validated_key = localStorage.getItem("validated");
-
   const navigate = useNavigate(); // Initialize navigation function using the 'useNavigate' hook
 
   useEffect(() => {
@@ -49,13 +46,7 @@ export default function Home() {
 
   }, [currentTime, dayPeriod]);
 
-  useEffect(() => {
-    // Check if the user is not validated and the number of trials is greater than or equal to 5
-    if (!validated_key) {
-      // Navigate to the '/validate_page' route
-      navigate('/validate_page');
-    }
-  }, [validated_key])
+
 
   return (
     <Box>

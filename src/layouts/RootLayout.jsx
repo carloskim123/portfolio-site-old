@@ -40,17 +40,11 @@ const RootLayout = () => {
     };
   }, []);
 
-  // Check for a validated key in local storage
-  let validated_key = localStorage.getItem("validated");
   // Initialize the navigation function from 'react-router-dom'
   const navigate = useNavigate();
 
   // Redirect to the validation page if not validated
-  useEffect(() => {
-    if (!validated_key) {
-      navigate('/validate_page');
-    }
-  }, [validated_key]);
+
 
   // Add event listener for window resize and call 'closeMobileMenu' function when 'showMenu' changes
   useEffect(() => {
