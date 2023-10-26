@@ -14,7 +14,6 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 import HasSubmitted from './components/HasSubmitted';
-import Dashboard  from '../admin/Dashboard';
 
 // router and routes
 const router = createBrowserRouter(
@@ -28,7 +27,6 @@ const router = createBrowserRouter(
         <Route path="*" element={<NotFound />} />
         <Route path="success" element={<HasSubmitted />} />
         <Route path="error" element={<div>Error</div>} />
-        <Route path="/auth/admin" element={<Dashboard />} />
 
       </Route>
     </>

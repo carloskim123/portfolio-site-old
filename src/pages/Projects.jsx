@@ -3,12 +3,10 @@ import { Grid, Box, Image, Link, Text, Input, Skeleton, filter } from "@chakra-u
 import { shuffle } from "../../data/helpers";
 import { projects } from "../../data/projects_data";
 import "../../css.css";
-import { getAllProjectsData } from "../../services/_api_data";
 
 // Projects component
 const Projects = () => {
   // State variables
-  const [projectsData, setProjectsData] = useState([])
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -27,12 +25,11 @@ const Projects = () => {
     }, 1000);
   }, []);
 
-  useEffect(() => {
-    getAllProjectsData(setProjectsData)
-  }, [])
+  
+
 
   // Filter projects based on the search query
-  const filteredProjects = projectsData.filter((project) =>
+  const filteredProjects = projects.filter((project) =>
     project.name.toLowerCase().includes(searchQuery.toLowerCase().trim()) ||
     project.description.toLowerCase().includes(searchQuery.toLowerCase().trim()) ||
     project.tech_stack.toLowerCase().includes(searchQuery.toLowerCase().trim())
