@@ -3,7 +3,7 @@
 :root {
     --light-text-color: #000;
     /* Default light mode text color */
-    --light-background-color: #fed9b7;
+    --light-background-color: #d6af8b;
     /* Default light mode background color */
 
     --dark-text-color: #000;
@@ -21,7 +21,7 @@
 }
 
 @media(prefers-color-scheme: light) {
-    #root, html, .footer, .search-box, .loader-overlay {
+    #root, html,.sidebar, .footer, .search-box, .loader-overlay {
         background-color: var(--light-background-color);
         color: var(--light-text-color)
     }
