@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "allowJs": true,
+        "noEmit": true,
+        "checkJs": true,
+        "strict": false
+    },
+    "include": [
+        "src"
+    ]
+}

@@ -19,6 +19,7 @@ import {
 } from '../../data/helpers' // Importing helper functions
 
 import "../app.css"; // Importing CSS styles
+import React from 'react';
 
 export default function Home() {
   const [dayPeriod, setDayPeriod] = useState("day"); // Initialize state for the current day period
@@ -28,15 +29,12 @@ export default function Home() {
   const currentTime = new Date().getHours(); // Get the current time in hours
   const shuffledArray = shuffle(links); // Shuffle an array of links
 
-  // Get values from local storage
-  let validated_key = localStorage.getItem("validated");
 
-  const navigate = useNavigate(); // Initialize navigation function using the 'useNavigate' hook
 
   useEffect(() => {
     // Determine the day period based on the current time
     currentDayTime(setDayPeriod, currentTime);
-    
+
 
     // Select quotes based on the day period
     const currentQuotesArray = dayPeriod === "night" ? nighttimeQuotes : daytimeQuotes;
@@ -45,17 +43,10 @@ export default function Home() {
 
     // Set a random quote in the state
     getRandomFromArray(setRandomQuote, currentQuotesArray);
-    getRandomFromArray(setRandomImage,shuffledImages);
+    getRandomFromArray(setRandomImage, shuffledImages);
 
   }, [currentTime, dayPeriod]);
 
-  useEffect(() => {
-    // Check if the user is not validated and the number of trials is greater than or equal to 5
-    if (!validated_key) {
-      // Navigate to the '/validate_page' route
-      navigate('/validate_page');
-    }
-  }, [validated_key])
 
   return (
     <Box>
@@ -110,7 +101,6 @@ export default function Home() {
             aria-label="A tooltip"
             placement="auto-start"
             hasArrow
-            arrowSize="10"
           >
             <Image
               src={randomImage}

@@ -1,3 +1,4 @@
+// @ts-ignore
 import shopZetuVendorsBanner from "../src/img/Shop-Zetu-Vendors-Banner.png"
 export const projects = [
     

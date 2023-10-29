@@ -14,14 +14,38 @@ import { routes } from '../../data/db';
 
 // Import styling
 import "../app.css";
-// Define the RootLayout component
+import React from "react";
+/**
+ * RootLayout component for the application.
+ * @component
+ */
 const RootLayout = () => {
-  // State to track whether the application is loading
+  /**
+   * State to track whether the application is loading.
+   * @type {boolean}
+   */
+  // @ts-ignore
   const [isLoading, setIsLoading] = useState(true);
-  // State to manage the display of the mobile menu
+
+  /**
+   * State to manage the display of the mobile menu.
+   * @type {boolean}
+   */
+  // @ts-ignore
   const [showMenu, setShowMenu] = useState(false);
-  // State to store the current time
+
+  /**
+   * State to store the current time.
+   * @type {Date}
+   */
+  // @ts-ignore
   const [currentTime, setCurrentTime] = useState(new Date());
+
+  /**
+   * Initializes useNavigate for programmatic navigation.
+   * @type {function}
+   */
+  const navigate = useNavigate();
 
   // Simulate loading for 3 seconds and then set 'isLoading' to false
   useEffect(() => {
@@ -39,18 +63,6 @@ const RootLayout = () => {
       clearInterval(intervalId);
     };
   }, []);
-
-  // Check for a validated key in local storage
-  let validated_key = localStorage.getItem("validated");
-  // Initialize the navigation function from 'react-router-dom'
-  const navigate = useNavigate();
-
-  // Redirect to the validation page if not validated
-  useEffect(() => {
-    if (!validated_key) {
-      navigate('/validate_page');
-    }
-  }, [validated_key]);
 
   // Add event listener for window resize and call 'closeMobileMenu' function when 'showMenu' changes
   useEffect(() => {
@@ -75,8 +87,6 @@ const RootLayout = () => {
     }
   };
 
-
-
   // Render the RootLayout component
   return (
     <div>
@@ -93,7 +103,7 @@ const RootLayout = () => {
           backdropFilter="blur(10px)"
           background="rgba(0, 0, 0, 0.001)"
         >
-          <Flex justifyContent={"space-between"} alignItems="center" fontSize="18px" >
+          <Flex justifyContent={"space-between"} alignItems="center" fontSize="18px">
             <Link to="/">
               <Text
                 fontSize={"20px"}
@@ -119,7 +129,7 @@ const RootLayout = () => {
               )}
             </Box>
 
-            <Flex display={{ base: "none", md: "flex" }} gap="2rem" >
+            <Flex display={{ base: "none", md: "flex" }} gap="2rem">
               {routes.map(route => (
                 <Link key={route.path} to={route.path}>
                   <Text
@@ -136,7 +146,7 @@ const RootLayout = () => {
             </Flex>
           </Flex>
         </Box>
-        
+
         <Flex flex="1" paddingTop={"60px"} onClick={closeMobileMenu}>
           <Box
             cursor="pointer"
@@ -154,7 +164,7 @@ const RootLayout = () => {
             <Box
               className="sidebar"
               overflow="hidden"
-              h="90vh"
+              h="60vh"
               w="100%"
               py={7}
               px={6}

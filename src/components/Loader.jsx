@@ -3,6 +3,7 @@ import { Container, Text, Flex } from "@chakra-ui/layout";
 import { ColorRing } from "react-loader-spinner";
 import { currentDayTime, getRandomFromArray } from "../../data/helpers";
 import { daytimeQuotes, nighttimeQuotes } from "../../data/quoteable";
+import React from "react";
 
 export default function Loader() {
     const [randomQuote, setRandomQuote] = useState(""); // Initialize state for a random quote
@@ -46,8 +47,12 @@ export default function Loader() {
     };
 
     return (
-        <div className="loader-overlay" style={loaderOverlayStyles}>
-            <Container style={loaderStyles}>
+        <div className="loader-overlay" 
+// @ts-ignore
+        style={loaderOverlayStyles}>
+            <Container 
+// @ts-ignore
+            style={loaderStyles}>
                 <Flex>
                     {/* Display a color ring loader */}
                     <ColorRing

@@ -1,9 +1,10 @@
+// @ts-nocheck
 import { useState, useEffect } from "react";
-import { Grid, Box, Image, Link, Text, Input, Skeleton, filter } from "@chakra-ui/react";
+import { Grid, Box, Image, Link, Text, Input, Skeleton } from "@chakra-ui/react";
 import { shuffle } from "../../data/helpers";
 import { projects } from "../../data/projects_data";
 import "../../css.css";
-import { getAllProjectsData } from "../../services/_api_data";
+import React from "react";
 
 // Projects component
 const Projects = () => {
@@ -27,15 +28,12 @@ const Projects = () => {
     }, 1000);
   }, []);
 
-  useEffect(() => {
-    getAllProjectsData(setProjectsData)
-  }, [])
 
   // Filter projects based on the search query
-  const filteredProjects = projectsData.filter((project) =>
-    project.name.toLowerCase().includes(searchQuery.toLowerCase().trim()) ||
-    project.description.toLowerCase().includes(searchQuery.toLowerCase().trim()) ||
-    project.tech_stack.toLowerCase().includes(searchQuery.toLowerCase().trim())
+  const filteredProjects = shuffledProjects.filter((project) =>
+    project.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    project.tech_stack.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (

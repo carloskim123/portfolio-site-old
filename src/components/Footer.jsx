@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { Box, Center, Text, Link, Flex } from '@chakra-ui/react';
 import { loadNewWindow } from '../../data/helpers';
