@@ -40,12 +40,13 @@ const Projects = () => {
     <Box>
       {/* Search bar */}
       <Box
-        mt={"3.79em"}
+        mt={"3.77rem"}
         h="60px"
         top={0}
         width={"100%"}
         position={"fixed"}
-        zIndex={40}
+        zIndex={100}
+        
       >
         <form
           onSubmit={(e) => e.preventDefault()}
@@ -57,7 +58,7 @@ const Projects = () => {
           zIndex={100}
         >
           <Input
-            backdropFilter="blur(10px)"
+            backdropFilter="blur(20px)"
             background="rgba(0, 0, 0, 0.001)"
             variant={"unstyled"}
             padding={"7px"}

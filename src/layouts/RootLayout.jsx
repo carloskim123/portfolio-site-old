@@ -100,7 +100,7 @@ const RootLayout = () => {
           position={"fixed"}
           zIndex={100}
           borderBottom={"2px solid black"}
-          backdropFilter="blur(10px)"
+          backdropFilter="blur(20px)"
           background="rgba(0, 0, 0, 0.001)"
         >
           <Flex justifyContent={"space-between"} alignItems="center" fontSize="18px">
@@ -156,7 +156,7 @@ const RootLayout = () => {
             zIndex={100}
             w="100%"
             h="100%"
-            backdropFilter="blur(4px)"
+            backdropFilter="blur(.3px)"
             background="rgba(0, 0, 0, 0.01)"
             borderTop="2px solid #000"
             transition="top 100ms ease" // Use 'top' for the transition
@@ -164,7 +164,7 @@ const RootLayout = () => {
             <Box
               className="sidebar"
               overflow="hidden"
-              h="60vh"
+              h="80vh"
               w="100%"
               py={7}
               px={6}

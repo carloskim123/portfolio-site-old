@@ -20,15 +20,7 @@ export const projects = [
         view_live: null,
         description: "A RESTful API built with Golang and Gin framework."
     },
-    {
-        name: 'Basic Movie Search App',
-        id: Math.random(),
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU02e8iLdFDB5a9Yz22UO72Gr9A0sTcBi6Qhih46CcHy1k4Fqi_fqx7sJAtMS3riKLoBg&usqp=CAU',
-        tech_stack: 'Vanilla Javascript, HTML, CSS',
-        project_url: 'https://github.com/carloskim123/movie-search-app/',
-        view_live: 'https://carloskim123.github.io/Movie-Search-App/',
-        description: "A basic movie search application using vanilla JavaScript."
-    },
+
     {
         name: 'Itunes Clone using Itunes Api',
         id: Math.random(),
