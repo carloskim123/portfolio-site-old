@@ -101,5 +101,14 @@ export const projects = [
         view_live: "https://crud-app-js.vercel.app/",
         description: "A React app performing basic crud operations"
     },
+    {
+        name: 'JotDownApp',
+        id: Math.random(),
+        img: "../src/img/Screenshot 2023-11-01 163219.png",
+        tech_stack: 'React, Chakraui, Express, Nodejs, Mongodb',
+        project_url: 'https://github.com/carloskim123/notes-app',
+        view_live: "https://jotdownapp.vercel.app/",
+        description: "A nice and useable notes app build with MERN stack"
+    }
 ];
 
