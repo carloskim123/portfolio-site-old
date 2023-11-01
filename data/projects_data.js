@@ -58,15 +58,6 @@ export const projects = [
         description: "An image search app built around the Pexels Api"
     },
     {
-        name: 'Machine Learning Models',
-        id: Math.random(),
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgxiNuPJZQHBR_mV5LyeqZ6yvXYYk4fSSESYWcWBZcaQrkF4gm0zWUh8qkje2o6u5GS8A&usqp=CAU',
-        tech_stack: 'Python, Java, Javascript, Golang',
-        project_url: 'https://github.com/carloskim123/machine_learning_models',
-        view_live: null,
-        description: "Absolute Basic Machine Learning Models"
-    },
-    {
         name: 'Java Contact List Manager (Console Application)',
         id: Math.random(),
         img: 'https://3.bp.blogspot.com/-KIrCDuRSDdQ/WgSUMYqVWhI/AAAAAAAADxs/cbSerxnGbw05cLh1GnzQQ9ruozC9W1gJACLcBGAs/w1200-h630-p-k-no-nu/JAVA%2BContact%2BManagement%2BSystem%2BProject.png',
@@ -74,14 +65,6 @@ export const projects = [
         project_url: 'https://github.com/carloskim123/Java/blob/main/Projects/ContactListApp.java',
         view_live: null,
         description: "A Vanilla Java project using fundamental java features."
-    },
-    {
-        name: 'Nodejs Mern Blog (Source Code)',
-        id: Math.random(),
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStrHP7cnjQcXC0Ij3rebzn2YPsjQFovSLf6wnJKIAtyRPyBUyuAmLKDzyvROSqmQlwqgY&usqp=CAU',
-        tech_stack: 'Javascript, Ejs',
-        project_url: 'https://github.com/carloskim123/web-dev-mern-blog',
-        description: "A simple blog app written in plain Nodejs and Rendered using Ejs"
     },
     {
         name: 'Shop Zetu Website (Contributed)',
