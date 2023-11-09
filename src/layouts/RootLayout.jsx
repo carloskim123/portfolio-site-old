@@ -20,25 +20,10 @@ import React from "react";
  * @component
  */
 const RootLayout = () => {
-  /**
-   * State to track whether the application is loading.
-   * @type {boolean}
-   */
-  // @ts-ignore
   const [isLoading, setIsLoading] = useState(true);
 
-  /**
-   * State to manage the display of the mobile menu.
-   * @type {boolean}
-   */
-  // @ts-ignore
   const [showMenu, setShowMenu] = useState(false);
 
-  /**
-   * State to store the current time.
-   * @type {Date}
-   */
-  // @ts-ignore
   const [currentTime, setCurrentTime] = useState(new Date());
 
   /**
@@ -51,7 +36,7 @@ const RootLayout = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 1900);
+    }, 800);
 
     // Update 'currentTime' every second
     const intervalId = setInterval(() => {
@@ -156,7 +141,7 @@ const RootLayout = () => {
             zIndex={100}
             w="100%"
             h="100%"
-            backdropFilter="blur(.3px)"
+            backdropFilter="blur(10px)"
             background="rgba(0, 0, 0, 0.01)"
             borderTop="2px solid #000"
             transition="top 100ms ease" // Use 'top' for the transition

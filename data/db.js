@@ -160,21 +160,24 @@ export const accordionContent = [
  */
 export const colorsArray = ["#fefae0", "#e9ecef", "#edf6f9", "#fdffb6", "#f4f1de", "#f0f3bd"];
 
-/**
- * Array of new images.
- * @type {Array<{ param: string }>}
- */
-export const newImages = [
+
+export const bannerImage = "https://images.unsplash.com/photo-1504805572947-34fad45aed93?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZG8lMjBzb21ldGhpbmclMjBncmVhdHxlbnwwfHwwfHx8MA%3D%3D"
+
+
+export const aboutMes = [
     {
-        param: "https://images.pexels.com/photos/592077/pexels-photo-592077.jpeg?auto=compress&cs=tinysrgb&w=600"
+        param: "Greetings! 👋🏾 I'm Carlos Kirui, an enthusiastic problem solver in the world of software development. With a passion for coding and a hunger for challenges, I'm ready to create solutions that make a difference. 💻🚀",
     },
     {
-        param: "https://images.pexels.com/photos/12174293/pexels-photo-12174293.jpeg?auto=compress&cs=tinysrgb&w=600"
+        param: "Hey there! 👋🏾 Carlos Kirui here, a web development maestro on a mission to turn ideas into digital reality. With a keen eye for detail and a love for clean code, I'm set to make the web a better place. 🌐✨",
     },
     {
-        param: "https://images.pexels.com/photos/1261728/pexels-photo-1261728.jpeg?auto=compress&cs=tinysrgb&w=600"
+        param: "Salut! 👋🏾 I'm Carlos Kirui, a tech aficionado and coding virtuoso. Armed with a love for innovation and a knack for efficiency, I'm geared up to elevate the web development game to new heights. 💡💻",
     },
     {
-        param: "https://images.pexels.com/photos/640809/pexels-photo-640809.jpeg?auto=compress&cs=tinysrgb&w=600"
+        param: "Hi, I'm Carlos Kirui! 👋🏾 A dedicated developer with a penchant for elegant solutions and a love for learning. Join me on this journey of continuous improvement and let's create something extraordinary together. 🌟🚀",
     },
+    {
+        param: "Hola! 👋🏾 Carlos Kirui checking in—a passionate web developer with an insatiable curiosity for emerging technologies. Let's embark on a coding adventure and build digital wonders that leave a lasting impact. 💻✨",
+    }
 ];

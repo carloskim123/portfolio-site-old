@@ -5,11 +5,13 @@ import { shuffle } from "../../data/helpers";
 import { projects } from "../../data/projects_data";
 import "../../css.css";
 import React from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 // Projects component
 const Projects = () => {
   // State variables
-  const [projectsData, setProjectsData] = useState([])
+  const [projectsData, setProjectsData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -28,7 +30,6 @@ const Projects = () => {
     }, 1000);
   }, []);
 
-
   // Filter projects based on the search query
   const filteredProjects = shuffledProjects.filter((project) =>
     project.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -37,16 +38,16 @@ const Projects = () => {
   );
 
   return (
+
     <Box>
-      {/* Search bar */}
+
       <Box
         mt={"3.77rem"}
         h="60px"
         top={0}
         width={"100%"}
         position={"fixed"}
-        zIndex={100}
-        
+        zIndex={40}
       >
         <form
           onSubmit={(e) => e.preventDefault()}
@@ -77,73 +78,79 @@ const Projects = () => {
           />
         </form>
       </Box>
-
-      {/* Project grid */}
-      <Grid
-        templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
-        gap={6}
-        p={"20px"}
-        pt={"4.5rem"}
-        pb={"10rem"}
+      <motion.div
+        initial={{ opacity: 0, x: -90 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -90 }}
       >
-        {filteredProjects.map((project) => (
-          <div key={project.id}>
-            {!isLoading ? (
-              // Project card
-              <Box
-                mb={"3rem"}
-                key={project.id}
-                p={4}
-                borderColor={"#2b2d42"}
-                shadow={"sm"}
-                borderWidth="1px"
-                transition={"transform 0.2s ease, box-shadow 0.2s ease"}
-                _hover={{
-                  shadow: "2xl",
-                  cursor: "pointer",
-                  transform: "translateY(-10px)",
-                  rounded: "sm",
-                }}
-                fontSize={"17px"}
-                h="445px"
-              >
-                <Box position="relative" height="200px">
-                  <Image
-                    src={project.img}
-                    minWidth={"100%"}
-                    maxHeight={"100%"}
-                    alt={project.name}
-                    objectFit="contain"
-                    layout="fill"
-                  />
-                </Box>
-                <Text fontWeight="bold" fontSize="2xl" mb={2}>
-                  {project.name}
-                </Text>
-                <Text mb={2}>{project.description}</Text>
-                <Box>
-                  <div key={project.id}>
-                    <Link target="_blank" href={project.project_url} color="blue.500" mr={2}>
-                      🔗 Project Repo
-                    </Link>
-                    {project.view_live != null && (
-                      <Link target="_blank" href={project.view_live} color="blue.500">
-                        🔗 View Live
+        {/* Project grid */}
+        <Grid
+          templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+          gap={6}
+          p={"20px"}
+          pt={"4.5rem"}
+          pb={"10rem"}
+        >
+          {filteredProjects.map((project) => (
+            <>
+              {!isLoading ? (
+                // Project card
+                <Box
+                  mb={"3rem"}
+                  key={project.id}
+                  p={4}
+                  borderColor={"#2b2d42"}
+                  shadow={"sm"}
+                  borderWidth="1px"
+                  transition={"transform 0.2s ease, box-shadow 0.2s ease"}
+                  _hover={{
+                    shadow: "2xl",
+                    cursor: "pointer",
+                    transform: "translateY(-10px)",
+                    rounded: "sm",
+                  }}
+                  fontSize={"17px"}
+                  h="445px"
+                >
+                  <Box position="relative" height="200px">
+                    <Image
+                      src={project.img}
+                      minWidth={"100%"}
+                      maxHeight={"100%"}
+                      alt={project.name}
+                      objectFit="contain"
+                      marginBottom={7}
+                    />
+                  </Box>
+                  <Text fontWeight="bold" fontSize="2xl" mb={2}>
+                    {project.name}
+                  </Text>
+                  <Text mb={2}>{project.description}</Text>
+                  <Box>
+                    <div key={project.id}>
+                      <Link target="_blank" href={project.project_url} color="blue.500" mr={2}>
+                        🔗 Project Repo
                       </Link>
-                    )}
-                  </div>
+                      {project.view_live != null && (
+                        <Link target="_blank" href={project.view_live} color="blue.500">
+                          🔗 View Live
+                        </Link>
+                      )}
+                    </div>
+                  </Box>
+                  <Text>Tech Stack: {project.tech_stack}</Text>
                 </Box>
-                <Text>Tech Stack: {project.tech_stack}</Text>
-              </Box>
-            ) : (
-              // Loading skeleton
-              <Skeleton height={"445px"} rounded={"none"} />
-            )}
-          </div>
-        ))
-        }
-      </Grid>
+              ) : (
+                // Loading skeleton
+                <Skeleton height={"445px"} rounded={"none"} />
+              )}
+            </>
+          ))}
+        </Grid>
+      </motion.div>
+
     </Box>
+
   );
 };
 

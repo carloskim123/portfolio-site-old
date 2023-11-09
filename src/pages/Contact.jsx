@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useRef, useState, useEffect } from "react";
 import {
   Box,
@@ -11,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 import emailjs from "@emailjs/browser";
+import { MotionWrapper } from "../components/Motion";
 
 export default function Contact() {
   const form = useRef();
@@ -73,92 +75,110 @@ export default function Contact() {
   };
 
   return (
-    <Container mt={"3rem"}>
-      <Flex
-        display={"flex"}
-        justifyContent={"center"}
-        fontSize={"26px"}
-        my={"1rem"}
-      >
-        You can Contact me through the form below
-      </Flex>
-      <Box
-        maxW="md"
-        mx="auto"
-        p={4}
-        rounded="md"
-      >
-        <form onSubmit={handleSubmit} ref={form} disabled>
-          <FormControl id="user_name" mb={4}>
-            <FormLabel>Name</FormLabel>
-            <Input
-              autoComplete="on"
-              autoFocus={true}
-              type="text"
-              name="user_name"
-              borderColor="black.300"
-              focusBorderColor="blue.400"
-              _hover={
-                {
-                  borderColor: "blue.400",
-                }
-              }
-              isDisabled={isSubmitted}
-            />
-            <Text color="red.500">{formErrors.name}</Text>
-          </FormControl>
-          <FormControl id="user_email" mb={4}>
-            <FormLabel>Email</FormLabel>
-            <Input
-              type="email"
-              name="user_email"
-              borderColor="black.300"
-              autoComplete="on"
-              focusBorderColor="blue.400"
-              _hover={
-                {
-                  borderColor: "blue.400",
-                }
-              }
-              isDisabled={isSubmitted}
-            />
-            <Text color="red.500">{formErrors.email}</Text>
-          </FormControl>
-          <FormControl id="message" mb={4}>
-            <FormLabel>Message</FormLabel>
-            <Input
-              as="textarea"
-              pt={"5px"}
-              autoCorrect="true"
-              autoSave="true"
-              name="message"
-              rows={4}
-              height={"120px"}
-              borderColor="black.300"
-              focusBorderColor="blue.400"
-              isDisabled={isSubmitted}
-              _hover={
-                {
-                  borderColor: "blue.400",
-                }
-              }
-            />
-            <Text color="red.500">{formErrors.message}</Text>
-          </FormControl>
-
-          <Button
-            disabled
-            colorScheme="blue"
-            size="lg"
-            w={"100%"}
-            type="submit"
-            isLoading={isSubmitted}
-            loadingText="Submitting..."
+    <>
+      <MotionWrapper>
+        <Container mt={"3rem"}>
+          <Flex
+            display={"flex"}
+            justifyContent={"center"}
+            fontSize={"26px"}
+            my={"1rem"}
           >
-            Submit
-          </Button>
-        </form>
-      </Box>
-    </Container>
+            You can Contact me through the form below
+          </Flex>
+          <Box
+            maxW="md"
+            mx="auto"
+            p={4}
+            rounded="md"
+          >
+            <form onSubmit={handleSubmit} ref={form} disabled>
+              <FormControl id="user_name" mb={4}>
+                <FormLabel>Name</FormLabel>
+                <Input
+                  autoComplete="on"
+                  autoFocus={true}
+                  type="text"
+                  name="user_name"
+                  borderColor="black.300"
+                  focusBorderColor="blue.400"
+                  _hover={
+                    {
+                      borderColor: "blue.400",
+                    }
+                  }
+                  isDisabled={isSubmitted}
+                />
+                <Text color="red.500">{formErrors.name}</Text>
+              </FormControl>
+              <FormControl id="user_email" mb={4}>
+                <FormLabel>Email</FormLabel>
+                <Input
+                  type="email"
+                  name="user_email"
+                  borderColor="black.300"
+                  autoComplete="on"
+                  focusBorderColor="blue.400"
+                  _hover={
+                    {
+                      borderColor: "blue.400",
+                    }
+                  }
+                  isDisabled={isSubmitted}
+                />
+                <Text color="red.500">{formErrors.email}</Text>
+              </FormControl>
+              <FormControl id="message" mb={4}>
+                <FormLabel>Message</FormLabel>
+                <Input
+                  as="textarea"
+                  pt={"5px"}
+                  autoCorrect="true"
+                  autoSave="true"
+                  name="message"
+                  rows={4}
+                  height={"120px"}
+                  borderColor="black.300"
+                  focusBorderColor="blue.400"
+                  isDisabled={isSubmitted}
+                  _hover={
+                    {
+                      borderColor: "blue.400",
+                    }
+                  }
+                />
+                <Text color="red.500">{formErrors.message}</Text>
+              </FormControl>
+
+              <Button
+                disabled
+                colorScheme="blue"
+                size="lg"
+                w={"100%"}
+                type="submit"
+                isLoading={isSubmitted}
+                loadingText="Submitting..."
+              >
+                Submit
+              </Button>
+            </form>
+          </Box>
+        </Container>
+      </MotionWrapper>
+
+    </>
+
   );
 }
+
+
+/*
+   <motion.div
+        initial={{ opacity: 0, y: 130 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 130 }}
+      >
+      {// the children so its a wrapper and any component can be wrapped with it and it will add the motion effects to it}
+      </motion.div>
+
+*/
