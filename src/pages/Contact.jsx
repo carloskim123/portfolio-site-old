@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import {
   Box,
   FormControl,
@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 import emailjs from "@emailjs/browser";
+import { useMediaQuery } from 'react-responsive';
 import { MotionWrapper } from "../components/Motion";
 
 export default function Contact() {
@@ -24,6 +25,7 @@ export default function Contact() {
     message: "",
   });
 
+  const isSmallScreen = useMediaQuery({ maxWidth: 767 }); // Adjust the maxWidth as needed
 
   const validateForm = () => {
     const errors = {};
@@ -64,11 +66,15 @@ export default function Contact() {
         .then(
           (result) => {
             console.log(result.text);
-            navigate("/success");
-
-          }, (error) => {
-            consle.log(error.text);
-            navigate('/error');
+            if (!isSmallScreen) {
+              navigate("/success");
+            }
+          },
+          (error) => {
+            console.error(error.text);
+            if (!isSmallScreen) {
+              navigate('/error');
+            }
           }
         );
     }
@@ -92,7 +98,7 @@ export default function Contact() {
             p={4}
             rounded="md"
           >
-            <form onSubmit={handleSubmit} ref={form} disabled>
+            <form onSubmit={handleSubmit} ref={form}>
               <FormControl id="user_name" mb={4}>
                 <FormLabel>Name</FormLabel>
                 <Input
@@ -151,7 +157,7 @@ export default function Contact() {
               </FormControl>
 
               <Button
-                disabled
+                disabled={isSmallScreen} // Disable button on small screens
                 colorScheme="blue"
                 size="lg"
                 w={"100%"}
@@ -165,20 +171,6 @@ export default function Contact() {
           </Box>
         </Container>
       </MotionWrapper>
-
     </>
-
   );
 }
-
-
-/*
-   <motion.div
-        initial={{ opacity: 0, y: 130 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 130 }}
-      >
-      {// the children so its a wrapper and any component can be wrapped with it and it will add the motion effects to it}
-      </motion.div>
-
-*/

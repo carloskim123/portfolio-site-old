@@ -49,7 +49,7 @@ const Projects = () => {
         position={"fixed"}
         zIndex={40}
       >
-        <form
+        {/* <form
           onSubmit={(e) => e.preventDefault()}
           px={4}
           h="60px"
@@ -76,7 +76,7 @@ const Projects = () => {
             }}
             fontFamily={"Klee One"}
           />
-        </form>
+        </form> */}
       </Box>
       <motion.div
         initial={{ opacity: 0, x: -90 }}
