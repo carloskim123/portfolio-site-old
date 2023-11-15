@@ -15,6 +15,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 import HasSubmitted from './components/HasSubmitted';
+import Test from './pages/Test';
 
 // router and routes
 const router = createBrowserRouter(
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
     <>
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Home />} />
+        <Route path="test" element={<Test />} />
         <Route path="projects" element={<Projects />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
