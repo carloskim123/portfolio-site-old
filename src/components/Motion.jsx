@@ -4,9 +4,10 @@ import React from "react";
 export const MotionWrapper = ({ children }) => {
     return (
         <motion.div
-            initial={{ opacity: 0, y: 130 }}
+            initial={{ opacity: 0, y: 34 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 130 }}
+            
         >
             {children}
         </motion.div>

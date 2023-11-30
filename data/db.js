@@ -166,18 +166,19 @@ export const bannerImage = "https://images.unsplash.com/photo-1504805572947-34fa
 
 export const aboutMes = [
     {
-        param: "Greetings! 👋🏾 I'm Carlos Kirui, an enthusiastic problem solver in the world of software development. With a passion for coding and a hunger for challenges, I'm ready to create solutions that make a difference. 💻🚀",
+        param: "Greetings! 👋🏾 I'm Carlos Kirui, an enthusiastic problem solver in software development. Passionate about coding, I create solutions that make a difference. 💻🚀",
     },
     {
-        param: "Hey there! 👋🏾 Carlos Kirui here, a web development maestro on a mission to turn ideas into digital reality. With a keen eye for detail and a love for clean code, I'm set to make the web a better place. 🌐✨",
+        param: "Hey there! 👋🏾 Carlos Kirui here, a web development maestro turning ideas into digital reality. With an eye for detail and a love for clean code, I make the web better. 🌐✨",
     },
     {
-        param: "Salut! 👋🏾 I'm Carlos Kirui, a tech aficionado and coding virtuoso. Armed with a love for innovation and a knack for efficiency, I'm geared up to elevate the web development game to new heights. 💡💻",
+        param: "Salut! 👋🏾 I'm Carlos Kirui, a tech aficionado and coding virtuoso. With a love for innovation, I'm geared up to elevate web development. 💡💻",
     },
     {
-        param: "Hi, I'm Carlos Kirui! 👋🏾 A dedicated developer with a penchant for elegant solutions and a love for learning. Join me on this journey of continuous improvement and let's create something extraordinary together. 🌟🚀",
+        param: "Hi, I'm Carlos Kirui! 👋🏾 A dedicated developer with elegant solutions and a love for learning. Join me in creating something extraordinary. 🌟🚀",
     },
     {
-        param: "Hola! 👋🏾 Carlos Kirui checking in—a passionate web developer with an insatiable curiosity for emerging technologies. Let's embark on a coding adventure and build digital wonders that leave a lasting impact. 💻✨",
+        param: "Hola! 👋🏾 Carlos Kirui here—a passionate web developer with curiosity for emerging technologies. Let's build digital wonders together. 💻✨",
     }
 ];
+

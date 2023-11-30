@@ -3,6 +3,9 @@ import { Box, Flex, Link, Text, } from "@chakra-ui/layout";
 import { Tooltip } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
+
+
+
 import {
   aboutMes,
   links,
@@ -41,6 +44,7 @@ export default function Home() {
   return (
     <MotionWrapper>
       <Box>
+ 
         <Box
           as="section"
           rounded="md"
@@ -53,8 +57,9 @@ export default function Home() {
         >
           <Flex p={{ base: "20px", md: "40px", sm: "10px" }} maxWidth="764px">
             <Box>
-              <Text fontSize={{ base: "19px", lg: "20px", md: "20x", sm: "23px" }}>{aboutMe}</Text>
-              <Flex gap="1rem" mt="0.4rem" flexWrap="wrap">
+              <Text fontSize={{ base: "19px", lg: "25px", md: "20x", sm: "23px" }}>{aboutMe}</Text>
+
+              <Flex gap="1rem" mt="1.5rem" flexWrap="wrap">
                 <Box pt="5px" fontSize="20px">
                   Check me out on:
                 </Box>
