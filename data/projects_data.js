@@ -1,5 +1,8 @@
+// @ts-nocheck
 // @ts-ignore
 import shopZetuVendorsBanner from "../src/img/Shop-Zetu-Vendors-Banner.png"
+import tictactoeJava from '../src/img/download.jpeg'
+
 export const projects = [
     
     {
@@ -19,6 +22,15 @@ export const projects = [
         project_url: 'https://github.com/carloskim123/golang-rest-api',
         view_live: null,
         description: "A RESTful API built with Golang and Gin framework."
+    },
+        {
+        name: 'TicTacToe Java',
+        id: Math.random(),
+        img: tictactoeJava,
+        tech_stack: 'SwingUI, Java',
+        project_url: 'https://github.com/carloskim123/Tic-Tac-Toe-Java',
+        view_live: null,
+        description: "A tictactoe game build with SwingUI and Java"
     },
 
     {
