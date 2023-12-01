@@ -1,13 +1,12 @@
 // @ts-nocheck
 import { useState, useEffect } from "react";
 import { Grid, Box, Image, Link, Text, Input, Skeleton } from "@chakra-ui/react";
-import { shuffle } from "../../data/helpers";
+import { loadNewWindow, shuffle } from "../../data/helpers";
 import { projects } from "../../data/projects_data";
 import "../../css.css";
 import React from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-
 // Projects component
 const Projects = () => {
   // State variables
@@ -85,6 +84,7 @@ const Projects = () => {
       >
         {/* Project grid */}
         <Grid
+          key={Math.random()}
           templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
           gap={6}
           p={"20px"}
@@ -112,7 +112,7 @@ const Projects = () => {
                   fontSize={"17px"}
                   h="445px"
                 >
-                  <Box position="relative" height="200px">
+                  <Box position="relative" height="200px" onClick={() => loadNewWindow(project.project_url)}>
                     <Image
                       src={project.img}
                       minWidth={"100%"}
@@ -153,5 +153,7 @@ const Projects = () => {
 
   );
 };
+
+
 
 export default Projects;

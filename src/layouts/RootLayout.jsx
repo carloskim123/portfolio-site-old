@@ -36,7 +36,7 @@ const RootLayout = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 800);
+    }, 1500);
 
     // Update 'currentTime' every second
     const intervalId = setInterval(() => {
@@ -85,7 +85,7 @@ const RootLayout = () => {
           position={"fixed"}
           zIndex={100}
           borderBottom={"2px solid black"}
-          backdropFilter="blur(20px)"
+          backdropFilter="blur(40px)"
           background="rgba(0, 0, 0, 0.001)"
         >
           <Flex justifyContent={"space-between"} alignItems="center" fontSize="18px">

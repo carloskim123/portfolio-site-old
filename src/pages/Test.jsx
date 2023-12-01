@@ -1,20 +1,12 @@
-import { ColorRepoKim } from "color-repo-kim";
-
-import React from "react";
+import { useDraggable } from "@neodrag/react";
+import React, { useRef } from "react";
 
 const Test = () => {
-    const textColor = "#d6af8o"
-
-    const rgbResult = ColorRepoKim.convert.hexToRgb(textColor)
-    const validResult = ColorRepoKim.validate.isValidHex(textColor)
-
-
-    console.log(validResult);
-
+    const draggable = useRef(null);
+    useDraggable(draggable, { axis: 'both', grid: [10,10]})
+ 
     return (
-        <div>
-            {JSON.stringify(ColorRepoKim.parse.hexToRgb("#000000"))}
-        </div>
+        <div ref={draggable}>Hello</div>
     )
 };
 
