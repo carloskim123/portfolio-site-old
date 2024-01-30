@@ -119,6 +119,7 @@ const RootLayout = () => {
                 <Link key={route.path} to={route.path}>
                   <Text
                     fontSize="20px"
+                    cursor={"pointer"}
                     _hover={{
                       transform: "translateY(-2px)",
                       borderBottom: "1px solid black",

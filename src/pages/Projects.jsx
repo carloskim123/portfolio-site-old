@@ -10,7 +10,6 @@ import { useInView } from "react-intersection-observer";
 // Projects component
 const Projects = () => {
   // State variables
-  const [projectsData, setProjectsData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -94,7 +93,6 @@ const Projects = () => {
           {filteredProjects.map((project) => (
             <>
               {!isLoading ? (
-                // Project card
                 <Box
                   mb={"3rem"}
                   key={project.id}

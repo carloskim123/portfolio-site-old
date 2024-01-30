@@ -171,14 +171,3 @@ export default function Contact() {
   );
 }
 
-
-/*
-   <motion.div
-        initial={{ opacity: 0, y: 130 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 130 }}
-      >
-      {// the children so its a wrapper and any component can be wrapped with it and it will add the motion effects to it}
-      </motion.div>
-
-*/
